@@ -34,6 +34,18 @@ class DeviseCreateMembers < ActiveRecord::Migration[5.2]
 
 
       t.timestamps null: false
+      
+    #追加
+      t.string  :last_name
+      t.string  :first_name
+      t.string  :last_name_kana
+      t.string  :first_name_kana
+      t.string  :postal_code
+      t.string  :address
+      t.string  :telephone_number
+      t.boolean :is_deleted , default: false
+      
+      
     end
 
     add_index :members, :email,                unique: true
