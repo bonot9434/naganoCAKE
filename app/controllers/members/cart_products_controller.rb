@@ -28,8 +28,11 @@ class Members::CartProductsController < ApplicationController
     end
     
     def destroy_all
-        @cart_products = CartProduct.find(current_member.id)
-        @cart_products.destroy
+        @member = Member.find(current_member.id)
+        @cart_products = @member.cart_products.all
+        @cart_products.each do |cart_product|
+            cart_product.destroy
+        end
         redirect_to products_path
     end
     
