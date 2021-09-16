@@ -1,7 +1,7 @@
 # README
 
 
----
+----
 * seed.rb
 
 Admin.create!(
@@ -21,4 +21,8 @@ Admin.create!(
   password: "111111",
   )
 
+m_registration
 ----
+
+-----
+develop
