@@ -1,24 +1,24 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+---
+* seed.rb
+* 
+Admin.create!(
+  email: "nagano_CAKE@gmail.com",
+  password: "7gan0-CAKE"
+  )
+ 
+ Member.create!(
+  last_name: "test",
+  first_name: "aki",
+  last_name_kana: "てすと",
+  first_name_kana: "あき",
+  postal_code: "1234567",
+  address: "長野県カフェ市",
+  telephone_number: "01234567890",
+  email: "test-aki@test.com",
+  password: "111111",
+  )
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+---
