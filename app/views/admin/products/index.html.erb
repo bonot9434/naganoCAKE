@@ -1,0 +1,8 @@
+admin商品一覧画面
+<% @products.each do |product| %>
+<%= product.image %>
+<%= product.name %>
+<%= product.introduction %>
+<%= product.price %>
+<%= product.is_released %>
+<% end %>

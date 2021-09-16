@@ -1,0 +1,16 @@
+<h1>admin 商品新規登録</h1>
+<%= form_with model: @product, url:admin_products_path, local:true do |f| %>
+<div class = "form-group">-->
+  <%= f.label :image %>
+  <%= f.attachment_field :image %>
+  <%= f.label :name %>
+  <%= f.text_area :name %>
+  <%= f.label :introduction %>
+  <%= f.text_field :introduction %>
+  <%= f.label :price %>
+  <%= f.number_field :price %>
+  <p>ジャンル選択</p>
+  <%= f.select :is_released, [['非公開',0],['公開',1]], { include_blank: true, selected: 0 } %>
+  <%= f.submit "送信" %>
+</div>
+<% end %>
