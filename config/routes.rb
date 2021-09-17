@@ -10,7 +10,11 @@ Rails.application.routes.draw do
     resources :orders_product, only: [:update]
   end
   
-  devise_for :members
+  
+  devise_for :members, :controllers  => {
+    :registrations => 'members/members/registrations',
+    :sessions => 'members/members/sessions'
+  }
   scope module: :members do
     root to: 'homes#top' 
     get '/about' => 'homes#about'
