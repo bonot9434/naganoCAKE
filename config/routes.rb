@@ -10,14 +10,13 @@ Rails.application.routes.draw do
     resources :orders_product, only: [:update]
   end
   
-   
-    devise_for :members, :controllers => {
-     :registrations => 'members/members/registrations'
-    }
-    
-    
+  devise_for :members, :controllers  => {
+    :registrations => 'members/members/registrations',
+    :sessions => 'members/members/sessions'
+  }
+
   scope module: :members do
-    root to: 'homes#top' 
+    root to: 'homes#top'
     get '/about' => 'homes#about'
     resource :members, only: [:show,:update]
     get 'members/myedit' => 'members#edit'
@@ -28,9 +27,9 @@ Rails.application.routes.draw do
     resources :cart_products, only: [:index, :create, :update, :destroy]
     delete 'cart_products' => 'cart_products#destroy_all', as: :destroy_all_members_cart_products
     resources :orders, only:[:new, :create, :show, :index]
-    post '/orders/info'  => 'orders#info' 
+    post '/orders/info'  => 'orders#info'
     get  '/orders/thanks' => 'orders#thanks'
     resources :destinations, only: [:index, :create, :edit, :update, :destroy]
   end
-  
+
 end

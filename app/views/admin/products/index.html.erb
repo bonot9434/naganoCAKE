@@ -1,0 +1,40 @@
+admin商品一覧画面
+
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th></th>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜き価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td>
+          <%= product.id %>
+        </td>
+        <td>
+          <%= product.name %>
+        </td>
+        <td>
+            <%= product.price %>
+        </td>
+        <td>
+            <%= product.genre.name %>
+        </td>
+        <td>
+            <% if product.is_active = true %>
+             <p>販売中</p>
+            <% else %>
+             <p>販売停止中</p>
+            <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
