@@ -20,7 +20,9 @@ admin商品一覧画面
           <%= product.id %>
         </td>
         <td>
+          <%= link_to admin_product_path(product) do %>
           <%= product.name %>
+          <% end %>
         </td>
         <td>
             <%= product.price %>

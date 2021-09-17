@@ -1,5 +1,5 @@
 class Members::CartProductsController < ApplicationController
-    $tax_rate = 1.08 #税率のグローバル変数
+  
     def index
         @member = Member.find(current_member.id)
         @cart_products = @member.cart_products.all
