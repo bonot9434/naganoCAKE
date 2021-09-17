@@ -1,0 +1,38 @@
+      <div class="d-flex justify-content-between">
+        <h2>ショッピングカート</h2>
+        <div><%= link_to "カートを空にする", destroy_all_members_cart_products_path, method: :delete, class:"btn btn-danger", "data-confirm" => "ショッピングカートの中身を全て消します" %></div>
+      </div>
+      <table class= "table table-hover table-bordered">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th colspan= "1"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @total = 0 %>
+          <% @cart_products.each do |cart_product| %>
+          <tr>
+            <td><%= attachment_image_tag cart_product.product, :image_id, size:"40x40", format: 'jpeg', fallback:"no_image.jpg" %><%= cart_product.product.name %></td>
+            <!--税込価格は切捨て-->
+            <td><%= (cart_product.product.price * $tax_rate).floor %></td>
+            <!--数量の変更-->
+            <td><%= form_with model: cart_product, method: :patch, local:true do |f| %>
+                <%= f.text_field :quantity , value: cart_product.quantity %>
+                <%= f.submit "変更" %>
+            <% end %></td>
+            <!--小計の表示:数量ｘ(価格ｘ税率)-->
+            <td><%= cart_product.quantity * (cart_product.product.price * $tax_rate).floor %></td>
+            <td><%= link_to "削除する",cart_product_path(cart_product.id), method: :delete, class:"btn btn-danger" %></td>
+            <!--@totalに数量ｘ(価格ｘ税率)を代入-->
+          </tr><% @total += cart_product.quantity * (cart_product.product.price * $tax_rate).floor %>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-between">
+        <div><%= link_to "買い物を続ける", products_path, class:"btn btn-primary" %></div>
+        <table class= "table table-bordered col-2"><th>合計金額</th><th><%= @total %></th></table>
+      </div>

@@ -20,6 +20,36 @@ Admin.create!(
   email: "test-aki@test.com",
   password: "111111",
   )
+  
+Genre.create!(
+    name: "ケーキ"
+)
+Product.create!(
+    genre_id: 1,
+    name: "ショートケーキ",
+    introduction: "ショートケーキだよ",
+    price: 298,
+    is_active: true
+)
+Product.create!(
+    genre_id: 1,
+    name: "チョコケーキ",
+    introduction: "チョコレートケーキだよ",
+    price: 398,
+    is_active: true
+)
+
+CartProduct.create!(
+    member_id: 1,
+    product_id: 1,
+    quantity: 2
+)
+CartProduct.create!(
+    member_id: 1,
+    product_id: 2,
+    quantity: 3
+)
+
 
 
 ----
