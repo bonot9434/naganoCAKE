@@ -4,7 +4,7 @@ class Members::CartProductsController < ApplicationController
         @member = Member.find(current_member.id)
         @cart_products = @member.cart_products.all
     end
-    
+
     def update
         @cart_product = CartProduct.find(params[:id])
         @cart_product.update(cart_product_params)
@@ -13,20 +13,20 @@ class Members::CartProductsController < ApplicationController
         # @cart_products = @member.cart_products.all
         # render :index
     end
-    
+
     def create
-        @product = Product.find(params[:product_id])
-        cart_product = current_member.cart_product.new(cart_product_params)
-        cart_product.product_id = @product.id
+        member = Member.find(current_member.id)
+        cart_product = current_member.cart_products.new(cart_product_params)
         cart_product.save
+        redirect_to product_path(cart_product.product_id) ,notice: "カートに#{cart_product.product.name}を追加しました。カート内に#{member.cart_products.count}商品があります。"
     end
-    
+
     def destroy
         @cart_product = CartProduct.find(params[:id])
         @cart_product.destroy
         redirect_to cart_products_path
     end
-    
+
     def destroy_all
         @member = Member.find(current_member.id)
         @cart_products = @member.cart_products.all
@@ -35,10 +35,10 @@ class Members::CartProductsController < ApplicationController
         end
         redirect_to products_path
     end
-    
+
 private
-    
+
     def cart_product_params
-        params.require(:cart_product).permit(:quantity)
+        params.require(:cart_product).permit(:quantity, :product_id)
     end
 end
