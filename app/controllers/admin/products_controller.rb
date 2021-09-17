@@ -1,4 +1,5 @@
 class Admin::ProductsController < ApplicationController
+
   def new
     @product = Product.new
   end
@@ -31,4 +32,5 @@ class Admin::ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:image, :name, :introduction, :price, :is_active, :genre_id)
     end
+
 end

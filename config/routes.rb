@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   #adminのルート
-  devise_for :admin
+  devise_for :admin 
   namespace :admin do
     resources :members, only: [:index,:show,:edit,:update]
     resources :products, only: [:index,:new,:create,:edit,:update,:show]
@@ -9,12 +9,18 @@ Rails.application.routes.draw do
     root to: 'orders#top'
     resources :orders_product, only: [:update]
   end
+  
+  devise_for :members, :controllers  => {
+    :registrations => 'members/members/registrations',
+    :sessions => 'members/members/sessions'
+  }
 
-   devise_for :members
   scope module: :members do
     root to: 'homes#top'
     get '/about' => 'homes#about'
-    resource :members, only: [:show, :edit, :update]
+    resource :members, only: [:show,:update]
+    get 'members/myedit' => 'members#edit'
+    post 'members/myedit' => 'members#update'
     patch 'members/withdraw' => 'members#withdraw', as: :members_withdraw
     get 'members/leave' => 'members#leave'
     resources :products, only: [:show, :index]
