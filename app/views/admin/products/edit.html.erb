@@ -1,1 +1,61 @@
 admin 商品編集画面
+<table class='table table-hover table-inverse'>
+
+  <tbody>
+    <%= form_with model: @product, url:admin_products_path, local:true do |f| %>
+      <tr>
+        <td>
+          商品画像
+        </td>
+        <td>
+           <%= f.label :image %>
+           <%= f.attachment_field :image %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          商品名
+        </td>
+        <td>
+          <%= f.label :name %>
+          <%= f.text_area :name %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          商品説明
+        </td>
+        <td>
+            <%= f.label :introduction %>
+            <%= f.text_field :introduction %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          ジャンル
+        </td>
+        <td>
+           <%= f.label :genre_id %>
+           <%= f.collection_select :genre_id, Genre.all, :id, :name ,include_blank: '--選択してください--' %>
+        </td>
+      </tr>
+        <td>
+            販売中
+        </td>
+        <td>
+          <%= f.radio_button :is_active, true %>
+          <%= f.label :done, '販売中', value: true %>
+        </td>
+        <td>
+          <%= f.radio_button :is_active, false %>
+          <%= f.label :done, '販売停止中', value: false %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.submit "新規登録" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

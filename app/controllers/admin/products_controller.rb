@@ -5,10 +5,12 @@ class Admin::ProductsController < ApplicationController
 
   def index
     @products = Product.all
+
   end
 
   def create
     @product = Product.new(product_params)
+     @product_find = Product.find(params[:id])
     @product.save
     redirect_to admin_products_path, notice: "You have created product successfully."
   end
@@ -18,14 +20,16 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:id])
   end
 
 
 
 
-  private
 
-  def product_params
-    params.require(:product).permit(:name)
-  end
+
+    private
+    def product_params
+      params.require(:product).permit(:image, :name, :introduction, :price, :is_active, :genre_id)
+    end
 end
