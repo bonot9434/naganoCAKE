@@ -6,13 +6,3 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-CartProduct.create!(
-    member_id: 1,
-    product_id: 1,
-    quantity: 2
-)
-CartProduct.create!(
-    member_id: 1,
-    product_id: 2,
-    quantity: 3
-)
