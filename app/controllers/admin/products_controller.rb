@@ -10,7 +10,6 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-     @product_find = Product.find(params[:id])
     @product.save
     redirect_to admin_products_path, notice: "You have created product successfully."
   end
