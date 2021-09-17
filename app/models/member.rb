@@ -7,4 +7,7 @@ class Member < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :destinations, dependent: :destroy
   has_many :cart_products, dependent: :destroy
+  
+  
+  
 end
