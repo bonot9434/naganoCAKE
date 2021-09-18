@@ -21,19 +21,24 @@ class Members::OrdersController < ApplicationController
       @postal_code = "[新規登録]"
     end
     @order = Order.new
-    @order_product = OrderProduct.new
+    # @order_product = OrderProduct.new
   end
   
   def create
-    order = current_member.order.new(order_params)
+    order = current_member.orders.new(order_params)
+    order.save
     member = Member.find(current_member.id)
     cart_products = member.cart_products.all
     cart_products.each do |cart_product|
-      
+      order_product = OrderProduct.new
+      order_product.order_id = order.id
+      order_product.product_id = cart_product.product_id
+      order_product.subtotal_price = cart_product.quantity * ( cart_product.product.price * $tax_rate).floor
+      order_product.quantity = cart_product.quantity
+      order_product.save
+      cart_product.destroy
     end
-    order_product = current_member.order_product.new(order_product_params)
-    order.save
-    order_product.save
+    #order_product = current_member.order_product.new(order_product_params)
     redirect_to orders_thanks_path
   end
   
@@ -41,9 +46,17 @@ class Members::OrdersController < ApplicationController
   end
   
   def index
+    @member = Member.find(current_member.id)
+    @orders = @member.orders.all
   end
   
   def show
+    if params[:id] == "index"
+      render :index
+    else
+    @member = Member.find(current_member.id)
+    @order = @member.orders.find(params[:id])
+    end
   end
   
 private
@@ -52,8 +65,8 @@ private
     params.require(:order).permit(:postal_code, :address, :name, :potage, :total_price, :payment_method, :received_status)
   end
   
-  def order_product_params
-    params.require(:order_product).permit(:subtotal_price, :quantity, :production_status)
-  end
+  # def order_product_params
+  #   params.require(:order_product).permit(:subtotal_price, :quantity, :production_status)
+  # end
   
 end
