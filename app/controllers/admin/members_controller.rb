@@ -6,17 +6,17 @@ class Admin::MembersController < ApplicationController
   end
 
   def show
-    @member = Member.find(params[:id])
+    @member = Member.find(current_member.id)
   end
 
   def edit
-    @member = Member.find(params[:id])
+    @member = Member.find(current_member.id)
   end
 
   def update
-    @member= Member.find(params[:id])
+    @member = Member.find(current_member.id)
     @member.update(member_params)
-    redirect_to admin_member_path
+    redirect_to members_member_path(current_member.id)
   end
 
   def member_params

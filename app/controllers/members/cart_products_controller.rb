@@ -1,4 +1,5 @@
 class Members::CartProductsController < ApplicationController
+    $tax_rate = 1.08 #税率のグローバル変数
     def index
         @member = Member.find(current_member.id)
         @cart_products = @member.cart_products.all
@@ -14,9 +15,10 @@ class Members::CartProductsController < ApplicationController
     end
     
     def create
-        cart_product = current_member.cart_products.new(cart_product_params)
+        @product = Product.find(params[:product_id])
+        cart_product = current_member.cart_product.new(cart_product_params)
+        cart_product.product_id = @product.id
         cart_product.save
-        redirect_to product_path(cart_product.product.id)
     end
     
     def destroy
@@ -37,6 +39,6 @@ class Members::CartProductsController < ApplicationController
 private
     
     def cart_product_params
-        params.require(:cart_product).permit(:quantity, :product_id)
+        params.require(:cart_product).permit(:quantity)
     end
 end
