@@ -1,15 +1,14 @@
 admin 商品編集画面
+<%= form_with model: @product, url:admin_product_path(@product), method: :patch, local:true do |f| %>
 <table class='table table-hover table-inverse'>
-
   <tbody>
-    <%= form_with model: @product, url:admin_products_path, local:true do |f| %>
       <tr>
         <td>
           商品画像
         </td>
         <td>
            <%= f.label :image %>
-           <%= f.attachment_field :image %>
+           <%= f.attachment_field :image, size:"150x150" %>
         </td>
       </tr>
       <tr>
@@ -53,9 +52,9 @@ admin 商品編集画面
       </tr>
       <tr>
         <td>
-          <%= f.submit "新規登録" %>
+          <%= f.submit "変更を保存" %>
         </td>
       </tr>
-    <% end %>
   </tbody>
 </table>
+<% end %>
