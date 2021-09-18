@@ -16,7 +16,7 @@
           <% @total = 0 %>
           <% @cart_products.each do |cart_product| %>
           <tr>
-            <td><%= attachment_image_tag cart_product.product, :image_id, size:"40x40", format: 'jpeg', fallback:"no_image.jpg" %><%= cart_product.product.name %></td>
+            <td><%= attachment_image_tag cart_product.product, :image, size:"40x40", format: 'jpeg', fallback:"no_image.jpg" %><%= cart_product.product.name %></td>
             <!--税込価格は切捨て-->
             <td><%= (cart_product.product.price * $tax_rate).floor %></td>
             <!--数量の変更-->
