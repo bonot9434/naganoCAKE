@@ -6,7 +6,6 @@ class Admin::ProductsController < ApplicationController
 
   def index
     @products = Product.all
-
   end
 
   def create
@@ -23,6 +22,12 @@ class Admin::ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  def update
+    @product = Product.find(params[:id])
+
+    @product.update(product_params)
+    redirect_to admin_product_path(params[:id])
+  end
 
 
 

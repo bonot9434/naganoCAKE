@@ -1,1 +1,6 @@
 admin ジャンル編集画面
+<%= form_with model: @genre,url:admin_genre_path(@genre), local:true  do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.submit "変更を保存" %>
+<% end %>
