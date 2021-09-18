@@ -32,4 +32,7 @@ Rails.application.routes.draw do
     resources :destinations, only: [:index, :create, :edit, :update, :destroy]
   end
 
+  
+  
+  
 end
