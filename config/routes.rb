@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     post 'members/myedit' => 'members#update'
     patch 'members/withdraw' => 'members#withdraw', as: :members_withdraw
     get 'members/leave' => 'members#leave'
-    resources :products, only: [:show, :index,]
+    resources :products, only: [:show, :index]
     resources :cart_products, only: [:index, :create, :update, :destroy]
     delete 'cart_products' => 'cart_products#destroy_all', as: :destroy_all_members_cart_products
     resources :orders, only:[:new, :create, :show, :index]
