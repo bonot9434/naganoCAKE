@@ -26,7 +26,15 @@ class Members::OrdersController < ApplicationController
   
   def create
     order = current_member.order.new(order_params)
+    member = Member.find(current_member.id)
+    cart_products = member.cart_products.all
+    cart_products.each do |cart_product|
+      
+    end
     order_product = current_member.order_product.new(order_product_params)
+    order.save
+    order_product.save
+    redirect_to orders_thanks_path
   end
   
   def thanks

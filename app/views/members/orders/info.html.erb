@@ -42,4 +42,6 @@
       </table>
 <div><strong>支払方法 ：<%= Order.payment_methods.keys.to_a[@payment] %></strong></div>
 <div><strong>お届け先 ：〒<%= @postal_code %> <%= @address %><br><%= @name %></strong></div>
+<% form_with model: @order, local: :true do |f| %>
+<% end %>
 <%= link_to "注文を確定する", orders_thanks_path, method: :get , class:"btn btn-primary" %>

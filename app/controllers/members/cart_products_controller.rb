@@ -14,11 +14,9 @@ class Members::CartProductsController < ApplicationController
     end
     
     def create
-        @product = Product.find(params[:product_id])
         cart_product = current_member.cart_products.new(cart_product_params)
-        cart_product.product_id = @product.id
         cart_product.save
-        render products_path(@prduct)
+        redirect_to product_path(cart_product.product.id)
     end
     
     def destroy
@@ -39,6 +37,6 @@ class Members::CartProductsController < ApplicationController
 private
     
     def cart_product_params
-        params.require(:cart_product).permit(:quantity,:product_id)
+        params.require(:cart_product).permit(:quantity, :product_id)
     end
 end
