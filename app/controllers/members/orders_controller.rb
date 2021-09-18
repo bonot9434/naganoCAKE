@@ -2,24 +2,29 @@ class Members::OrdersController < ApplicationController
   
   def new
     @member = Member.find(current_member.id)
+    @destination = Destination.new
   end
   
   def info
     @member = Member.find(current_member.id)
     @cart_products = @member.cart_products.all
     @payment = params[:payment_method] == "0" ? 0 : 1
-    if params[:destination] == "0"
+    if params[:destination_kind] == "0"
       @postal_code = @member.postal_code
       @address = @member.address
       @name = @member.last_name + @member.first_name
-    elsif params[:destination] == "1"
+    elsif params[:destination_kind] == "1"
       @destination = Destination.find(params[:destinations])
       @postal_code = @destination.postal_code
       @address = @destination.address
       @name = @destination.name
     else
-      @postal_code = "[新規登録]"
-    end
+      @destination = Destination.new(destination_params)
+      @destination.member_id = current_member.id
+      @destination.save
+      @postal_code = @destination.postal_code
+      @address = @destination.address
+      @name = @destination.name    end
     @order = Order.new
     # @order_product = OrderProduct.new
   end
@@ -51,8 +56,8 @@ class Members::OrdersController < ApplicationController
   end
   
   def show
-    if params[:id] == "index"
-      render :index
+    if params[:id] == "info"
+      redirect_to orders_path
     else
     @member = Member.find(current_member.id)
     @order = @member.orders.find(params[:id])
@@ -60,6 +65,10 @@ class Members::OrdersController < ApplicationController
   end
   
 private
+
+  def destination_params
+    params.require(:destination).permit(:member_id,:postal_code, :address, :name)
+  end
 
   def order_params
     params.require(:order).permit(:postal_code, :address, :name, :potage, :total_price, :payment_method, :received_status)
