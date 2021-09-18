@@ -31,5 +31,9 @@ Rails.application.routes.draw do
     get  '/orders/thanks' => 'orders#thanks'
     resources :destinations, only: [:index, :create, :edit, :update, :destroy]
   end
+<<<<<<< HEAD
   
 end
+=======
+end
+>>>>>>> c7e6dcee7bb22cc4a974df9c2579244894cc82bc
