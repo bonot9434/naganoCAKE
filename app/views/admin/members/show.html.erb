@@ -1,6 +1,7 @@
 <h1><%= @member.last_name_kana %> <%= @member.first_name_kana %>さんの会員詳細</h1>
 
-<table>
+
+<table class="table">
   <tr>
     <th>氏名</th> <th><%= @member.last_name %> <%= @member.first_name %></th>
   </tr>
@@ -20,7 +21,7 @@
     <th>メールアドレス</th> <th><%= @member.email %></th>
   </tr>
   <tr>
-    <th>会員ステータス</th> 
+    <th>会員ステータス</th>
     <th>
       <% if @member.is_deleted %>
           退会
@@ -31,5 +32,5 @@
   </tr>
 </table>
 
-<button><%= link_to "編集する",edit_admin_member_path %></button>
-<button><%= link_to  "注文履歴一覧を見る", root_path %></button>
+<%= link_to "編集する",edit_admin_member_path, class: "btn btn-success" %>
+<%= link_to  "注文履歴一覧を見る", root_path, class: "btn btn-success" %>
