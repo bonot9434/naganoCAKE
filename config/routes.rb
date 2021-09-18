@@ -25,8 +25,8 @@ Rails.application.routes.draw do
     get 'members/leave' => 'members#leave'
     resources :products, only: [:show, :index]
     resources :cart_products, only: [:index, :create, :update, :destroy]
-    resources :orders, only:[:new, :create, :show, :index]
     delete 'cart_products' => 'cart_products#destroy_all', as: :destroy_all_members_cart_products
+    resources :orders, only:[:new, :create, :show, :index]
     post '/orders/info'  => 'orders#info'
     get  '/orders/thanks' => 'orders#thanks'
     resources :destinations, only: [:index, :create, :edit, :update, :destroy]
