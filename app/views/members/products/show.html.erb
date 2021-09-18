@@ -1,0 +1,37 @@
+会員側商品一覧画面
+<p id= "notice"><strong><%= notice %></strong></p>
+<table class='table table-hover table-inverse'>
+  <thead>
+  </thead>
+  <tbody>
+      <tr>
+        <td>
+         <%= attachment_image_tag @product, :image, size:"60×60" %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong><%= @product.name %></strong>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <%= @product.introduction %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <%= @product.price %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= form_with model: @cart_product, url:cart_products_path, method: :post do |f| %>
+            <%= f.hidden_field :product_id, value: @product.id %>
+            <%= f.number_field :quantity %>
+            <%= f.submit "カートに入れる" %>
+          <% end %>
+        </td>
+      </tr>
+  </tbody>
+</table>

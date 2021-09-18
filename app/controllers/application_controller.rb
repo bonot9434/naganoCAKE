@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   #befire_action記述予定
   before_action :configure_permitted_parameters, if: :devise_controller?
+  $tax_rate = 1.08 #税率のグローバル変数
 
   #ログイン時のパス
   def after_sign_in_path_for(resource)
