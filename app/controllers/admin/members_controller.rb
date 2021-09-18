@@ -14,7 +14,7 @@ class Admin::MembersController < ApplicationController
   end
 
   def update
-    @member = Member.find(current_member.id)
+    @member= Member.find(current_member.id)
     @member.update(member_params)
     redirect_to members_member_path(current_member.id)
   end
