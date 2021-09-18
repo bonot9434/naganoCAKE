@@ -1,8 +1,10 @@
 <h1>マイページ</h1>
 
-<h1>登録情報 <button><%= link_to "編集", members_myedit_path %></button></h1>
 
-<table>
+<h2>登録情報</h2>
+<%= link_to "編集", members_myedit_path, class:"btn btn-success" %>
+
+<table class="table">
   <tr>
     <th>氏名</th> <th><%= @member.last_name %> <%= @member.first_name %></th>
   </tr>
@@ -23,5 +25,5 @@
   </tr>
 </table>
 
-<h1>配送先　<button>><%= link_to "一覧を見る", destinations_path %></button></h1>
-<h1>注文履歴　<button>><%= link_to "一覧を見る", orders_info_path %></button></h1>
+<h2>配送先</h2><%= link_to "一覧を見る", destinations_path, class:"btn btn-primary" %>
+<h2>注文履歴</h2><%= link_to "一覧を見る", orders_info_path, class:"btn btn-primary" %>

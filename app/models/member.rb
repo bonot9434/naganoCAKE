@@ -10,7 +10,7 @@ class Member < ApplicationRecord
   
 
   validates :first_name, :last_name, :first_name_kana, :last_name_kana,
-            :address, :telephone_number, presence: true
+            :address, :telephone_number, :postal_code, presence: true
             
   validates :postal_code, numericality: { only_integer: true }, format: {with:/\A\d{7}\z/, message:"7文字での入力をお願いします"}
   validates :telephone_number, numericality: { only_integer: true }
