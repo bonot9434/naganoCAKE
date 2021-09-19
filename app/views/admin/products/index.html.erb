@@ -1,5 +1,4 @@
 admin商品一覧画面
-
 <table class='table table-hover table-inverse'>
   <thead>
     <tr>
@@ -39,5 +38,6 @@ admin商品一覧画面
         </td>
       </tr>
     <% end %>
+    <%= paginate @products_pages %>
   </tbody>
 </table>

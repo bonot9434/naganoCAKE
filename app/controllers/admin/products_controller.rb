@@ -1,4 +1,6 @@
 class Admin::ProductsController < ApplicationController
+  #完成後有効にする↓
+  #before_action :authenticate_admin!
 
   def new
     @product = Product.new
@@ -6,12 +8,16 @@ class Admin::ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    @products_pages = Product.page(params[:page]).per(8).reverse_order
   end
 
   def create
     @product = Product.new(product_params)
-    @product.save
-    redirect_to admin_products_path, notice: "You have created product successfully."
+    if @product.save
+      redirect_to admin_product_path(@product), notice: "You have created product successfully."
+    else
+      render :new
+    end
   end
 
   def show
@@ -24,12 +30,12 @@ class Admin::ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-
-    @product.update(product_params)
-    redirect_to admin_product_path(params[:id])
+    if @product.update(product_params)
+      redirect_to admin_product_path(params[:id])
+    else
+      render :edit
+    end
   end
-
-
 
 
 

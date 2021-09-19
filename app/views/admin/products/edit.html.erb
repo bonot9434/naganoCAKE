@@ -1,60 +1,49 @@
 admin 商品編集画面
-<%= form_with model: @product, url:admin_product_path(@product), method: :patch, local:true do |f| %>
-<table class='table table-hover table-inverse'>
-  <tbody>
-      <tr>
-        <td>
-          商品画像
-        </td>
-        <td>
-           <%= f.label :image %>
-           <%= f.attachment_field :image, size:"150x150" %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          商品名
-        </td>
-        <td>
-          <%= f.label :name %>
-          <%= f.text_area :name %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          商品説明
-        </td>
-        <td>
-            <%= f.label :introduction %>
-            <%= f.text_field :introduction %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          ジャンル
-        </td>
-        <td>
-           <%= f.label :genre_id %>
-           <%= f.collection_select :genre_id, Genre.all, :id, :name ,include_blank: '--選択してください--' %>
-        </td>
-      </tr>
-        <td>
-            販売中
-        </td>
-        <td>
-          <%= f.radio_button :is_active, true %>
-          <%= f.label :done, '販売中', value: true %>
-        </td>
-        <td>
-          <%= f.radio_button :is_active, false %>
-          <%= f.label :done, '販売停止中', value: false %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <%= f.submit "変更を保存" %>
-        </td>
-      </tr>
-  </tbody>
-</table>
-<% end %>
+<div class="page_title">商品編集</div>
+
+
+<div class="container">
+  <% if @product.errors.any? %>
+  <h3><%= @product.errors.count %>件のエラーが発生しました。</h3>
+  <% @product.errors.full_messages.each do |message| %>
+  <p>・<%=message %></p>
+  <% end %>
+  <% end %>
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-5 mx-auto">
+      <%= form_with model: @product, url:admin_product_path(@product), method: :patch, local:true do |f| %>
+    <div class="form-group">
+    <div class="product_image_form">
+      <%= f.label :商品画像 %>
+      <%= f.attachment_field :image, size:"150x150" %>
+    </div>
+    <div class="product_name_form">
+      <%= f.label :商品名 %>
+      <%= f.text_area :name %>
+    </div>
+    <div class="product_introduction_form">
+      <%= f.label :商品説明 %>
+      <%= f.text_field :introduction %>
+    </div>
+    <div class="product_genre_form">
+      <%= f.label :ジャンル %>
+      <%= f.collection_select :genre_id, Genre.all, :id, :name ,prompt: '--選択してください--' %>
+    </div>
+    <div class="product_price_form">
+      <%= f.label :税抜価格 %>
+      <%= f.number_field :price %>
+    </div>
+    <div class="sale_status_form">
+      <%= f.radio_button :is_active, true %>
+      <%= f.label :done, '販売中', value: true %>
+      <%= f.radio_button :is_active, false %>
+      <%= f.label :done, '販売停止中', value: false %>
+    </div>
+    <div class="submit_buttom">
+      <%= f.submit "変更を保存" %>
+    </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+</div>
