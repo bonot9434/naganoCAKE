@@ -26,19 +26,11 @@
                 <li class="nav-item"><%= link_to 'カート', cart_products_path, class: "btn btn-outline-info" %></li>
                 <li class="nav-item"><%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "btn btn-outline-info" %></li>
               <% elsif admin_signed_in? %>
-<<<<<<< HEAD
-                <li class="nav-item"><%= link_to '商品一覧', products_path, class: 'nav-link'%></li>
-                <li class="nav-item"><%= link_to '会員一覧', admin_members_path, class: 'nav-link' %></li>
-                <li class="nav-item"><%= link_to '注文履歴一覧', cart_products_path, class: 'nav-link' %></li>
-                <li class="nav-item"><%= link_to 'ジャンル一覧', admin_genres_path, class: 'nav-link' %></li>
-                <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link' %></li>
-=======
-                <li class="nav-item"><%= link_to '商品一覧', products_path , class: "btn btn-outline-info" %></li>
+                <li class="nav-item"><%= link_to '商品一覧', adminproducts_path , class: "btn btn-outline-info" %></li>
                 <li class="nav-item"><%= link_to '会員一覧', admin_members_path, class: "btn btn-outline-info" %></li>
-                <li class="nav-item"><%= link_to '注文履歴一覧', cart_products_path, class: "btn btn-outline-info" %></li>
-                <li class="nav-item"><%= link_to 'ジャンル一覧', products_path, class: "btn btn-outline-info" %></li>
+                <li class="nav-item"><%= link_to '注文履歴一覧', admin_order_products_path, class: "btn btn-outline-info" %></li>
+                <li class="nav-item"><%= link_to 'ジャンル一覧', admin_genres_path, class: "btn btn-outline-info" %></li>
                 <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-info" %></li>
->>>>>>> 93cf7113f9c4f8ca705a45e7b2bdf4b77cfef0f5
               <% else %>
                 <li class="nav-item"><%= link_to 'About', about_path, class: "btn btn-outline-info" %></li>
                 <li class="nav-item"><%= link_to '商品一覧', products_path, class: "btn btn-outline-info" %></li>

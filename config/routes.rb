@@ -32,10 +32,6 @@ Rails.application.routes.draw do
     resources :destinations, only: [:index, :create, :edit, :update, :destroy]
   end
 
-<<<<<<< HEAD
 end
 
-=======
 
-end
->>>>>>> 93cf7113f9c4f8ca705a45e7b2bdf4b77cfef0f5
