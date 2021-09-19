@@ -1,6 +1,21 @@
 admin ジャンル編集画面
-<%= form_with model: @genre,url:admin_genre_path(@genre), local:true  do |f| %>
-<%= f.label :name %>
-<%= f.text_field :name %>
-<%= f.submit "変更を保存" %>
-<% end %>
+<p id:"notice"><%= notice %></p>
+<div class="container">
+  <div id="error_explanation">
+    <% if @genre.errors.any? %>
+      <p><%= @genre.errors.count %>件のエラーが発生しました。</p>
+      <% @genre.errors.full_messages.each do |message| %>
+      <p>・<%= message %></p>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <%= form_with model: @genre,url:admin_genre_path(@genre), local:true  do |f| %>
+      <%= f.label :ジャンル名 %>
+      <%= f.text_field :name %>
+      <%= f.submit "変更を保存" %>
+      <% end %>
+
+    </div>
+  </div>

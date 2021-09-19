@@ -1,47 +1,42 @@
 admin 商品詳細画面
-<table class='table table-hover table-inverse'>
-  </thead>
-  <tbody>
-      <tr>
-        <td>
-         <%= attachment_image_tag @product, :image, size:"150x150" %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-         商品名: <%= @product.name %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          商品説明:<%= @product.introduction %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          税込価格(税抜価格):<%= @product.price*$tax_rate %>(<%= @product.price %>)円
+<p id= "notice"><strong><%= notice %></strong></p>
 
-        </td>
-      </tr>
-      <tr>
-        <td>
-           ジャンル:<%= @product.genre.name %>
-        </td>
-      </tr>
-      <tr>
-         <td>
-            <% if @product.is_active = true %>
-             <p>販売中</p>
-            <% else %>
-             <p>販売停止中</p>
-            <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <%= link_to "編集する", edit_admin_product_path(@product) %>
-        </td>
-      </tr>
-      </tr>
-  </tbody>
-</table>
+<div class="container px5 px-sm-0">
+  <div id="error_explanation">
+  <% if @product.errors.any? %>
+  <h3><%= @product.errors.count %>件のエラーが発生しました。</h3>
+  <% @product.errors.full_messages.each do |messages| %>
+  <p>・<%= message %></p>
+  <% end %>
+  <% end %>
+  </div>
+  <div class="row">
+    <div class="col-md-5" offset-md-1>
+       <%= attachment_image_tag @product, :image, size:"200x200", format: 'jpeg', fallback:"no_image.jpg" %>
+    </div>
+    <div class="col-md-5" offset-md-1>
+      <div class="product_name">
+        <p>商品名     <%= @product.name %></p>
+      </div>
+      <div class="product_introduction">
+        <p>商品説明     <%= @product.introduction %></p>
+      </div>
+      <div class="genre_name">
+        <p>ジャンル     <%= @product.genre.name %></p>
+      </div>
+      <div class="product_price">
+        <p><strong> 税込価格(税抜価格)     <%= @product.price*$tax_rate %>(<%= @product.price %>)円</strong></p>
+      </div>
+      <div class="product_status">
+        <% if @product.is_active = true %>
+          <p>販売中</p>
+        <% else %>
+          <p>販売停止中</p>
+        <% end %>
+      </div>
+      <div class="edit_buttom">
+        <%= link_to "編集する", edit_admin_product_path(@product) %>
+      </div>
+    </div>
+  </div>
+</div>
