@@ -1,5 +1,5 @@
 class Members::CartProductsController < ApplicationController
-  
+
     def index
         @member = Member.find(current_member.id)
         @cart_products = @member.cart_products.all
@@ -16,7 +16,7 @@ class Members::CartProductsController < ApplicationController
 
     def create
         member = Member.find(current_member.id)
-        cart_product = current_member.cart_products.new(cart_product_params)
+        cart_product = member.cart_products.new(cart_product_params)
         cart_product.save
         redirect_to product_path(cart_product.product_id) ,notice: "カートに#{cart_product.product.name}を追加しました。カート内に#{member.cart_products.count}商品があります。"
     end

@@ -1,37 +1,47 @@
-会員側商品一覧画面
+会員側商品詳細画面
 <p id= "notice"><strong><%= notice %></strong></p>
-<table class='table table-hover table-inverse'>
-  <thead>
-  </thead>
-  <tbody>
-      <tr>
-        <td>
-         <%= attachment_image_tag @product, :image, size:"60×60" %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <strong><%= @product.name %></strong>
-        </td>
-      </tr>
-      <tr>
-        <td>
-            <%= @product.introduction %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-            <%= @product.price %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <%= form_with model: @cart_product, url:cart_products_path, method: :post do |f| %>
-            <%= f.hidden_field :product_id, value: @product.id %>
-            <%= f.number_field :quantity %>
-            <%= f.submit "カートに入れる" %>
-          <% end %>
-        </td>
-      </tr>
-  </tbody>
-</table>
+<div class="container px5 px-sm-0">
+  <div id="error_explanation">
+  <% if @product.errors.any? %>
+  <h3><%= @product.errors.count %>件のエラーが発生しました。</h3>
+  <% @product.errors.full_messages.each do |messages| %>
+  <p>・<%= message %></p>
+  <% end %>
+  <% end %>
+  </div>
+  <div class="row">
+    <!--<div class= "col-md-2">-->
+    <!--  <p>%= render 'members/genres/genre_search_form', genres: @genres %> </p>-->
+    <!--</div>-->
+    <div class="col-md-3" offset-md-1>
+       <%= attachment_image_tag @product, :image, size:"200x200", format: 'jpeg', fallback:"no_image.jpg" %>
+    </div>
+    <div class="col-md-4" offset-md-1>
+      <div class="product_name">
+        <h2><%= @product.name %></h2>
+      </div>
+      <h1></h1>
+      <div class="product_introduction">
+        <%= @product.introduction %>
+      </div>
+      <h1></h1>
+      <div class="product_price">
+        <h5><strong>￥<%= @product.price %>(税込)</strong></h5>
+      </div>
+      <p></p>
+      <p></p>
+      <p></p>
+      <div class="submit_buttom">
+        <% if member_signed_in? %>
+        <%= form_with model: @cart_product, url:cart_products_path, method: :post do |f| %>
+        <%= f.hidden_field :product_id, value: @product.id %>
+        <%= f.number_field :quantity %>
+        <%= f.submit "カートに入れる" %>
+        <% end %>
+        <% else %>
+        <%= link_to "ログインする", member_session_path %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

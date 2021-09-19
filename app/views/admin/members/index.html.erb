@@ -18,6 +18,7 @@
     </tr>
   </thead>
   <tbody>
+  
   <% @members.each do |member| %>
     <tr>
       <td>
@@ -40,6 +41,9 @@
         <% end %>
       </td>
     </tr>
+  
   <% end %>
+  <%= paginate @members %>
   </tbody>
 </table>
+<%= paginate @members %>
