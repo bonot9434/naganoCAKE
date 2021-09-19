@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   #adminのルート
-  devise_for :admin 
+  devise_for :admin
   namespace :admin do
     resources :members, only: [:index,:show,:edit,:update]
     resources :products, only: [:index,:new,:create,:edit,:update,:show]
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     root to: 'orders#top'
     resources :orders_product, only: [:update]
   end
-  
+
   devise_for :members, :controllers  => {
     :registrations => 'members/members/registrations',
     :sessions => 'members/members/sessions'
@@ -26,11 +26,11 @@ Rails.application.routes.draw do
     resources :products, only: [:show, :index]
     resources :cart_products, only: [:index, :create, :update, :destroy]
     delete 'cart_products' => 'cart_products#destroy_all', as: :destroy_all_members_cart_products
-    resources :orders, only:[:new, :create, :show, :index]
     post '/orders/info'  => 'orders#info'
     get  '/orders/thanks' => 'orders#thanks'
+    resources :orders, only:[:new, :create, :show, :index]
     resources :destinations, only: [:index, :create, :edit, :update, :destroy]
   end
 
-end
 
+end
