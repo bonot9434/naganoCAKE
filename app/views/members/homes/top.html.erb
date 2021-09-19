@@ -1,24 +1,4 @@
-<div class="container">
-  <div class="low">
-     <div>
-      ようこそ、ながのCAKEへ！<br />
-      このサイトは、ケーキ販売のECサイトになります。<br />
-      会員ない方も商品の閲覧はできますが、<br />
-      購入には会員登録が必要になります。<br />
-    </div>
-    
-    <h2>新着商品</h2>
-      <% @products.each do |product| %>
-        <%= link_to product_path(product.id) do %>
-          <%= attachment_image_tag product, :image, size: "100x100",  fallback: "no_image.jpg"%>
-          <%= product.name %>
-          <%= product.price %>円
-        <% end %>
-      <% end %><br />
-    <%= link_to "もっと見る", products_path %>
+
+
+  <div class="main-image">
   </div>
-</div>
-
-<p>ジャンル検索導入予定</p>
-
-

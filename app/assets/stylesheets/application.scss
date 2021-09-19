@@ -22,7 +22,7 @@
 
 .btn-outline-info{
   margin-left:10px;
-  margin-rigth:10px;
+  margin-right:10px;
 }
 
 
@@ -35,7 +35,7 @@
   height: 70px;
   margin-top: 15px;
 }
- 
+
 @keyframes fuwafuwa {
   0% {
     transform:translate(0, 0) rotate(-7deg);
@@ -50,6 +50,23 @@
 
 //ヘッダースタイル
 
+//top
+
+.main-image{
+  
+  background-image: url(cafe-image);
+  background-size: cover;
+  background-position: center;
+  min-height:100vh;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+
+}
+
+
+//top
+
+
 //about
 .image1 {
   background-image: url(image1.jpg);
@@ -59,11 +76,11 @@
 }
 .image3 {
   background-image: url(image3.jpg);
-  
+
 }
 
 #container{
-  background-size: cover;
+  
   height: 500px;
 }
 
@@ -198,3 +215,5 @@
 .forgot-password:focus{
     color: rgb(12, 97, 33);
 }
+
+
