@@ -5,9 +5,9 @@ Rails.application.routes.draw do
     resources :members, only: [:index,:show,:edit,:update]
     resources :products, only: [:index,:new,:create,:edit,:update,:show]
     resources :genres,only: [:index,:create,:edit,:update]
-    resources :orders, only: [:show, :update]
+    resources :orders, only: [:index, :show, :update]
     root to: 'orders#top'
-    resources :orders_product, only: [:update]
+    resources :order_products, only: [:update]
   end
 
   devise_for :members, :controllers  => {
@@ -32,5 +32,6 @@ Rails.application.routes.draw do
     resources :destinations, only: [:index, :create, :edit, :update, :destroy]
   end
 
-
 end
+
+
