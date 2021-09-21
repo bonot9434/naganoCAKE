@@ -22,7 +22,7 @@
 
 .btn-outline-info{
   margin-left:10px;
-  margin-rigth:10px;
+  margin-right:10px;
 }
 
 
@@ -35,7 +35,7 @@
   height: 70px;
   margin-top: 15px;
 }
- 
+
 @keyframes fuwafuwa {
   0% {
     transform:translate(0, 0) rotate(-7deg);
@@ -50,22 +50,274 @@
 
 //ヘッダースタイル
 
-//about
-.image1 {
+//top
+
+.main-image{
   background-image: url(image1.jpg);
-}
-.image2 {
-  background-image: url(image2.jpg);
-}
-.image3 {
-  background-image: url(image3.jpg);
-  
+  background-size: cover;
+  background-position: center;
+  height: 1400px;
+  background-repeat: no-repeat;
+
 }
 
-#container{
-  background-size: cover;
-  height: 500px;
+.main-image-text{
+  height: 1400px;
+  background-color: rgba(255,255,255,0.5);
 }
+
+
+
+.heading07 {
+	position: relative;
+	padding-top: 150px;
+	padding-left: 30px;
+	font-size: 26px;
+}
+
+.heading07 span {
+	position: relative;
+	z-index: 2;
+}
+
+.heading07::before {
+  padding-top: 50px;
+	content: attr(data-en);
+	position: absolute;
+	transform: rotate(-5deg);
+	top: -20px;
+	left: 0;
+	color: rgba(29,202,255,0.8);
+	font-size: 80px;
+	font-weight: 400;
+	font-family: luxus-brut, cursive;
+	font-style: italic;
+}
+
+.sub-text{
+  padding-top:200px;
+}
+
+// .kakomi-maru2 {
+// margin-top:10em;
+// margin-left:2em;
+// margin-right:2em;
+// padding: 1em;
+// width: 30%;
+// color: #666666; /*文字色*/
+// border: 2px solid #skyblue; /*線の太さ・色*/
+// background-color: #fff; /*背景色*/
+// box-shadow: -2px 5px 5px #f0f8ff; /*影*/
+// border-radius: 20px; /*角の丸み*/
+// }
+
+.new-item-text{
+  color:white;
+}
+
+.wf-nicomoji { font-family: "Nico Moji";}
+
+.new-product{
+  margin-top:100px;
+  margin-left: 50px;
+}
+
+//フッター
+
+#footer {
+  position: absolute;
+  bottom: -1050px;
+  width: 100%;
+  margin-top: 40px;
+  color: #fff;
+}
+#footer a {
+  text-decoration: none;
+  color: #fff;
+}
+#footer a:hover {
+  text-decoration: underline;
+}
+#footer .primary {
+  padding-top: 20px;
+  padding-left: 30px;
+  background: #555;
+}
+#footer .secondary {
+  display: flex;
+  padding: 40px 20px;
+  background: #444;
+}
+
+@media screen and (max-width: 767px) {
+  #footer .primary {
+    padding-top: 20px;
+    background: #333;
+  }
+  #footer .secondary {
+    display: block;
+    padding: 20px 20px;
+  }
+}
+
+/* footer-logo */
+
+#footer .logo {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  font-size: 26px;
+  font-weight: bold;
+}
+@media screen and (max-width: 767px) {
+  #footer .logo {
+    font-size: 16px;
+  }
+}
+
+/* address */
+
+.address {
+  margin: 10px 0 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .address {
+    font-size: 12px;
+  }
+}
+
+/* navi */
+
+.navi-row {
+  display: flex;
+  margin-top: 40px;
+}
+#footer .navi {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#footer .navi li {
+  display: inline-block;
+  margin: 0 20px 0 0;
+  padding: 0;
+}
+#footer .navi li:first-child {
+  margin-left: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .navi-row {
+    display: block;
+    margin-top: 15px;
+  }
+  #footer .navi {
+    font-size: 12px;
+  }
+  #footer .navi li {
+    margin-top: 5px;
+    font-size: 12px;
+  }
+}
+
+/* sns-navi */
+
+#footer .sns-navi {
+  margin: 0 0 0 auto;
+  padding: 0;
+}
+#footer .sns-navi li {
+  display: inline-block;
+  margin: 0 20px 0 0;
+  padding: 0;
+  font-size: 20px;
+}
+#footer .sns-navi li:last-child {
+  margin-right: 0;
+}
+
+@media screen and (max-width: 767px) {
+  #footer .sns-navi {
+    margin: 20px 0 0;
+    padding: 0;
+  }
+  #footer .sns-navi li {
+    margin: 0 20px 0 0;
+    padding: 0;
+    font-size: 18px;
+  }
+}
+
+/* sitenavi */
+
+#footer .sitenavi {
+  width: 50%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#footer .sitenavi li {
+  display: inline-block;
+  margin: 0 0 0 20px;
+  padding: 0;
+}
+#footer .sitenavi li:first-child {
+  margin-left: 0;
+}
+
+@media screen and (max-width: 767px) {
+  #footer .sitenavi {
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+  }
+}
+
+/* copyright */
+
+#footer .copyright {
+  width: 50%;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+@media screen and (max-width: 767px) {
+  #footer .copyright {
+    width: 100%;
+    margin: 20px 0 0;
+    text-align: center;
+    font-size: 12px;
+  }
+}
+
+//フッター終わり//
+
+
+
+
+//top
+
+
+//about
+
+.about{
+  height: 1000px;
+  background-color: rgba(255,255,255,0.5);
+}
+
+.about-image{
+  background-image: url(about-image.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100%;
+
+
+}
+
+
 
 //about
 
@@ -198,3 +450,5 @@
 .forgot-password:focus{
     color: rgb(12, 97, 33);
 }
+
+

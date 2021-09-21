@@ -1,49 +1,56 @@
-<h1>登録情報編集</h1>
-<%= form_with model:@members,url:"/members/myedit", local:true do |f| %>
-<%= render "members/members/shared/error_messages", resource: @member %>
-<table class="table">
-  <tr>
-    <thead>
-      <th>
-        <%= f.label :氏名 %>
-        <%= f.text_field :last_name %>
-        <%= f.text_field :first_name %>
-      </th>
-    </tr>
-    <tr>
-      <th>
-        <%= f.label :フリガナ %>
-        <%= f.text_field :last_name_kana %>
-        <%= f.text_field :first_name_kana %>
-      </th>
-    </tr>
-    <tr>
-      <th>
-        <%= f.label :郵便番号 %>
-        <%= f.text_field :postal_coed %>
-      </th>
-    </tr>
-    <tr>
-      <th>
-        <%= f.label :電話番号 %>
-        <%= f.text_field :telephone_number %>
-      </th>
-    </tr>
-    <tr>
-      <th>
-        <%= f.label :住所 %>
-        <%= f.text_field :address %>
-      </th>
-    </tr>
-    <tr>
-      <th>
-        <%= f.label :メールアドレス %>
-        <%= f.text_field :email %>
-      </th>
-    </tr>
-  </thead>
-</table>
-  <%= f.submit "変更内容を保存", class:"btn btn-success" %>
-  <%= link_to "退会する",members_leave_path, class:"btn btn-primary" %>
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <h1>登録情報編集</h1>
+      <%= form_with model:@members,url:"/members/myedit", local:true do |f| %>
+      <%= render "members/members/shared/error_messages", resource: @member %>
+      <table class="table">
+        <tr>
+          <thead>
+            <th>
+              <%= f.label :氏名 %>
+              <%= f.text_field :last_name %>
+              <%= f.text_field :first_name %>
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :フリガナ %>
+              <%= f.text_field :last_name_kana %>
+              <%= f.text_field :first_name_kana %>
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :郵便番号 %>
+              <%= f.text_field :postal_coed %>
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :電話番号 %>
+              <%= f.text_field :telephone_number %>
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :住所 %>
+              <%= f.text_field :address %>
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :メールアドレス %>
+              <%= f.text_field :email %>
+            </th>
+          </tr>
+        </thead>
+      </table>
+        <%= f.submit "変更内容を保存", class:"btn btn-success" %>
+        <%= link_to "退会する",members_leave_path, class:"btn btn-primary" %>
+      
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<% end %>
