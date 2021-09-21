@@ -1,24 +1,29 @@
-<div class="container">
-  <div class="low">
-     <div>
-      ようこそ、ながのCAKEへ！<br />
-      このサイトは、ケーキ販売のECサイトになります。<br />
-      会員ない方も商品の閲覧はできますが、<br />
-      購入には会員登録が必要になります。<br />
-    </div>
-    
-    <h2>新着商品</h2>
-      <% @products.each do |product| %>
-        <%= link_to product_path(product.id) do %>
-          <%= attachment_image_tag product, :image, size: "100x100",  fallback: "no_image.jpg"%>
-          <%= product.name %>
-          <%= product.price %>円
-        <% end %>
-      <% end %><br />
-    <%= link_to "もっと見る", products_path %>
+  <div class="main-image">
+    <div class="main-image-text">
+          <h2 class="heading07" data-en="Welcome to NaganoCafe"></h2><br />
+          <h2 class="heading07 EC-text" data-en="This site is an EC site of the cake sale"></h2><br />
+          <h1 class="wf-nicomoji sub-text new-item-text">このサイトは、ケーキやのECサイトになります</h1>
+           <div class="new-product">
+           <h2 class="new-item-text"><p>NEW ITEM</p></h2>
+          <table class="table table-hover table-inverse">
+            <tbody>
+            <% @products.each do |product| %>
+              <tr>
+              <td>
+              <h3 class="new-item-text"><%= link_to product_path(product.id) do %>
+                <%= attachment_image_tag product, :image, size: "100x100",  fallback: "no_image.jpg"%></h3>
+              </td>
+              <td>
+                <h3 class="new-item-text"><%= product.name %></h3>
+              </td>
+              <td>
+                <h3 class="new-item-text"><%= product.price %>円</h3>
+              </td>
+              <% end %>
+          <% end %><br />
+              </tr>
+            </tbody>
+          </table>
+        <%= link_to "See all menus", products_path, class:"btn btn-info" %>
+        </div>
   </div>
-</div>
-
-<p>ジャンル検索導入予定</p>
-
-

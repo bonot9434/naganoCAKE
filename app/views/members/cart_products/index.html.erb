@@ -23,12 +23,14 @@
             <td><%= form_with model: cart_product, method: :patch, local:true do |f| %>
                 <%= f.number_field :quantity , value: cart_product.quantity %>
                 <%= f.submit "変更" %>
-            <% end %></td>
+                <% end %>
+            </td>
             <!--小計の表示:数量ｘ(価格ｘ税率)-->
             <td><%= cart_product.quantity * (cart_product.product.price * $tax_rate).floor %></td>
             <td><%= link_to "削除する",cart_product_path(cart_product.id), method: :delete, class:"btn btn-danger" %></td>
             <!--@totalに数量ｘ(価格ｘ税率)を代入-->
-          </tr><% @total += cart_product.quantity * (cart_product.product.price * $tax_rate).floor %>
+          </tr>
+          <% @total += cart_product.quantity * (cart_product.product.price * $tax_rate).floor %>
           <% end %>
         </tbody>
       </table>
