@@ -21,10 +21,13 @@ class Members::OrdersController < ApplicationController
     else
       @destination = Destination.new(destination_params)
       @destination.member_id = current_member.id
-      @destination.save
-      @postal_code = @destination.postal_code
-      @address = @destination.address
-      @name = @destination.name 
+      if @destination.save
+        @postal_code = @destination.postal_code
+        @address = @destination.address
+        @name = @destination.name 
+      else
+        render :new
+      end
     end
     @order = Order.new
   end

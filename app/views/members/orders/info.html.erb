@@ -1,59 +1,77 @@
-
-<h2>注文確認</h2>
-      <table class= "table table-hover table-bordered">
+<div class="container">
+  <div class="row">
+    <div class="col-10 offset-1">
+      <h2>注文確認</h2>
+      <table class= "table table-bordered table-sm mt-3">
         <thead>
           <tr>
-            <th>商品名</th>
-            <th>単価(税込)</th>
-            <th>数量</th>
-            <th>小計</th>
+            <th class="table-secondary">商品名</th>
+            <th class="table-secondary" width= "100px">単価(税込)</th>
+            <th class="table-secondary" width= "100px">数量</th>
+            <th class="table-secondary" width= "110px">小計</th>
           </tr>
         </thead>
         <tbody>
           <% @total = 0 %>
           <% @cart_products.each do |cart_product| %>
           <tr>
-            <td><%= attachment_image_tag cart_product.product, :image, size:"40x40", format: 'jpeg', fallback:"no_image.jpg" %><%= cart_product.product.name %></td>
+            <td>
+              <%= attachment_image_tag cart_product.product, :image, size:"50x50", format: 'jpeg', fallback:"no_image.jpg" %>
+              <span class= "ml-2"><%= cart_product.product.name %></span>
+            </td>
             <!--税込価格は切捨て-->
-            <td><%= (cart_product.product.price * $tax_rate).floor %></td>
+            <td class="align-middle">￥<%= (cart_product.product.price * $tax_rate).floor %></td>
             <!--数量-->
-            <td><%= cart_product.quantity %></td>
+            <td class="align-middle"><%= cart_product.quantity %></td>
             <!--小計の表示:数量ｘ(価格ｘ税率)-->
-            <td><%= cart_product.quantity * (cart_product.product.price * $tax_rate).floor %></td>
+            <td class="align-middle">￥<%= cart_product.quantity * (cart_product.product.price * $tax_rate).floor %></td>
             <!--@totalに数量ｘ(価格ｘ税率)を代入-->
           </tr><% @total += cart_product.quantity * (cart_product.product.price * $tax_rate).floor %>
           <% end %>
         </tbody>
       </table>
-      <table class= "table table-hover table-bordered">
-        <thead>
-          <tr>
-            <th>送料</th>
-            <td>800</td>
-          </tr>
-          <tr>
-            <th>商品合計</th>
-            <td><%= @total %></td>
-          </tr>
-          <tr>
-            <th>請求金額</th>
-            <td><%= @total + $potage %></td>
-          </tr>
-        </thead>
-      </table>
-<%= form_with model: @order, local: :true do |f| %>
-  <%= f.hidden_field :postal_code , value: @postal_code %>
-  <%= f.hidden_field :address , value: @address %>
-  <%= f.hidden_field :name , value: @name %>
-  <%= f.hidden_field :potage , value: $potage %>
-  <%= f.hidden_field :total_price , value: @total + $potage %>
-  <%= f.hidden_field :payment_method , value: Order.payment_methods.keys[@payment] %>
-
-<div><strong>支払方法 ：<%= Order.payment_methods.keys.to_a[@payment] %></strong></div>
-<div><strong>お届け先 ：〒<%= add_ress(@postal_code) %> <%= @address %><br><%= @name %></strong></div>
-  <% if @cart_products.any? %>
-    <%= f.submit "注文を確定する" ,class:"btn btn-success" %>
-  <% else %>
-    <%= link_to "カートが空です！", cart_products_path, class:"btn btn-danger" %>
-  <% end %>
-<% end %>
+        
+      <%= form_with model: @order, local: :true do |f| %>
+        <%= f.hidden_field :postal_code , value: @postal_code %>
+        <%= f.hidden_field :address , value: @address %>
+        <%= f.hidden_field :name , value: @name %>
+        <%= f.hidden_field :potage , value: $potage %>
+        <%= f.hidden_field :total_price , value: @total + $potage %>
+        <%= f.hidden_field :payment_method , value: Order.payment_methods.keys[@payment] %>
+        <div class= "d-flex justify-content-between mt-3">
+          <div>
+            <div><strong>支払方法 ：<%= Order.payment_methods.keys.to_a[@payment] %></strong></div>
+            <div class="mt-2" ><strong>お届け先
+            <div class="ml-4 mt-1" >
+              <div class="mt-1">〒<%= add_ress(@postal_code) %></div>
+              <div class="mt-1"><%= @address %></div>
+              <div class="mt-1"><%= @name %></div>
+            </div>
+            </strong></div>
+          </div>
+          <table class= "table ml-auto" id="total-table">
+            <thead>
+              <tr>
+                <th width= "100px" class="table-secondary">送料</th>
+                <td>￥<%= $potage %></td>
+              </tr>
+              <tr>
+                <th class="table-secondary">商品合計</th>
+                <td>￥<%= @total %></td>
+              </tr>
+              <tr>
+                <th class="table-secondary">請求金額</th>
+                <td>￥<%= @total + $potage %></td>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <% if @cart_products.any? %>
+          <%= f.submit "注文を確定する" ,class:"btn btn-success" %>
+        <% else %>
+          <%= link_to "カートが空です！", cart_products_path, class:"btn btn-danger" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
