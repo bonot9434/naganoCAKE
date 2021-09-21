@@ -24,7 +24,8 @@ class Members::OrdersController < ApplicationController
       @destination.save
       @postal_code = @destination.postal_code
       @address = @destination.address
-      @name = @destination.name    end
+      @name = @destination.name 
+    end
     @order = Order.new
     # @order_product = OrderProduct.new
   end
