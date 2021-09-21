@@ -11,7 +11,7 @@
   <%= @order.payment_method %>
 </div>
 </div>
-<%= form_with model:@order,url: admin_order_path do |f| %>
+<%= form_with model:@order,url: admin_order_path, local: true do |f| %>
 <div>注文ステータス</div>
 <%= f.select :received_status, Order.received_statuses.keys, class: "received_status" %>
 </div>
