@@ -25,7 +25,7 @@ admin 商品詳細画面
         <p>ジャンル     <%= @product.genre.name %></p>
       </div>
       <div class="product_price">
-        <p><strong> 税込価格(税抜価格)     <%= @product.price*$tax_rate %>(<%= @product.price %>)円</strong></p>
+        <p><strong> 税込価格(税抜価格)     <%= (@product.price*$tax_rate).floor %>(<%= @product.price %>)円</strong></p>
       </div>
       <div class="product_status">
         <% if @product.is_active = true %>
