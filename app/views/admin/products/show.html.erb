@@ -25,13 +25,13 @@ admin 商品詳細画面
         <p>ジャンル     <%= @product.genre.name %></p>
       </div>
       <div class="product_price">
-        <p><strong> 税込価格(税抜価格)     <%= (@product.price*$tax_rate).floor %>(<%= @product.price %>)円</strong></p>
+        <p><strong> 税込価格<br>(税抜価格)</br>     <%= (@product.price*$tax_rate).floor %>(<%= @product.price %>)円</strong></p>
       </div>
       <div class="product_status">
-        <% if @product.is_active = true %>
-          <p>販売中</p>
+        <% if @product.is_active == true %>
+        <P>販売中</P>
         <% else %>
-          <p>販売停止中</p>
+        <p>販売停止中</p>
         <% end %>
       </div>
       <div class="edit_buttom">

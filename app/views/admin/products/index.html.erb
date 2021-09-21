@@ -35,10 +35,10 @@
             <%= product.genre.name %>
         </td>
         <td>
-            <% if product.is_active = true %>
-             <p>販売中</p>
+            <% if product.is_active == true %>
+            <P>販売中</P>
             <% else %>
-             <p>販売停止中</p>
+            <p>販売停止中</p>
             <% end %>
         </td>
       </tr>
