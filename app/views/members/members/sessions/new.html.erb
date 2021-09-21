@@ -5,16 +5,16 @@
         <div class="card card-container">
             <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
             <p id="profile-name" class="profile-name-card"></p>
-            
+
                 <span id="reauth-email" class="reauth-email"></span>
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
               <div class="field">
-                <%= f.label :メールアドレス %>
+                <%= f.label :メールアドレス %><br />
                 <%= f.email_field :email, autofocus: true, placeholder: "sample@example.com", autocomplete: "email" %>
               </div>
 
               <div class="field">
-                <%= f.label :パスワード %>
+                <%= f.label :パスワード %><br />
                 <%= f.password_field :password, autocomplete: "current-password" %>
               </div>
 
