@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     if member_signed_in?
        root_path
     else admin_signed_in?
-         admin_order_path
+         admin_orders_path
     end
   end
 
