@@ -21,7 +21,7 @@
             <td><%= (cart_product.product.price * $tax_rate).floor %></td>
             <!--数量の変更-->
             <td><%= form_with model: cart_product, method: :patch, local:true do |f| %>
-                <%= f.text_field :quantity , value: cart_product.quantity %>
+                <%= f.number_field :quantity , value: cart_product.quantity %>
                 <%= f.submit "変更" %>
             <% end %></td>
             <!--小計の表示:数量ｘ(価格ｘ税率)-->

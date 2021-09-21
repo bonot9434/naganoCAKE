@@ -4,8 +4,8 @@ class Destination < ApplicationRecord
   
     validates :postal_code, :address, :name, presence: true
     
-  def view_name_and_id
-    '〒' + self.postal_code + self.address + self.name
+  def destinations_address
+    '〒' + self.postal_code.insert(3, "-") + " " + self.address + " " + self.name
   end
     
 end

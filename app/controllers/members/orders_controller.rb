@@ -27,7 +27,6 @@ class Members::OrdersController < ApplicationController
       @name = @destination.name 
     end
     @order = Order.new
-    # @order_product = OrderProduct.new
   end
   
   def create
