@@ -1,6 +1,6 @@
-会員側商品詳細画面
 <p id= "notice"><strong><%= notice %></strong></p>
 <div class="container px5 px-sm-0">
+  <p class="page-title">商品詳細</p>
   <% if $error != nil && $error.errors.any? %>
     <%= render "members/shared/error_messages", resource: $error %>
     <% $error = nil %>
@@ -57,7 +57,7 @@
         <%= f.submit "カートに入れる", class:"btn btn-primary" %>
         <% end %>
         <% else %>
-        <%= link_to "ログインする", member_session_path %>
+        <%= link_to "ログインする", member_session_path, class:"btn btn-primary" %>
         <% end %>
     </div>
   </div>
