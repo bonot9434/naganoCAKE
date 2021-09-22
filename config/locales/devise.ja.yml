@@ -160,7 +160,7 @@ ja:
               invalid: "は有効でありません。"
               confirmation: "が内容とあっていません。"
     attributes:
-      member: 
+      member:
         current_password: "現在のパスワード"
         email: "メールアドレス"
         password: "パスワード"
