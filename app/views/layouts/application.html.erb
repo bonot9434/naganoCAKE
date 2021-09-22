@@ -15,13 +15,11 @@
       <nav class="navbar  navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
         <div class="container-fluid">
           <%= link_to "", root_path,class:"fuwafuwa" %>
-          
-
-          <p>　</p>
+          <p>  </p>
           <div><%= link_to '管理者ログイン',admin_session_path,class: "btn btn-outline-dark" %></div>
             <ul class="navbar-nav ml-auto">
               <% if member_signed_in? %>
-              　ようこそ、<%= current_member.last_name %> <%= current_member.first_name %>さん</li>
+                ようこそ、<%= current_member.last_name %> <%= current_member.first_name %>さん</li>
                 <li class="nav-item"><%= link_to 'マイページ', members_path(current_member), class: "btn btn-outline-info" %></li>
                 <li class="nav-item"><%= link_to '商品一覧', products_path, class: "btn btn-outline-info" %></li>
                 <li class="nav-item"><%= link_to 'カート', cart_products_path, class: "btn btn-outline-info" %></li>
@@ -40,6 +38,19 @@
               <% end %>
             </ul>
           </div>
+            <ul>
+              <div class="name-search">
+                <% if member_signed_in? %>
+                <%= form_with url: search_search_path, method: :get, local: true do |f| %>
+                  <%= f.text_field 'search[value]', size: "26x4", placeholder: "商品名を入力して下さい。" %><br>
+                  <span class="search-button col-xs-12 text-right">
+                    <%= f.select 'search[how]', options_for_select({ "部分一致" => "partical", "前方一致" => "forward", "後方一致" => "backward", "完全一致" => "match" }) %>
+                    <%= f.submit :"検索" %>
+                  </span>
+                <% end %>
+                <% end %>
+              </div>
+            </ul>
         </div>
       </nav>
     </header>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'search/search'
   #adminのルート
   devise_for :admin
   namespace :admin do
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
     patch 'members/withdraw' => 'members#withdraw', as: :members_withdraw
     get 'members/leave' => 'members#leave'
     resources :products, only: [:show, :index]
+    get 'search' => 'search'
     resources :cart_products, only: [:index, :create, :update, :destroy]
     delete 'cart_products' => 'cart_products#destroy_all', as: :destroy_all_members_cart_products
     post '/orders/info'  => 'orders#info'
