@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     get '/about' => 'homes#about'
     resource :members, only: [:show,:update]
     get 'members/myedit' => 'members#edit'
-    post 'members/myedit' => 'members#update'
+    patch 'members/myedit' => 'members#update'
     patch 'members/withdraw' => 'members#withdraw', as: :members_withdraw
     get 'members/leave' => 'members#leave'
     resources :products, only: [:show, :index]

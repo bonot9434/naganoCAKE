@@ -1,14 +1,11 @@
 会員側商品詳細画面
 <p id= "notice"><strong><%= notice %></strong></p>
 <div class="container px5 px-sm-0">
-  <div id="error_explanation">
-  <% if @product.errors.any? %>
-  <h3><%= @product.errors.count %>件のエラーが発生しました。</h3>
-  <% @product.errors.full_messages.each do |messages| %>
-  <p>・<%= message %></p>
+  <% if $error != nil && $error.errors.any? %>
+    <%= render "members/shared/error_messages", resource: $error %>
+    <% $error = nil %>
   <% end %>
-  <% end %>
-  </div>
+    <%#= render "members/members/shared/error_messages", resource: @cart_product %>
   <div class="row">
     <!--<div class= "col-md-2">-->
     <!--  <p>%= render 'members/genres/genre_search_form', genres: @genres %> </p>-->
