@@ -9,31 +9,31 @@
         <%# if @cart_product != nil && @cart_product.errors.any? %>
           <%#= render "members/shared/error_messages", resource: @cart_product %>
         <%# end %>
-        <table class= "table table-bordered table-sm mt-3">
+        <table class= "table table-sm mt-3" id= "table-borders">
           <thead>
-            <tr>
-              <th class="table-secondary">商品名</th>
-              <th class="table-secondary" width= "100px">単価(税込)</th>
-              <th class="table-secondary" width= "100px">数量</th>
-              <th class="table-secondary" width= "110px">小計</th>
-              <th class="table-secondary" width= "90px" colspan= "1"></th>
+            <tr class="table-skyblue">
+              <th>商品名</th>
+              <th width= "100px">単価(税込)</th>
+              <th width= "100px">数量</th>
+              <th width= "110px">小計</th>
+              <th width= "90px" colspan= "1"></th>
             </tr>
           </thead>
           <tbody>
             <% @total = 0 %>
             <% @cart_products.each do |cart_product| %>
             <tr>
-              <td>
+              <td><%= link_to product_path(cart_product.product) do %>
                 <%= attachment_image_tag cart_product.product, :image, size:"50x50", format: 'jpeg', fallback:"no_image.jpg" %>
                 <span class= "ml-2"><%= cart_product.product.name %></span>
-              </td>
+              </td><% end %>
               <!--税込価格は切捨て-->
               <td class="align-middle">￥<%= (cart_product.product.price * $tax_rate).floor %></td>
               <!--数量の変更-->
               <td class="align-middle">
                 <%= form_with model: cart_product, method: :patch, local:true do |f| %>
                 <div class= "input-group">
-                  <%= f.number_field :quantity , value: cart_product.quantity, class:"form-controls", min: 1%>
+                  <%= f.number_field :quantity , value: cart_product.quantity, class:"form-controls", min: 1 %>
                   <div class="input-group-append"><%#= f.submit "変更" %></div>
                   <% end %>
                 </div>
@@ -49,9 +49,9 @@
         </table>
         <div class="d-flex justify-content-between">
           <div><%= link_to "買い物を続ける", products_path, class:"btn btn-primary" %></div>
-          <table class= "table table-bordered" id="total-table">
-            <thead>
-              <th width= "95px" class="table-secondary">合計金額</th>
+          <table class= "table" id="total-table">
+            <thead id= "table-borders">
+              <th width= "95px" id="table-skyblue">合計金額</th>
               <th>￥<%= @total %></th>
             </thead>
           </table>
