@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-10 offset-1">
       <h2 class= "mt-3 md-2">注文情報入力</h2>
-      <%= render "members/members/shared/error_messages", resource: @destination %>
+      <%= render "members/shared/error_messages", resource: @destination %>
       <strong>支払方法</strong>
       <%= form_with url: orders_info_path, local: :true do |f| %>
         <div class= "ml-4 mt-2">

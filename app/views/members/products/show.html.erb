@@ -2,7 +2,7 @@
 <p id= "notice"><strong><%= notice %></strong></p>
 <div class="container px5 px-sm-0">
   <% if $error != nil && $error.errors.any? %>
-    <%= render "members/members/shared/error_messages", resource: $error %>
+    <%= render "members/shared/error_messages", resource: $error %>
     <% $error = nil %>
   <% end %>
     <%#= render "members/members/shared/error_messages", resource: @cart_product %>

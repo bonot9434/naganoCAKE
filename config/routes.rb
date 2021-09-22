@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   end
 
   devise_for :members, :controllers  => {
-    :registrations => 'members/members/registrations',
-    :sessions => 'members/members/sessions'
+    :registrations => 'members/registrations',
+    :sessions => 'members/sessions'
   }
 
   scope module: :members do
