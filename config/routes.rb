@@ -6,13 +6,13 @@ Rails.application.routes.draw do
     resources :products, only: [:index,:new,:create,:edit,:update,:show]
     resources :genres,only: [:index,:create,:edit,:update]
     resources :orders, only: [:index, :show, :update]
-    root to: 'orders#top'
+    root to: 'orders#index'
     resources :order_products, only: [:update]
   end
 
   devise_for :members, :controllers  => {
-    :registrations => 'members/members/registrations',
-    :sessions => 'members/members/sessions'
+    :registrations => 'members/registrations',
+    :sessions => 'members/sessions'
   }
 
   scope module: :members do
