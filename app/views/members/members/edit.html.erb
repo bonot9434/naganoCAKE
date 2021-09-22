@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-6 offset-3">
+    <div class="col-10 offset-1">
       <h1>登録情報編集</h1>
       <%= form_with model:@members,url:"/members/myedit", local:true do |f| %>
       <%= render "members/shared/error_messages", resource: @member %>
@@ -48,7 +48,7 @@
       </table>
         <%= f.submit "変更内容を保存", class:"btn btn-success" %>
         <%= link_to "退会する",members_leave_path, class:"btn btn-primary" %>
-      
+
       <% end %>
     </div>
   </div>
