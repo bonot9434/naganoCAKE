@@ -14,8 +14,6 @@ class Members::ProductsController < ApplicationController
 
 
 
-
-
    private
      def product_params
        params.require(:product).permit(:image, :name, :introduction, :price, :is_active, :genre_id)
