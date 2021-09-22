@@ -1,6 +1,6 @@
 class Admin::ProductsController < ApplicationController
-  #完成後有効にする↓
-  #before_action :authenticate_admin!
+
+  before_action :authenticate_admin!
 
   def new
     @product = Product.new
