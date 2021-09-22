@@ -1,10 +1,10 @@
 会員側商品詳細画面
 <p id= "notice"><strong><%= notice %></strong></p>
 <div class="container px5 px-sm-0">
-  <% if $error != nil && $error.errors.any? %>
-    <%= render "members/shared/error_messages", resource: $error %>
-    <% $error = nil %>
-  <% end %>
+  <%#if $error != nil && $error.errors.any? %>
+    <%# render "members/shared/error_messages", resource: $error %>
+    <%# $error = nil %>
+  <%# end %>
     <%#= render "members/members/shared/error_messages", resource: @cart_product %>
   <div class="row">
     <!--<div class= "col-md-2">-->
@@ -32,7 +32,7 @@
         <% if member_signed_in? %>
         <%= form_with model: @cart_product, url:cart_products_path, method: :post do |f| %>
         <%= f.hidden_field :product_id, value: @product.id %>
-        <%= f.number_field :quantity %>
+        <%= f.number_field :quantity, min: 1,value: 1 %>
         <%= f.submit "カートに入れる" %>
         <% end %>
         <% else %>
