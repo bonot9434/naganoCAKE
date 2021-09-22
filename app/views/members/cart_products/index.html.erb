@@ -6,6 +6,8 @@
           <h2>ショッピングカート</h2>
           <div><%= link_to "カートを空にする", destroy_all_members_cart_products_path, method: :delete, class:"btn btn-danger", "data-confirm" => "ショッピングカートの中身を全て消します" %></div>
         </div>
+        <% if @cart_product != nil && @cart_product.errors.any? %>
+          <%= render "members/members/shared/error_messages", resource: @cart_product %><% end %>
         <table class= "table table-bordered table-sm mt-3">
           <thead>
             <tr>
