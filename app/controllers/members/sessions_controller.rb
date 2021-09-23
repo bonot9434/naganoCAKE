@@ -25,6 +25,7 @@ class Members::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
   
+  #会員ログイン時
   def after_sign_in_path_for(resource)
     root_path
   end

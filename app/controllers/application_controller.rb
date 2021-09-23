@@ -1,9 +1,8 @@
 class ApplicationController < ActionController::Base
-  #befire_action 記述予定
+ 
   before_action :configure_permitted_parameters, if: :devise_controller?
   $tax_rate = 1.08 #税率のグローバル変数
   $potage = 800 #送料のグローバル変数
-
 
   #ログアウト時のパス
   def after_sign_out_path_for(resource)

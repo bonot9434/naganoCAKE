@@ -1,58 +1,76 @@
-<div class="container">
-  <div class="row">
-    <div class="col-10 offset-1">
-      <div>
-        購入者
-        <%= @order.member.last_name %> <%= @order.member.first_name %></td>
-      </div>
-      <div>
-        配送先
-        〒<%= @order.postal_code %> <%= @order.address %><br><%= @order.name %>様
-      </div>
-      <div>
-        支払い方法
-        <%= @order.payment_method %>
-      </div>
-      </div>
-      <%= form_with model:@order,url: admin_order_path, local: true do |f| %>
-        <div>注文ステータス</div>
-          <%= f.select :received_status, Order.received_statuses.keys, class: "received_status" %>
-        </div>
-        <div><%= f.submit '更新' %></div>
-      <% end %>
-      <table>
-        <thead>
-          <tr>
-            <th>商品名</th>
-            <th>単価（税込）</th>
-            <th>数量</th>
-            <th>小計</th>
-            <th>製作ステータス</th>
-          </tr>
-        </thead>
+<div class="container ">
+  <div class=" col-10 offset-1">
+    <div class="row">
+      <table class="table">
+        <h1>注文履歴詳細</h1>
         <tbody>
-          <% @order_products.each do |order_product| %>
-            <tr>
-              <td><%= order_product.product.name %></td>
-              <td><%= order_product.subtotal_price / order_product.quantity %></td>
-              <td><%= order_product.quantity %></td>
-              <td><%= order_product.subtotal_price %></td>
-              <td>
-                <%= form_with model: order_product, url: admin_order_product_path(order_product.id) ,method: :patch, local: true do |f| %>
-                  <%= f.select :production_status, OrderProduct.production_statuses.keys, class: "production_status" %>
-                  <%= f.submit '更新' %>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
+          <div class="col-2">
+          <tr>
+            <th>購入者
+            <%= @order.member.last_name %> <%= @order.member.first_name %></th>
+          </tr>
+          <tr>
+            <th>配送先</th>
+            <th>〒<%= @order.postal_code %> <%= @order.address %><br><%= @order.name %>様</th>
+          </tr>
+          <tr>
+            <th>支払い方法</th>
+            <th><%= @order.payment_method %></th>
+          </tr>
+          <tr>
+            <%= form_with model:@order,url: admin_order_path, local: true do |f| %>
+              <th>注文ステータス</th>
+              <th><%= f.select :received_status, Order.received_statuses.keys, class: "received_status" %>
+              <%= f.submit '更新',class:"btn btn-sm btn-success" %></th>
+            <% end %>
+          </tr>
         </tbody>
       </table>
-      <div>商品合計</div>
-      <div>¥<%= @order.total_price - @order.potage %></div>
-      <div>送料</div>
-      <div>¥<%= @order.potage %></div>
-      <div>請求金額合計</div>
-      <div>¥<%= @order.total_price %></div>
+    </div>
+    <div class="row">
+      <div class="col-8">
+      <table class="table">
+          <thead style="background-color: #e3f2fd;">
+            <tr>
+              <th>商品名</th>
+              <th>単価（税込）</th>
+              <th>数量</th>
+              <th>小計</th>
+              <th>製作ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @order_products.each do |order_product| %>
+              <tr>
+                <td><%= order_product.product.name %></td>
+                <td><%= order_product.subtotal_price / order_product.quantity %></td>
+                <td><%= order_product.quantity %></td>
+                <td><%= order_product.subtotal_price %></td>
+                <td>
+                  <%= form_with model: order_product, url: admin_order_product_path(order_product.id) ,method: :patch, local: true do |f| %>
+                    <%= f.select :production_status, OrderProduct.production_statuses.keys, class: "production_status" %>
+                    <%= f.submit '更新',class:"btn btn-sm btn-success" %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-2 mt-auto">
+        <div class="a_order_show">
+          <p><strong>商品合計</strong></p>
+          <p><strong>送料</strong></p>
+          <p><strong>請求金額合計</strong></p>
+        </div>
+      </div>
+      <div class="col-2 mt-auto">
+        <div class="a_order_show">
+          <p>¥<%= @order.total_price - @order.potage %></p>
+          <p>¥<%= @order.potage %></p>
+          <p><strong>¥<%= @order.total_price %></strong></p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
