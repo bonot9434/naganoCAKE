@@ -1,7 +1,7 @@
-admin 商品詳細画面
-<p id= "notice"><strong><%= notice %></strong></p>
 
-<div class="container px5 px-sm-0">
+<p id= "notice"><strong><%= notice %></strong></p>
+<div class="container px5 px-sm-0 py-5">
+  <p class="page-title">商品詳細</p>
   <div id="error_explanation">
   <% if @product.errors.any? %>
   <h3><%= @product.errors.count %>件のエラーが発生しました。</h3>
@@ -15,27 +15,60 @@ admin 商品詳細画面
        <%= attachment_image_tag @product, :image, size:"200x200", format: 'jpeg', fallback:"no_image.jpg" %>
     </div>
     <div class="col-md-5" offset-md-1>
-      <div class="product_name">
-        <p>商品名     <%= @product.name %></p>
-      </div>
-      <div class="product_introduction">
-        <p>商品説明     <%= @product.introduction %></p>
-      </div>
-      <div class="genre_name">
-        <p>ジャンル     <%= @product.genre.name %></p>
-      </div>
-      <div class="product_price">
-        <p><strong> 税込価格<br>(税抜価格)</br>     <%= (@product.price*$tax_rate).floor %>(<%= @product.price %>)円</strong></p>
-      </div>
-      <div class="product_status">
-        <% if @product.is_active == true %>
-        <P>販売中</P>
-        <% else %>
-        <p>販売停止中</p>
-        <% end %>
-      </div>
-      <div class="edit_buttom">
-        <%= link_to "編集する", edit_admin_product_path(@product) %>
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              商品名
+            </td>
+            <td>
+              <%= @product.name %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              商品説明
+            </td>
+            <td>
+              <%= @product.introduction %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              ジャンル
+            </td>
+            <td>
+              <%= @product.genre.name %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong> 税込価格<br>(税抜価格)</br>
+            </td>
+            <td>
+              <%= (@product.price*$tax_rate).floor %>(<%= @product.price %>)円</strong>
+            </td>
+          </tr>
+          <tr></tr>
+          <tr>
+            <td>
+             <p>販売ステータス</p>
+            </td>
+            <td>
+              <% if @product.is_active == true %>
+              <P class="sale-status"><strong>販売中</strong></p>
+              <% else %>
+               <P class="sale-status"><strong>販売停止中</strong></p>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <%= link_to "編集する", edit_admin_product_path(@product), class:"btn btn-primary" %>
+            </td>
+        </tbody>
+      </table>
       </div>
     </div>
   </div>

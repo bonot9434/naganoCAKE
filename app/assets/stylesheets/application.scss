@@ -436,4 +436,12 @@
     color: rgb(12, 97, 33);
 }
 
+.gnav {
+  flex-direction: column;
+}
 
+.page-title{
+  display: inline-block;
+  font-size: xx-large;
+  background:pink;
+}
