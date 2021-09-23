@@ -2,13 +2,13 @@
   <div class="row">
     <div class="col-10 offset-1">
       <h2>注文確認</h2>
-      <table class= "table table-bordered table-sm mt-3">
+      <table class= "table table-sm mt-3" id= "table-borders">
         <thead>
-          <tr>
-            <th class="table-secondary">商品名</th>
-            <th class="table-secondary" width= "100px">単価(税込)</th>
-            <th class="table-secondary" width= "100px">数量</th>
-            <th class="table-secondary" width= "110px">小計</th>
+          <tr class="table-skyblue">
+            <th>商品名</th>
+            <th width= "100px">単価(税込)</th>
+            <th width= "100px">数量</th>
+            <th width= "110px">小計</th>
           </tr>
         </thead>
         <tbody>
@@ -50,17 +50,17 @@
             </strong></div>
           </div>
           <table class= "table ml-auto" id="total-table">
-            <thead>
+            <thead class="table-skyblue" id= "table-borders">
               <tr>
-                <th width= "100px" class="table-secondary">送料</th>
+                <th width= "100px">送料</th>
                 <td>￥<%= $potage %></td>
               </tr>
               <tr>
-                <th class="table-secondary">商品合計</th>
+                <th>商品合計</th>
                 <td>￥<%= @total %></td>
               </tr>
               <tr>
-                <th class="table-secondary">請求金額</th>
+                <th>請求金額</th>
                 <td>￥<%= @total + $potage %></td>
               </tr>
             </thead>
