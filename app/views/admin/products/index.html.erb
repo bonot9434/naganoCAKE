@@ -1,25 +1,25 @@
-<span>admin商品一覧画面</span>
-<span>
+<div class="container px-5 px-sm-0 py-5">
+  <span class="page-title">商品一覧</span>
+  <span>
   <%= link_to new_admin_product_path do %>
     <i class= "fas fa-plus-circle"></i>
   <% end %>
-</span>
+  </span>
+  <div class="row">
+    <div class="col-md-10 offset-2"></div>
 <table class='table table-hover table-inverse'>
   <thead>
     <tr>
-      <th></th>
       <th>商品ID</th>
       <th>商品名</th>
       <th>税抜き価格</th>
       <th>ジャンル</th>
       <th>ステータス</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td></td>
         <td>
           <%= product.id %>
         </td>
@@ -29,16 +29,16 @@
           <% end %>
         </td>
         <td>
-            <%= product.price %>
+            ￥<%= product.price %>
         </td>
         <td>
             <%= product.genre.name %>
         </td>
         <td>
             <% if product.is_active == true %>
-            <P>販売中</P>
+            <P class="sale-status"><strong>販売中</strong></P>
             <% else %>
-            <p>販売停止中</p>
+            <p class="sale-status"><strong>販売停止中</strong></p>
             <% end %>
         </td>
       </tr>
@@ -46,3 +46,6 @@
     <%= paginate @products_pages %>
   </tbody>
 </table>
+</div>
+</div>
+</div>

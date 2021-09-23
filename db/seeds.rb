@@ -16,3 +16,8 @@
       genre_id: "1",
     )
   end
+
+ Admin.create!(
+  email: "nagano_CAKE@gmail.com",
+  password: "7gan0-CAKE"
+  )

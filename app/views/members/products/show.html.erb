@@ -1,44 +1,64 @@
-会員側商品詳細画面
 <p id= "notice"><strong><%= notice %></strong></p>
 <div class="container px5 px-sm-0">
-  <% if $error != nil && $error.errors.any? %>
-    <%= render "members/shared/error_messages", resource: $error %>
-    <% $error = nil %>
-  <% end %>
+  <p class="page-title">商品詳細</p>
+  <%#if $error != nil && $error.errors.any? %>
+    <%# render "members/shared/error_messages", resource: $error %>
+    <%# $error = nil %>
+  <%# end %>
     <%#= render "members/members/shared/error_messages", resource: @cart_product %>
   <div class="row">
+       <div class="col-md-3">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ジャンル検索</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @genres.each do |genre| %>
+        <tr>
+          <td>
+            <%= link_to genre.name, search_search_path('search[value]': genre.id, 'search[how]': "match") %>
+         </td>
+        </tr>
+      <% end %>
+      </tbody>
+     </table>
+    </div>
     <!--<div class= "col-md-2">-->
     <!--  <p>%= render 'members/genres/genre_search_form', genres: @genres %> </p>-->
     <!--</div>-->
-    <div class="col-md-3" offset-md-1>
-       <%= attachment_image_tag @product, :image, size:"200x200", format: 'jpeg', fallback:"no_image.jpg" %>
-    </div>
     <div class="col-md-4" offset-md-1>
+       <%= attachment_image_tag @product, :image, size:"350x350", format: 'jpeg', fallback:"no_image.jpg" %>
+    </div>
+    <div class="col-md-3" offset-md-1>
       <div class="product_name">
         <h2><%= @product.name %></h2>
       </div>
-      <h1></h1>
+      <p></p>
+      <p></p>
+      <p></p>
       <div class="product_introduction">
         <%= @product.introduction %>
       </div>
-      <h1></h1>
+      <p></p>
+      <p></p>
+      <p></p>
       <div class="product_price">
         <h5><strong>￥<%= @product.price %>(税込)</strong></h5>
       </div>
       <p></p>
       <p></p>
       <p></p>
-      <div class="submit_buttom">
         <% if member_signed_in? %>
         <%= form_with model: @cart_product, url:cart_products_path, method: :post do |f| %>
         <%= f.hidden_field :product_id, value: @product.id %>
-        <%= f.number_field :quantity %>
+        <%= f.number_field :quantity, min: 1,value: 1 %>
         <%= f.submit "カートに入れる" %>
         <% end %>
         <% else %>
-        <%= link_to "ログインする", member_session_path %>
+        <%= link_to "ログインする", member_session_path, class:"btn btn-primary" %>
         <% end %>
-      </div>
     </div>
   </div>
 </div>
