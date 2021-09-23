@@ -22,12 +22,9 @@ class Members::CartProductsController < ApplicationController
         if cart_product.save
             redirect_to product_path(cart_product.product_id) ,notice: "カートに#{cart_product.product.name}を追加しました。カート内に#{member.cart_products.count}商品があります。"
         else
-            # @product = Product.find(params[:id])
-            # @cart_product = CartProduct.new
-            # @genres = Genre.all
-            $error = cart_product
+            # $error = cart_product
             redirect_to product_path(cart_product.product_id)
-            #render template: "products/show.html.erb"
+            # render template: "products/show.html.erb"
         end
     end
 

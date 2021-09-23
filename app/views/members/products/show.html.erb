@@ -1,10 +1,10 @@
 <p id= "notice"><strong><%= notice %></strong></p>
 <div class="container px5 px-sm-0">
   <p class="page-title">商品詳細</p>
-  <% if $error != nil && $error.errors.any? %>
-    <%= render "members/shared/error_messages", resource: $error %>
-    <% $error = nil %>
-  <% end %>
+  <%#if $error != nil && $error.errors.any? %>
+    <%# render "members/shared/error_messages", resource: $error %>
+    <%# $error = nil %>
+  <%# end %>
     <%#= render "members/members/shared/error_messages", resource: @cart_product %>
   <div class="row">
        <div class="col-md-3">
@@ -53,8 +53,8 @@
         <% if member_signed_in? %>
         <%= form_with model: @cart_product, url:cart_products_path, method: :post do |f| %>
         <%= f.hidden_field :product_id, value: @product.id %>
-        <%= f.number_field :quantity,placeholder: "個数選択" %></br>
-        <%= f.submit "カートに入れる", class:"btn btn-primary" %>
+        <%= f.number_field :quantity, min: 1,value: 1 %>
+        <%= f.submit "カートに入れる" %>
         <% end %>
         <% else %>
         <%= link_to "ログインする", member_session_path, class:"btn btn-primary" %>

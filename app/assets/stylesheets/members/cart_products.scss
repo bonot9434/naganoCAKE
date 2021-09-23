@@ -25,13 +25,23 @@ input[type="number"]:focus{
 
 #total-table{
   width: 250px;
+  border:1px solid black;
 }
-.table > thead > tr > th{
-    border:1px solid black;
+#table-borders th, #table-borders td{
+  border:1px solid black;
 }
-.table > thead > tr > td{
-    border:1px solid black;
+// .table > thead > tr > th{
+//     border:1px solid black;
+// }
+// .table > thead > tr > td{
+//     border:1px solid black;
+// }
+// .table > tbody > tr > td{
+//     border:1px solid black;
+// }
+.table-skyblue tr th,.table-skyblue > th ,#table-skyblue{
+  background-color: #d3eeff;
 }
-.table > tbody > tr > td{
-    border:1px solid black;
+#col-left0{
+  padding-left: 0;
 }
