@@ -59,9 +59,8 @@ class Members::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-
+  #会員サインアップ時
   def after_sign_up_path_for(resource)
       members_path
   end
-
 end

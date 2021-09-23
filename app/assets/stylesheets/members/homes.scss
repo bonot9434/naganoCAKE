@@ -19,30 +19,105 @@
 
 .about_head {
 	display: block;
+	background-color: lightyellow;
 	line-height: 3;
 	text-align: center;
 	font-size: 25px;
-	padding-bottom: 10%;
 }
 
-.about_text {
+.about_text1 {
 	line-height: 2;
 	width: 50%;
-  height: 200px;
+	height: auto;
   text-align: center;
   margin-left: 10px;
 }
 
-.side_image1 {
-  background-color:#ff838b;
-  width: 50%;
-  height: 200px;
+.about_text2 {
+	line-height: 2;
+	width: 100%;
   text-align: center;
+	padding-top: 10%;
+}
+
+.about_text3 {
+	line-height: 2;
+	width: 50%;
+  text-align: center;
+}
+
+.about_body {
+  display: flex;
+  padding-top: 10%;
 }
 
 .about_body1 {
   display: flex;
-  padding-bottom: 10%;
+  padding-top: 10%;
+}
+
+.about_body2 {
+  display: flex;
+}
+
+.side_image1 {
+  background-image: url(../logo.jpg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 50%;
+  height: 200px;
+
+}
+
+.side_image_season {
+	display: flex;
+}
+
+.side_image2 {
+	background-image: url(../cake2.jpg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 50%;
+  height: 200px;
+}
+
+.side_image3, {
+	background-image: url(../cake3.jpg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 50%;
+  height: 200px;
+}
+
+.side_image4, {
+	background-image: url(../cake4.jpg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 50%;
+  height: 200px;
+}
+
+
+.side_image5 {
+	background-image: url(../cafe.jpg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 50%;
+  height: 200px;
+}
+
+.side_image6 {
+  background-image: url(../cakebirthday.jpg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 50%;
+  height: 200px;
 }
 
 
@@ -51,6 +126,6 @@
 	line-height: 3;
 	text-align: center;
 	font-size: 25px;
-	padding-bottom: 10%;
+	padding: 10% 0 10% 0;
 }
 
