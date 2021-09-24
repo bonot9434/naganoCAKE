@@ -1,11 +1,6 @@
 <div class="container px-5 px-sm-0 py-5">
   <span class="page-title">商品新規登録</span>
-  <% if @product.errors.any? %>
-  <h3><%= @product.errors.count %>件のエラーが発生しました。</h3>
-  <% @product.errors.full_messages.each do |message| %>
-  <p>・<%=message %></p>
-  <% end %>
-  <% end %>
+  <%= render "admin/shared/error_messages", resource: @product %>
   <div class="row">
     <div class="col-md-10 offset-2">
     <%= form_with model: @product,url:admin_products_path, local:true do |f| %>
@@ -27,7 +22,7 @@
             <%= f.label :商品名 %>
           </td>
           <td>
-            <%= f.text_field :name, size:"50" %>
+            <%= f.text_field :name, size:"50", required: true %>
             </div>
           </td>
         </tr>
@@ -37,7 +32,7 @@
             <%= f.label :商品説明 %>
           </td>
           <td>
-            <%= f.text_area :introduction, size:"53" %>
+            <%= f.text_area :introduction, size:"53", required: true %>
             </div>
           </td>
         </tr>
@@ -57,7 +52,7 @@
             <%= f.label :税抜価格 %>
           </td>
           <td>
-            <%= f.number_field :price %>
+            <%= f.number_field :price, required: true %>
             </div>
           </td>
         </tr>
