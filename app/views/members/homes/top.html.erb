@@ -10,64 +10,51 @@
     <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet" />
   </head>
    <body>
-   <div id="late">
     <div class="video-wrap">
-    <%= video_tag("/videos/10.mp4",autoplay: :true, muted: :true, class: 'top-video') %>
-     <nav class="navbar  navbar-expand-lg navbar-light ml-center gnav ">
-        <div class="container-fluid mr-auto">
-          <p class="fadein txt01"><%= link_to '管理者ログイン',admin_session_path,class: "btn btn-outline-dark" %></p>
-          <ul class="navbar-nav ml-center">
-            <% if member_signed_in? %>
-              ようこそ、<%= current_member.last_name %> <%= current_member.first_name %>さん</li>
-              <li class="nav-item"><p class="fadein txt02"><%= link_to 'マイページ', members_path(current_member), class: "btn btn-outline-info" %></p></li>
-              <li class="nav-item"><p class="fadein txt03"><%= link_to '商品一覧', products_path, class: "btn btn-outline-info" %></p></li>
-              <li class="nav-item"><p class="fadein txt04"><%= link_to 'カート', cart_products_path, class: "btn btn-outline-info" %></p></li>
-              <li class="nav-item"><p class="fadein txt05"><%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "btn btn-outline-info" %></p></li>
-            <% elsif admin_signed_in? %>
-               <li class="nav-item"><p class="fadein txt02"><%= link_to '商品一覧', admin_products_path , class: "btn btn-outline-info" %></p></li>
-              <li class="nav-item"><p class="fadein txt03"><%= link_to '会員一覧', admin_members_path, class: "btn btn-outline-info" %></p></li>
-              <li class="nav-item"><p class="fadein txt04"><%= link_to '注文履歴一覧', admin_orders_path, class: "btn btn-outline-info" %></p></li>
-              <li class="nav-item"><p class="fadein txt05"><%= link_to 'ジャンル一覧', admin_genres_path, class: "btn btn-outline-info" %></p></li>
-              <li class="nav-item"><p class="fadein txt06"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-info" %></p></li>
-            <% else %>
-              <li class="nav-item"><p class="fadein txt02"><%= link_to 'About', about_path, class: "btn btn-outline-info" %></p></li>
-              <li class="nav-item"><p class="fadein txt03"><%= link_to '商品一覧', products_path, class: "btn btn-outline-info" %></p></li>
-              <li class="nav-item"><p class="fadein txt04"><%= link_to '新規登録', new_member_registration_path, class: "btn btn-outline-info" %></p></li>
-              <li class="nav-item"><p class="fadein txt05"><%= link_to 'ログイン', member_session_path, class: "btn btn-outline-info"%></p></li>
-            <% end %>
-          </ul>
-        </div>
+    <%= video_tag("/videos/top.mp4",autoplay: :true, muted: :true, class: 'top-video') %>
+       <nav class="navbar  navbar-expand-lg navbar-light ml-center gnav ">
+        <!--<div class="container-fluid">-->
+            <ul class="navbar-nav ml-center">
+              <% if member_signed_in? %>
+                ようこそ、<%= current_member.last_name %> <%= current_member.first_name %>さん</li>
+                <li class="nav-item"><%= link_to 'マイページ', members_path(current_member), class: "btn btn-outline-info" %></li>
+                <li class="nav-item"><%= link_to '商品一覧', products_path, class: "btn btn-outline-info" %></li>
+                <li class="nav-item"><%= link_to 'カート', cart_products_path, class: "btn btn-outline-info" %></li>
+                <li class="nav-item"><p><%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "btn btn-outline-info" %></p></li>
+              <% elsif admin_signed_in? %>
+                <li class="nav-item"><%= link_to '商品一覧', admin_products_path , class: "btn btn-outline-info" %></li>
+                <li class="nav-item"><%= link_to '会員一覧', admin_members_path, class: "btn btn-outline-info" %></li>
+                <li class="nav-item"><%= link_to '注文履歴一覧', admin_orders_path, class: "btn btn-outline-info" %></li>
+                <li class="nav-item"><%= link_to 'ジャンル一覧', admin_genres_path, class: "btn btn-outline-info" %></li>
+                <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-info" %></li>
+              <% else %>
+                <li class="nav-item"><%= link_to 'About', about_path, class: "btn btn-outline-info" %></li>
+                <li class="nav-item"><%= link_to '商品一覧', products_path, class: "btn btn-outline-info" %></li>
+                <li class="nav-item"><%= link_to '新規登録', new_member_registration_path, class: "btn btn-outline-info" %></li>
+                <li class="nav-item"><%= link_to 'ログイン', member_session_path, class: "btn btn-outline-info"%></li>
+              <% end %>
+            </ul>
+        <!--</div>-->
       </nav>
-      <div class= "search-form">
-          <%= form_with url: search_search_path, method: :get, local: true do |f| %>
-              <p class="fadein txt01"><%= f.text_field 'search[value]', size: "20x4", placeholder: "商品名検索" %></p>
-              <span class="search-button col-xs-12 text-right">
-                <p class="fadein txt01"><%= f.select 'search[how]', options_for_select({ "部分一致" => "partical", "前方一致" => "forward", "後方一致" => "backward", "完全一致" => "match" }) %></p>
-                <% f.submit :"検索" %>
-              </span></br>
-          <% end %>
-                    <h2 class="fadein txt01 new-item-text">ジャンル検索</h2>
-                    <% @genres.each do |genre| %>
-                     <h5><p class="fadein txt01"><strong><%= link_to genre.name, search_search_path('search[value]': genre.id, 'search[how]': "match") %></strong></p></h5></br>
-                    <% end %>
-             </div>
-             <div class="container">
-               <div class="row">
-                <div class="col-md-5"></div>
-             <div class="col-md-7 flex-row pull-right d-inline">
+      <div class="space"></div>
+        <div class="container">
+          <div class="row">
+             <div class="col-md-12 flex-row pull-right d-inline">
                <div class="yoko">
                <h2 class="new-item-text fadein txt01">NEW ITEM</h2></br>
                </div>
                <div class="yoko">
                    <% @products.each do |product| %>
                       <%= link_to product_path(product.id) do %>
-                       <p class="fadein txt01"><%= attachment_image_tag product, :image, size: "150x150",  fallback: "no_image.jpg", class:"fuwafuwa" %></p></br>
+                       <p class="fadein txt01"><%= attachment_image_tag product, :image, size: "200x200",  fallback: "no_image.jpg", class:"fuwafuwa" %></p></br>
                        <p class="fadein txt01"><%= product.name %></p></br>
                        <p class="fadein txt01">￥<%= product.price %>円</p></br>
                       <% end %>
                    <% end %>
+                </div>
+                <div class="see-menu">
                    <p class="fadein txt01"><%= link_to "See all menus", products_path, class:"btn btn-info" %></p>
-             </div>
+                </div>
           </div>
         </div>
       </div>

@@ -12,12 +12,13 @@
 
   <body>
     <!--じゅんぺい　色変更↓-->
-      <nav class="navbar  navbar-expand-lg navbar-light ml-center gnav ">
-        <div class="container-fluid ml-center">
-          <%= link_to "", root_path,class:"fuwafuwa" %>
-          <p>  </p>
-          <div><%= link_to '管理者ログイン',admin_session_path,class: "btn btn-outline-dark" %></div>
-            <ul class="navbar-nav ml-center">
+    <div class="back-ground">
+      <div class="container-fuluid">
+        <div class="row">
+          <div class="col-md-10 offset-1 color">
+      <nav class="navbar  navbar-expand-lg navbar-light text-align-center gnav ">
+        <!--<div class="container-fluid justfy-content-center">-->
+            <ul class="navbar-nav justfy-content-center">
               <% if member_signed_in? %>
                 ようこそ、<%= current_member.last_name %> <%= current_member.first_name %>さん</li>
                 <li class="nav-item"><%= link_to 'マイページ', members_path(current_member), class: "btn btn-outline-info" %></li>
@@ -36,8 +37,6 @@
                 <li class="nav-item"><%= link_to '新規登録', new_member_registration_path, class: "btn btn-outline-info" %></li>
                 <li class="nav-item"><%= link_to 'ログイン', member_session_path, class: "btn btn-outline-info"%></li>
               <% end %>
-            <!--</ul>-->
-            <!--<ul class="navbar-nav ml-center">-->
                 <%= form_with url: search_search_path, method: :get, local: true do |f| %>
                   <%= f.text_field 'search[value]', size: "26x4", placeholder: "商品名を入力して下さい。" %><br>
                   <span class="search-button col-xs-12 text-right">
@@ -46,8 +45,12 @@
                   </span>
                 <% end %>
             </ul>
-        </div>
       </nav>
   <%= yield %>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
 </body>
 </html>
