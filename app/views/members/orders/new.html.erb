@@ -33,7 +33,7 @@
             <%= form_with model: @destination, url: orders_info_path, method: :post, local: :true do |f| %>
               <div class="mt-2 row">
                 <%= f.label "郵便番号(ハイフン無し)", class:"col-3 col-form-label" %>
-                <div class="col-3"><%= f.text_field :postal_code, placeholder: "1234567", class:"form-control form-control-sm",id: "form-border" %></div>
+                <div class="col-3"><%= f.text_field :postal_code, placeholder: "1234567", maxlength: 7,minlength: 7, class:"form-control form-control-sm",id: "form-border" %></div>
               </div>
               <div class="mt-2 row">
                 <%= f.label "住所", class:"col-3 col-form-label" %>

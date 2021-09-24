@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
- 
+
   before_action :configure_permitted_parameters, if: :devise_controller?
   $tax_rate = 1.08 #税率のグローバル変数
   $potage = 800 #送料のグローバル変数
