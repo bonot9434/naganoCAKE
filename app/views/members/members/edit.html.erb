@@ -9,39 +9,39 @@
           <thead>
             <th>
               <%= f.label :氏名 %>
-              <%= f.text_field :last_name %>
-              <%= f.text_field :first_name %>
+              <%= f.text_field :last_name ,required: true %>
+              <%= f.text_field :first_name ,required: true %>
             </th>
           </tr>
           <tr>
             <th>
-              <%= f.label :フリガナ %>
-              <%= f.text_field :last_name_kana %>
-              <%= f.text_field :first_name_kana %>
+              <%= f.label :フリガナ（全角カタカナ） %>
+              <%= f.text_field :last_name_kana , pattern: "[ァ-ヶー－]*" ,required: true %>
+              <%= f.text_field :first_name_kana , pattern: "[ァ-ヶー－]*" ,required: true %>
             </th>
           </tr>
           <tr>
             <th>
               <%= f.label :郵便番号 %>
-              <%= f.text_field :postal_code %>
+              <%= f.text_field :postal_code , maxlength: 7, minlength: 7, required: true %>
             </th>
           </tr>
           <tr>
             <th>
               <%= f.label :電話番号 %>
-              <%= f.text_field :telephone_number %>
+              <%= f.number_field :telephone_number , class: "no-spin" ,required: true %>
             </th>
           </tr>
           <tr>
             <th>
               <%= f.label :住所 %>
-              <%= f.text_field :address %>
+              <%= f.text_field :address ,required: true %>
             </th>
           </tr>
           <tr>
             <th>
               <%= f.label :メールアドレス %>
-              <%= f.text_field :email %>
+              <%= f.text_field :email ,required: true %>
             </th>
           </tr>
         </thead>
