@@ -103,6 +103,8 @@ input[type="number"]:focus{
   overflow: hidden;
   background-color: #FFF;
 }
+
+//検索ボックス
 .search_container input[type="text"]{
   border: none;
   height: 2.0em;
@@ -115,7 +117,6 @@ input[type="number"]:focus{
 }
 .search_container input[type="submit"]{
   cursor: pointer;
-  font-family: FontAwesome;
   font-size: 1.3em;
   border: none;
   background: none;
@@ -129,28 +130,19 @@ input[type="number"]:focus{
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
 }
-.fa-search input[type="submit"]:before{
-  font-family: "Font Awesome 5 Free";
-  content: "\f002";
+//ソート
+a.sort_header{
+  color: black;
 }
-.fa-search input[type="submit"]:after{
-  font-family: "Font Awesome 5 Free";
-  content: "\f002";
+a.current{
+    color: blue;
 }
-.search_containers{
-  cursor: pointer;
-  font-family: FontAwesome;
-  font-size: 1.3em;
-  border: none;
-  background: none;
-  color: #3879D9;
-  position: absolute;
-  width: 2.5em;
-  height: 2.5em;
-  right: 0;
-  top: -10px;
-  outline : none;
+.asc:after{
   font-family: "Font Awesome 5 Free";
-  content: "\f002";
   font-weight: 900;
+  content: " \f0de";
 }
+.desc:after{
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: " \f0dd";}

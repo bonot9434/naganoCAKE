@@ -5,7 +5,7 @@ class Admin::OrdersController < ApplicationController
       member = Member.find(params[:name])
       @orders = member.orders.page(params[:page]).per(14)
     else
-      @orders = Order.page(params[:page]).per(14)
+      @orders = Order.page(params[:page]).per(14).order("#{sort_column} #{sort_direction}")
     end
   end
 
@@ -24,7 +24,15 @@ class Admin::OrdersController < ApplicationController
 		   redirect_to request.referer
 
   end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
 
+  def sort_column
+    Order.column_names.include?(params[:sort]) ? params[:sort] : 'created_at'
+  end
+  
   private
 
     def order_params
