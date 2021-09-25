@@ -9,6 +9,4 @@ class Product < ApplicationRecord
     validates :introduction, presence:true
     validates :price, presence:true
 
-
-
 end

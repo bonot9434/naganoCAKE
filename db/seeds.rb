@@ -7,17 +7,3 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-
-  10.times do |n|
-    Product.create!(
-      name: "test",
-      introduction: "test",
-      price: "111",
-      genre_id: "1",
-    )
-  end
-
- Admin.create!(
-  email: "nagano_CAKE@gmail.com",
-  password: "7gan0-CAKE"
-  )
