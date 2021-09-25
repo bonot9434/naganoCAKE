@@ -30,18 +30,19 @@ input[type="number"]:focus{
 #table-borders th, #table-borders td{
   border:1px solid black;
 }
-// .table > thead > tr > th{
-//     border:1px solid black;
-// }
-// .table > thead > tr > td{
-//     border:1px solid black;
-// }
-// .table > tbody > tr > td{
-//     border:1px solid black;
-// }
 .table-skyblue tr th,.table-skyblue > th ,#table-skyblue{
   background-color: #d3eeff;
 }
 #col-left0{
   padding-left: 0;
+}
+
+.field_with_errors > input {
+  border: 2px solid red;
+}
+.no-spin::-webkit-inner-spin-button,
+.no-spin::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance:textfield;
 }
