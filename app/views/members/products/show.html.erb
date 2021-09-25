@@ -24,16 +24,20 @@
       <p></p>
       <p></p>
       <p></p>
-        <% if member_signed_in? %>
-        <%= form_with model: @cart_product, url:cart_products_path, method: :post do |f| %>
-        <%= f.hidden_field :product_id, value: @product.id %>
-        <%= f.number_field :quantity, min: 1,value: 1 ,required: true %>
-        <%= f.submit "カートに入れる" %>
+        <% if @product.is_active? %>
+          <% if member_signed_in? %>
+            <%= form_with model: @cart_product, url:cart_products_path, method: :post do |f| %>
+            <%= f.hidden_field :product_id, value: @product.id %>
+            <%= f.number_field :quantity, min: 1,value: 1 ,required: true %>
+              <%= f.submit "カートに入れる" %>
+            <% end %>
+          <% else %>
+            <%= link_to "ログインする", member_session_path, class:"btn btn-primary" %>
         <% end %>
         <% else %>
-        <%= link_to "ログインする", member_session_path, class:"btn btn-primary" %>
+          売り切れです
         <% end %>
-    </div>
+   </div>
            <div class="col-md-2">
     <table class="table">
       <thead>

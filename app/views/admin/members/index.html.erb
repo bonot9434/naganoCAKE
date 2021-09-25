@@ -1,8 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-10 offset-1">
-      <h2 class="mt-3">会員一覧</h2>
-      <%= paginate @members %>
+      <h2 class="mt-3 pb-4">会員一覧</h2><i class="fas fa-search"></i>&amp;#x(f002);
       <table class="table">
         <thead class="table-skyblue">
           <tr>
@@ -35,7 +34,8 @@
           <% end %>
         </tbody>
       </table>
-      <%#= paginate @members %>
+      <%= paginate @members %>
+      <!--<div class="search_containers">#xf002</div>-->
     </div>
   </div>
 </div>

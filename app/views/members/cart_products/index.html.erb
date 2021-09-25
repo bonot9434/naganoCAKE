@@ -40,7 +40,7 @@
               </td>
               <!--小計の表示:数量ｘ(価格ｘ税率)-->
               <td class="align-middle">￥<%= cart_product.quantity * (cart_product.product.price * $tax_rate).floor %></td>
-              <td class="text-center"><%= link_to "削除する",cart_product_path(cart_product.id), method: :delete, class:"btn btn-danger btn-sm" %></td>
+              <td class="text-center table-mini"><%= link_to "削除する",cart_product_path(cart_product.id), method: :delete, class:"btn btn-danger btn-sm" %></td>
               <!--@totalに数量ｘ(価格ｘ税率)を代入-->
             </tr>
             <% @total += cart_product.quantity * (cart_product.product.price * $tax_rate).floor %>

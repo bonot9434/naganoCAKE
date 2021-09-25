@@ -7,8 +7,12 @@ class Admin::ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.all
-    @products = Product.page(params[:page]).per(14).reverse_order
+    if params[:word].present?
+      @word = params[:word]
+      @products = search(@word , Product).page(params[:page]).per(14)  
+    else
+      @products = Product.page(params[:page]).per(14).reverse_order
+    end
   end
 
   def create
@@ -37,7 +41,23 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
-
+  def search(word, item)
+    words = word.split(/[[:blank:]]+/).select(&:present?)
+    not_word, or_and_word = words.partition { |word| word.start_with?("-") }
+    or_word, and_word = or_and_word.partition { |word| word.start_with?("|") }
+    
+    items = item.all
+    and_word.each do |word|
+      items = items.where("name LIKE ?","%#{word}%")# if word.present?
+    end
+    or_word.each do |word|
+      items = items.or(item.where("name LIKE ?","%#{word.delete_prefix('|')}%"))
+    end
+    not_word.each do |word|
+      items.where!("name NOT LIKE ?", "%#{word.delete_prefix('-')}%")
+    end
+    return items
+  end
 
     private
     def product_params
