@@ -3,13 +3,13 @@
     <div class="col-10 offset-1">
       <% if @cart_products.any? %>
         <div class="d-flex justify-content-between mt-3">
-          <p class="page-title">カート</p>
+          <p class="page-title">cart</p>
           <div><%= link_to "カートを空にする", destroy_all_members_cart_products_path, method: :delete, class:"btn btn-danger", "data-confirm" => "ショッピングカートの中身を全て消します" %></div>
         </div>
         <%# if @cart_product != nil && @cart_product.errors.any? %>
           <%#= render "members/shared/error_messages", resource: @cart_product %>
         <%# end %>
-        <table class= "table table-sm mt-3" id= "table-borders">
+        <table class= "table table-sm" id= "table-borders">
           <thead>
             <tr class="table-skyblue">
               <th>商品名</th>
@@ -24,7 +24,7 @@
             <% @cart_products.each do |cart_product| %>
             <tr>
               <td><%= link_to product_path(cart_product.product) do %>
-                <%= attachment_image_tag cart_product.product, :image, size:"50x50", format: 'jpeg', fallback:"no_image.jpg" %>
+                <%= attachment_image_tag cart_product.product, :image, size:"75x75", format: 'jpeg', fallback:"no_image.jpg" %>
                 <span class= "ml-2"><%= cart_product.product.name %></span>
               </td><% end %>
               <!--税込価格は切捨て-->
