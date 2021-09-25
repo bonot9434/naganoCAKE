@@ -1,7 +1,12 @@
 class Admin::OrdersController < ApplicationController
 
   def index
-    @orders = Order.page(params[:page]).per(14)
+    if params[:name].present?
+      member = Member.find(params[:name])
+      @orders = member.orders.page(params[:page]).per(14)
+    else
+      @orders = Order.page(params[:page]).per(14)
+    end
   end
 
   def show

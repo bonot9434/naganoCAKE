@@ -2,20 +2,21 @@ class Members::ProductsController < ApplicationController
   
   def index
     if params[:word].present?
+      @product_name = "商品：" + params[:word]
       @word = params[:word]
       @products = search(@word , Product)
       if @products.blank?
         @products = "no_search"
       end
     elsif params[:genre].present?
-      @gunre_name = params[:genre]
+      @gunre_name = "ジャンル：" + params[:genre]
       @gunre = Genre.search(params[:genre])
       @products =  @gunre[0].products
       if @products.blank?
         @products = "no_search"
       end
     else
-      @products = Product.all
+      @products = Product.where(is_active: 'true')
     end
     @genres = Genre.all
   end
