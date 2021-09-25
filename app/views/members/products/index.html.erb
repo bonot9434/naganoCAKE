@@ -4,6 +4,7 @@
     <div class="col-md-10 flex-row">
       <div class="yoko">
         <% if @products != "no_search" %>
+        <h4>"<%= @product_name %><%= @gunre_name %>"で検索した結果<%= @products.count %>件あります</h4>
           <% @products.each do |product| %>
             <div class="index-inner">
             <%= link_to product_path(product.id) do %>
@@ -14,7 +15,7 @@
             </div>
           <% end %>
        <% else %>
-       <h4>"<%= @word %><%= @gunre_name %>"で該当する商品はありません</h4>
+       <h4>"<%= @product_name %><%= @gunre_name %>"で該当する商品はありません</h4>
        <% end %>
        
        </div>

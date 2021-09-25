@@ -44,21 +44,21 @@
                   <% end %>
                 </ul>
               </nav>
-              <div class="text-right mr-4">
+              <div class="search_container d-flex justify-content-end pr-4">
                 <% if request.fullpath.include?("admin/member") %>
                   <%= form_with url: admin_members_path, method: :get, local: true do |f| %>
-                    <%= f.search_field :word, :value => @word , placeholder: "(管理者)会員名を入力して下さい。",class:"col-6" %>
-                    <% f.submit "検索" %>
+                    <%= f.text_field :word, :value => @word , placeholder: "  を入力して下さい(管理者)"  %>
+                    <%= f.submit "" %>
                   <% end %>
                 <% elsif request.fullpath.include?("admin/products") %>
                   <%= form_with url: admin_products_path, method: :get, local: true do |f| %>
-                    <%= f.search_field :word, :value => @word , placeholder: "(管理者)商品名を入力して下さい。",class:"col-6" %>
-                    <% f.submit "検索" %>
+                    <%= f.text_field :word, :value => @word , placeholder: "  を入力して下さい(管理者)" %>
+                    <%= f.submit "" %>
                   <% end %>
                 <% else %>
                   <%= form_with url: products_path, method: :get, local: true do |f| %>
-                    <%= f.search_field :word, :value => @word , placeholder: "商品名を入力して下さい。",class:"col-6" %>
-                    <% f.submit "検索" %>
+                    <%= f.text_field :word, placeholder: "  を入力して下さい"%>
+                    <%= f.submit "" %>
                   <% end %>
                 <% end %>
               </div>

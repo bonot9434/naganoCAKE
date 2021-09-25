@@ -91,3 +91,66 @@ input[type="number"]:focus{
 .pagination{
   justify-content: center;
 }
+.search_container> form{
+  box-sizing: border-box;
+  position: relative;
+  border: 1px solid #999;
+  display: block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  height: 2.3em;
+  width: 300px;
+  overflow: hidden;
+  background-color: #FFF;
+}
+.search_container input[type="text"]{
+  border: none;
+  height: 2.0em;
+  width: 260px;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+.search_container input[type="text"]:focus {
+  outline: 0;
+}
+.search_container input[type="submit"]{
+  cursor: pointer;
+  font-family: FontAwesome;
+  font-size: 1.3em;
+  border: none;
+  background: none;
+  color: #3879D9;
+  position: absolute;
+  width: 2.5em;
+  height: 2.5em;
+  right: 0;
+  top: -10px;
+  outline : none;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+.fa-search input[type="submit"]:before{
+  font-family: "Font Awesome 5 Free";
+  content: "\f002";
+}
+.fa-search input[type="submit"]:after{
+  font-family: "Font Awesome 5 Free";
+  content: "\f002";
+}
+.search_containers{
+  cursor: pointer;
+  font-family: FontAwesome;
+  font-size: 1.3em;
+  border: none;
+  background: none;
+  color: #3879D9;
+  position: absolute;
+  width: 2.5em;
+  height: 2.5em;
+  right: 0;
+  top: -10px;
+  outline : none;
+  font-family: "Font Awesome 5 Free";
+  content: "\f002";
+  font-weight: 900;
+}
