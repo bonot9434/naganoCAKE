@@ -20,3 +20,30 @@
 .table td{
   border: none;
 }
+
+
+.soldout1 {
+  opacity: .8;
+  height: 10px;
+  width: 200px;
+  margin-top: 30px;
+  padding-top: 50px;
+}
+
+.enn {
+  position: relative;
+  overflow: hidden;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+.sold {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  height: 100%;
+}
+
