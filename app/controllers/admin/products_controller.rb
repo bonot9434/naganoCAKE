@@ -9,9 +9,9 @@ class Admin::ProductsController < ApplicationController
   def index
     if params[:word].present?
       @word = params[:word]
-      @products = search(@word , Product).page(params[:page]).per(14)  
+      @products = search(@word , Product).page(params[:page]).per(14)
     else
-      @products = Product.page(params[:page]).per(14).reverse_order
+      @products = Product.page(params[:page]).per(14).order("#{sort_column} #{sort_direction}")
     end
   end
 
@@ -58,8 +58,18 @@ class Admin::ProductsController < ApplicationController
     end
     return items
   end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
 
-    private
+  def sort_column
+    Product.column_names.include?(params[:sort]) ? params[:sort] : 'created_at'
+  end
+  
+  
+private
+
     def product_params
       params.require(:product).permit(:image, :name, :introduction, :price, :is_active, :genre_id)
     end
