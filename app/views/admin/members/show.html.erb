@@ -43,7 +43,7 @@
           </tr>
         </table>
         <%= link_to "編集する",edit_admin_member_path, class: "btn btn-success" %>
-        <%= link_to  "注文履歴一覧を見る", admin_orders_path, class: "btn btn-primary ml-4" %>
+        <%= link_to  "注文履歴一覧を見る", admin_orders_path(name: @member.id) , class: "btn btn-primary ml-4" %>
     </div>
   </div>
 </div>

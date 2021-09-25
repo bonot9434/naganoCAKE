@@ -71,16 +71,17 @@ input[type="number"]:focus{
 .pagination>li>a {          
   border: none;     /*枠線をなくす*/
   color: #007bff;   /*文字の色を変える*/
+  background-color: #FFFFE0;
 }
 #page-active {     
     color: #000;
     border-radius: 15px;     /*角を丸くする*/
-    background-color: #FFF;
+    background-color: #FFFFE0;
 }
 /*ホバー時のデザイン*/
 .pagination>li>a:hover {        
   border-radius: 15px;    /*角を丸くする*/
-  background-color: #FFF;
+  background-color: #FFFFE0;
   outline: none;
 }
 .pagination>li>a:focus{
