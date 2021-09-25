@@ -30,7 +30,7 @@ body {
 h1,h2,h3,h4,h5,p,ul,ol,li,dl,dt,dd,form,figure,form {margin: 0px;padding: 0px;font-size: 1rem;font-weight: normal;}
 ul {list-style-type: none;}
 ol {padding-left: 40px;padding-bottom: 15px;}
-img {border: none;max-width: 100%;height: auto;vertical-align: middle;}
+img {border: none;max-width: 100%;height: auto;vertical-align: middle;border-radius:50%; }
 table {border-collapse:collapse;font-size: 1rem;border-spacing: 0;}
 video {max-width: 100%;}
 iframe {width: 100%;}
@@ -530,7 +530,7 @@ header #logo {
 }
 
 .cafe{
-  color: white;
+  color: gray;
 }
 
 .image1{
@@ -546,4 +546,13 @@ header #logo {
 .image3{
   width:300px;
   heigth:200px;
+}
+
+.space{
+	margin-top: 100px;
+}
+
+.mainlogo{
+	height:100px;
+	width: 100px;
 }
