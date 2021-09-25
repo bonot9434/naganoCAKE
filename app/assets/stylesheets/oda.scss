@@ -58,7 +58,9 @@
 }
 
 /*以下遅延の指定*/
-.txt01 {animation-delay: 3s;}
+.txt01 {animation-delay: 3s;
+        font-family: 'Impact';
+}
 /*終了*/
 
 .search-form{
@@ -202,7 +204,7 @@
 .new-item-text{
   display: inline-block;
   color: white;
-  background-color: blue;
+  background-color: red;
   font-size: 50px;
 }
 
@@ -253,7 +255,7 @@
 }
 
 .space{
-  height: 45%;
+  height: 35%;
 }
 
 .p-name{
@@ -537,6 +539,11 @@
 }
 
 .gnav {
+  flex-direction: column;
+}
+
+.gnav-top{
+  margin-right:250px;
   flex-direction: column;
 }
 

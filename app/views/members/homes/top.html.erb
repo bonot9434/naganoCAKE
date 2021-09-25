@@ -12,7 +12,8 @@
    <body>
     <div class="video-wrap">
     <%= video_tag("/videos/top.mp4",autoplay: :true, muted: :true, class: 'top-video') %>
-       <nav class="navbar  navbar-expand-lg navbar-light ml-center gnav ">
+      <div class="d-flex justify-content-end">
+        <nav class="navbar  navbar-expand-lg navbar-light ml-center gnav-top ">
             <ul class="navbar-nav ml-center">
               <% if member_signed_in? %>
                 <li class="name"><p class="fadein txt01">ようこそ、<%= current_member.last_name %> <%= current_member.first_name %>さん</p></li>
@@ -34,12 +35,13 @@
               <% end %>
             </ul>
       </nav>
+    </div>
       <div class="space"></div>
         <div class="container">
           <div class="row">
              <div class="col-md-12 flex-row pull-right d-inline">
                <div class="yoko">
-               <h2 class="new-item-text fadein txt01">NEW↓</h2></br>
+               <h2 class="new-item-text fadein txt01">NEW</h2></br>
                </div>
                <div class="yoko">
                    <% @products.each do |product| %>
