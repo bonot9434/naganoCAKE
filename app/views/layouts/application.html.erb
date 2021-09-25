@@ -15,27 +15,30 @@
     <div class="back-ground">
       <div class="container-fuluid">
         <div class="row">
-          <div class="col-md-10 offset-1 color">
-      <nav class="navbar  navbar-expand-lg navbar-light text-align-center gnav ">
-        <!--<div class="container-fluid justfy-content-center">-->
+          <div class="col-md-4 offset-1 color">
+             <% if member_signed_in? %>
+               <li class="name">ようこそ、<%= current_member.last_name %> <%= current_member.first_name %>さん</li>
+             <% end %>
+          </div>
+          <div class="col-md-6 color">
+          <nav class="navbar  navbar-expand-lg navbar-light text-align-center gnav ">
             <ul class="navbar-nav justfy-content-center">
               <% if member_signed_in? %>
-                ようこそ、<%= current_member.last_name %> <%= current_member.first_name %>さん</li>
-                <li class="nav-item"><%= link_to 'マイページ', members_path(current_member), class: "btn btn-outline-info" %></li>
-                <li class="nav-item"><%= link_to '商品一覧', products_path, class: "btn btn-outline-info" %></li>
-                <li class="nav-item"><%= link_to 'カート', cart_products_path, class: "btn btn-outline-info" %></li>
-                <li class="nav-item"><p><%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "btn btn-outline-info" %></p></li>
+                <li class="nav-item"><%= link_to 'マイページ', members_path(current_member), class: "btn btn-danger" %></li>
+                <li class="nav-item"><%= link_to '商品一覧', products_path, class: "btn btn-danger" %></li>
+                <li class="nav-item"><%= link_to 'カート', cart_products_path, class: "btn btn-danger" %></li>
+                <li class="nav-item"><p><%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "btn btn-danger" %></p></li>
               <% elsif admin_signed_in? %>
-                <li class="nav-item"><%= link_to '商品一覧', admin_products_path , class: "btn btn-outline-info" %></li>
-                <li class="nav-item"><%= link_to '会員一覧', admin_members_path, class: "btn btn-outline-info" %></li>
-                <li class="nav-item"><%= link_to '注文履歴一覧', admin_orders_path, class: "btn btn-outline-info" %></li>
-                <li class="nav-item"><%= link_to 'ジャンル一覧', admin_genres_path, class: "btn btn-outline-info" %></li>
-                <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-info" %></li>
+                <li class="nav-item"><%= link_to '商品一覧', admin_products_path , class: "btn btn-danger" %></li>
+                <li class="nav-item"><%= link_to '会員一覧', admin_members_path, class: "btn btn-danger" %></li>
+                <li class="nav-item"><%= link_to '注文履歴一覧', admin_orders_path, class: "btn btn-danger" %></li>
+                <li class="nav-item"><%= link_to 'ジャンル一覧', admin_genres_path, class: "btn btn-danger" %></li>
+                <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-danger" %></li>
               <% else %>
-                <li class="nav-item"><%= link_to 'About', about_path, class: "btn btn-outline-info" %></li>
-                <li class="nav-item"><%= link_to '商品一覧', products_path, class: "btn btn-outline-info" %></li>
-                <li class="nav-item"><%= link_to '新規登録', new_member_registration_path, class: "btn btn-outline-info" %></li>
-                <li class="nav-item"><%= link_to 'ログイン', member_session_path, class: "btn btn-outline-info"%></li>
+                <li class="nav-item"><%= link_to 'About', about_path, class: "btn btn-danger" %></li>
+                <li class="nav-item"><%= link_to '商品一覧', products_path, class: "btn btn-danger" %></li>
+                <li class="nav-item"><%= link_to '新規登録', new_member_registration_path, class: "btn btn-danger" %></li>
+                <li class="nav-item"><%= link_to 'ログイン', member_session_path, class: "btn btn-danger" %></li>
               <% end %>
                 <%= form_with url: search_search_path, method: :get, local: true do |f| %>
                   <%= f.text_field 'search[value]', size: "26x4", placeholder: "商品名を入力して下さい。" %><br>
@@ -46,11 +49,13 @@
                 <% end %>
             </ul>
       </nav>
-  <%= yield %>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
+
+ </div>
+
+
+<%= yield %>
+</div>
+</div>
+</div>
 </body>
 </html>
