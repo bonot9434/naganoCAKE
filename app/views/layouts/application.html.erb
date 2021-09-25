@@ -19,6 +19,7 @@
             <div class="d-flex justify-content-between">
             <div>
                <% if member_signed_in? %>
+                 <%= image_tag 'naganologo.png',class: "mainlogo" %>
                  <span class="name">ようこそ、<%= current_member.last_name %> <%= current_member.first_name %>さん</span>
                <% end %>
             </div>
