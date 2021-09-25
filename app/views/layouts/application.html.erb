@@ -29,7 +29,7 @@
                 <% if member_signed_in? %>
                   <li class="nav-item"><%= link_to 'マイページ', members_path(current_member), class: "btn btn-danger" %></li>
                   <li class="nav-item"><%= link_to '商品一覧', products_path, class: "btn btn-danger" %></li>
-                  <li class="nav-item"><%= link_to 'カート', cart_products_path, class: "btn btn-danger" %></li>
+                  <li class="nav-item"><%= link_to "カート:#{current_member.cart_products.count}", cart_products_path, class: "btn btn-danger" %></li>
                   <li class="nav-item"><p><%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "btn btn-danger" %></p></li>
                 <% elsif admin_signed_in? %>
                   <li class="nav-item"><%= link_to '商品一覧', admin_products_path , class: "btn btn-danger" %></li>
