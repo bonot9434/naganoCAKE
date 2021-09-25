@@ -30,6 +30,10 @@
   height: 250px;
 }
 
+.left-space{
+  margin-left: 400px;
+}
+
 .name{
   position: relative;
   font-size: 20px;
@@ -57,9 +61,12 @@
     100% {  opacity: 1;}
 }
 
+.new{
+  width:200px;
+}
+
 /*以下遅延の指定*/
 .txt01 {animation-delay: 3s;
-        font-family: 'Impact';
 }
 /*終了*/
 
@@ -95,6 +102,9 @@
   }
 }
 
+.fuwafuwa2{
+  animation: fuwafuwa 3s infinite ease-in-out .8s alternate;
+}
 //ヘッダースタイル
 
 //top
@@ -152,7 +162,7 @@
 }
 
 .product-image{
-  border-radius: 50%;
+width: 200;
 }
 
 
@@ -255,7 +265,7 @@
 }
 
 .space{
-  height: 35%;
+  height: 20%;
 }
 
 .p-name{
@@ -411,7 +421,6 @@
 .login-body, {
     height: 100%;
     background-repeat: no-repeat;
-    background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
 }
 
 .card-container.card {
@@ -549,7 +558,8 @@
 
 .page-title{
   display: inline-block;
-  font-size: xx-large;
-  background:pink;
+  font-size: 50px;
+  color: #696969;
+  font-family: cursive;
 }
 

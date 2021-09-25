@@ -11,15 +11,16 @@
   </head>
 
   <body>
-    <!--じゅんぺい　色変更↓-->
     <div class="back-ground">
       <div class="container-fuluid ">
         <div class="row">
           <div class="col-10 offset-1 color">
             <div class="d-flex justify-content-between">
             <div>
-               <% if member_signed_in? %>
+                <%= link_to root_path do %>
                  <%= image_tag 'naganologo.png',class: "mainlogo" %>
+               <% end %>
+               <% if member_signed_in? %>
                  <span class="name">ようこそ、<%= current_member.last_name %> <%= current_member.first_name %>さん</span>
                <% end %>
             </div>
@@ -29,7 +30,7 @@
                   <li class="nav-item"><%= link_to 'マイページ', members_path(current_member), class: "btn btn-danger" %></li>
                   <li class="nav-item"><%= link_to '商品一覧', products_path, class: "btn btn-danger" %></li>
                   <li class="nav-item"><%= link_to 'カート', cart_products_path, class: "btn btn-danger" %></li>
-                  <li class="nav-item"><p><%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "btn btn-danger" %></p></li>
+                  <li class="nav-item"><%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "btn btn-danger" %></li>
                 <% elsif admin_signed_in? %>
                   <li class="nav-item"><%= link_to '商品一覧', admin_products_path , class: "btn btn-danger" %></li>
                   <li class="nav-item"><%= link_to '会員一覧', admin_members_path, class: "btn btn-danger" %></li>
