@@ -1,50 +1,91 @@
-<div class="container">
-  <div class="row">
-    <div class="col-10 offset-1">
-      <head>
-        <h2 class="about_title" data-en="About"></h2>
-        <div class="about_head">
-          <p><strong>「ながのCAKE」</strong>は</p>
-          <p>2020年にオープンした<p>
-          <p>長野県にある小さな洋菓子店です<p>
-        </div>
-      </head>
-      <body>
-        <div class="about_body">
-          <p class="about_text1">名前の由来はそのまんま。<br />
-          分かりやすくシンプルな名前をつけました。<br />
-          しかし、名前と違って作品は手の込んだものばかり。<br />
-          安心安全な厳選した素材を使用し、<br />
-          当店の職人が丹精込めて一つ一つ手作りで仕上げています。<br />
-          みなさまに末永く愛される店を目指しています。</p>
-          <div class="side_image1"> </div>
-        </div>
-      
-        <p class="about_text2">四季を楽しめる季節限定のケーキもご用意しています。</p>
-          <div class="side_image_season">
-            <div class="side_image2"></div>
-            <div class="side_image3"></div>
-            <div class="side_image4"></div>
-          </div>
-        
-        <div class="about_body">
-          <p class="about_text1">ごゆっくりお召し上がりいただくために、<br />
-          少数ではありますがカフェスペースもございます。</p>
-        <div class="side_image5"></div>
-        </div>
-    
-          <p class="about_text2">遠方のお客様は通販にてお買い求めください。
-          （通販では注文に応じて製作する受注生産型とさせていただいております。）</p>
-       
-   
-        <div class="about_body2">
-          <p class="about_text3">友人や家族へのプレゼントなどにもご利用ください。<br />
-          お誕生日ケーキの受注も承っております。<br />ご要望がございましたら、遠慮なくお問い合わせください。</p>
-          <div class="side_image6"></div>
-        </div>
-        <div class="about_concept">お召し上がりいただくお客様にひとときの幸せを。</div>
-      </body>
-    </div>
-  </div>
+<body class="home">
+
+<div id="container">
+
+<header>
+<h1 id="logo"><strong class="cafe">NaganoCake</strong></h1>
+<!--スライドショー-->
+<aside id="mainimg">
+<%= image_tag '1.jpg', class:"slide0" %>
+<%= image_tag '1.jpg', class:"slide1" %>
+<%= image_tag '2.jpg', class:"slide2" %>
+<%= image_tag '3.jpg', class:"slide3" %>
+<%= image_tag '123_kazari.png', class:"kazari" %>
+
+
+</aside>
+</header>
+
+<!--開閉メニュー-->
+
+
+<div id="contents">
+
+<section>
+
+<h2>人気商品<br><span>販売中</span></h2>
+
+<div class="list">
+
+<figure><%= image_tag 'sale2.jpg' %></figure>
+</a>
 </div>
+
+<div class="list">
+
+<figure><%= image_tag 'sale1.jpg' %></figure>
+</a>
+</div>
+
+<div class="list">
+
+<figure><%= image_tag 'sale2.jpg' %></figure>
+</a>
+</div>
+
+</section>
+
+<section id="new">
+
+<h2>News<br><span>お知らせ</span></h2>
+<dl>
+<dt>2021/08/04</dt>
+<dd>チョコケーキ発売開始<span class="newicon">NEW</span></dd>
+<dt>2021/08/04</dt>
+<dd>イチゴショート発売開始<span class="newicon">NEW</span></dd>
+</dl>
+
+
+</section>
+<!--/#new-->
+
+
+
+</div>
+<!--/#contents-->
+
+<footer>
+
+
+<small>Copyright&copy; Sample Gallery</a> All Rights Reserved.</small>
+
+</footer>
+
+</div>
+<!--/#container-->
+
+<p class="nav-fix-pos-pagetop"><a href="#">↑</a></p>
+
+<!--メニュー開閉ボタン-->
+<div id="menubar_hdr" class="close"></div>
+
+<!--メニューの開閉処理-->
+<script>
+open_close("menubar_hdr", "menubar");
+</script>
+
+<!--lightbox用jsファイルの読み込み-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/js/lightbox-plus-jquery.min.js"></script>
+
+</body>
 
