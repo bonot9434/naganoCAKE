@@ -17,56 +17,57 @@
         <div class="row">
           <div class="col-10 offset-1 color">
             <div class="d-flex justify-content-between">
-            <div>
-               <% if member_signed_in? %>
-                 <span class="name">ようこそ、<%= current_member.last_name %> <%= current_member.first_name %>さん</span>
-               <% end %>
-            </div>
-            <nav class="navbar  navbar-expand-lg navbar-light text-align-center gnav ">
-              <ul class="navbar-nav justfy-content-center">
-                <% if member_signed_in? %>
-                  <li class="nav-item"><%= link_to 'マイページ', members_path(current_member), class: "btn btn-danger" %></li>
-                  <li class="nav-item"><%= link_to '商品一覧', products_path, class: "btn btn-danger" %></li>
-                  <li class="nav-item"><%= link_to 'カート', cart_products_path, class: "btn btn-danger" %></li>
-                  <li class="nav-item"><p><%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "btn btn-danger" %></p></li>
-                <% elsif admin_signed_in? %>
-                  <li class="nav-item"><%= link_to '商品一覧', admin_products_path , class: "btn btn-danger" %></li>
-                  <li class="nav-item"><%= link_to '会員一覧', admin_members_path, class: "btn btn-danger" %></li>
-                  <li class="nav-item"><%= link_to '注文履歴一覧', admin_orders_path, class: "btn btn-danger" %></li>
-                  <li class="nav-item"><%= link_to 'ジャンル一覧', admin_genres_path, class: "btn btn-danger" %></li>
-                  <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-danger" %></li>
-                <% else %>
-                  <li class="nav-item"><%= link_to 'About', about_path, class: "btn btn-danger" %></li>
-                  <li class="nav-item"><%= link_to '商品一覧', products_path, class: "btn btn-danger" %></li>
-                  <li class="nav-item"><%= link_to '新規登録', new_member_registration_path, class: "btn btn-danger" %></li>
-                  <li class="nav-item"><%= link_to 'ログイン', member_session_path, class: "btn btn-danger" %></li>
-                <% end %>
+              <div class="mt-3">
+                 <% if member_signed_in? %>
+                   <span class="name">ようこそ、<%= current_member.last_name %> <%= current_member.first_name %>さん</span>
+                 <% end %>
+              </div>
+              <div>
+              <nav class="navbar  navbar-expand-lg navbar-light text-align-center gnav mt-3">
+                <ul class="navbar-nav justfy-content-center">
+                  <% if member_signed_in? %>
+                    <li class="nav-item"><%= link_to 'マイページ', members_path(current_member), class: "btn btn-danger" %></li>
+                    <li class="nav-item"><%= link_to '商品一覧', products_path, class: "btn btn-danger" %></li>
+                    <li class="nav-item"><%= link_to 'カート', cart_products_path, class: "btn btn-danger" %></li>
+                    <li class="nav-item"><p><%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "btn btn-danger" %></p></li>
+                  <% elsif admin_signed_in? %>
+                    <li class="nav-item"><%= link_to '商品一覧', admin_products_path , class: "btn btn-danger" %></li>
+                    <li class="nav-item"><%= link_to '会員一覧', admin_members_path, class: "btn btn-danger" %></li>
+                    <li class="nav-item"><%= link_to '注文履歴一覧', admin_orders_path, class: "btn btn-danger" %></li>
+                    <li class="nav-item"><%= link_to 'ジャンル一覧', admin_genres_path, class: "btn btn-danger" %></li>
+                    <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-danger" %></li>
+                  <% else %>
+                    <li class="nav-item"><%= link_to 'About', about_path, class: "btn btn-danger" %></li>
+                    <li class="nav-item"><%= link_to '商品一覧', products_path, class: "btn btn-danger" %></li>
+                    <li class="nav-item"><%= link_to '新規登録', new_member_registration_path, class: "btn btn-danger" %></li>
+                    <li class="nav-item"><%= link_to 'ログイン', member_session_path, class: "btn btn-danger" %></li>
+                  <% end %>
+                </ul>
+              </nav>
+              <div class="text-right mr-4">
                 <% if request.fullpath.include?("admin/member") %>
                   <%= form_with url: admin_members_path, method: :get, local: true do |f| %>
-                    <%= f.search_field :word, :value => @word , placeholder: "(管理者)会員名を入力して下さい。" %>
+                    <%= f.search_field :word, :value => @word , placeholder: "(管理者)会員名を入力して下さい。",class:"col-6" %>
                     <% f.submit "検索" %>
                   <% end %>
                 <% elsif request.fullpath.include?("admin/products") %>
                   <%= form_with url: admin_products_path, method: :get, local: true do |f| %>
-                    <%= f.search_field :word, :value => @word , placeholder: "(管理者)商品名を入力して下さい。" %>
+                    <%= f.search_field :word, :value => @word , placeholder: "(管理者)商品名を入力して下さい。",class:"col-6" %>
                     <% f.submit "検索" %>
                   <% end %>
                 <% else %>
                   <%= form_with url: products_path, method: :get, local: true do |f| %>
-                    <%= f.search_field :word, :value => @word , placeholder: "商品名を入力して下さい。" %>
+                    <%= f.search_field :word, :value => @word , placeholder: "商品名を入力して下さい。",class:"col-6" %>
                     <% f.submit "検索" %>
                   <% end %>
                 <% end %>
-              </ul>
-            </nav>
+              </div>
+              </div>
+            </div>
+            <%= yield %>
           </div>
-
-
-<%= yield %>
- </div>
-</div>
-</div>
-</div>
-</div>
-</body>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
