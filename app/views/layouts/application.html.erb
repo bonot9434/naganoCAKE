@@ -15,11 +15,15 @@
     <div class="back-ground">
       <div class="container-fuluid">
         <div class="row">
-          <div class="col-md-10 offset-1  color">
+          <div class="col-md-4 offset-1 color">
+             <% if member_signed_in? %>
+               <li class="name">ようこそ、<%= current_member.last_name %> <%= current_member.first_name %>さん</li>
+             <% end %>
+          </div>
+          <div class="col-md-6 color">
           <nav class="navbar  navbar-expand-lg navbar-light text-align-center gnav ">
             <ul class="navbar-nav justfy-content-center">
               <% if member_signed_in? %>
-                <li class="name">ようこそ、<%= current_member.last_name %> <%= current_member.first_name %>さん</li>
                 <li class="nav-item"><%= link_to 'マイページ', members_path(current_member), class: "btn btn-danger" %></li>
                 <li class="nav-item"><%= link_to '商品一覧', products_path, class: "btn btn-danger" %></li>
                 <li class="nav-item"><%= link_to 'カート', cart_products_path, class: "btn btn-danger" %></li>
@@ -45,11 +49,13 @@
                 <% end %>
             </ul>
       </nav>
-        <%= yield %>
-  </div>
-</div>
-  </div>
 
-  </div>
+ </div>
+
+
+<%= yield %>
+</div>
+</div>
+</div>
 </body>
 </html>

@@ -1,8 +1,8 @@
 <p id= "notice"><strong><%= notice %></strong></p>
-
+ <div class="container">
   <p class="page-title">商品詳細</p>
   <div class="row">
-    <div class="col-md-4" offset-md-1>
+    <div class="col-md-4" offset-md-2>
        <%= attachment_image_tag @product, :image, size:"350x350", format: 'jpeg', fallback:"no_image.jpg" %>
     </div>
     <div class="col-md-6" offset-md-1>
@@ -52,4 +52,5 @@
       </tbody>
      </table>
     </div>
+  </div>
   </div>
