@@ -6,7 +6,7 @@ class Admin::MembersController < ApplicationController
       @word = params[:word]
       @members= search(@word,Member).page(params[:page]).per(14)
     else
-      @members = Member.page(params[:page]).per(14)
+      @members = Member.page(params[:page]).per(14).order("#{sort_column} #{sort_direction}")
     end
   end
 
@@ -44,6 +44,14 @@ class Admin::MembersController < ApplicationController
       items.where!("last_name LIKE ? OR first_name LIKE ?", "%#{word.delete_prefix('-')}%", "%#{word.delete_prefix('-')}%")
     end
     return items
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
+
+  def sort_column
+    Member.column_names.include?(params[:sort]) ? params[:sort] : 'created_at'
   end
   
   private
