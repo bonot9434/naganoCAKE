@@ -15,36 +15,39 @@
       <div class="container-fuluid ">
         <div class="row">
           <div class="col-10 offset-1 color">
-            <div class="d-flex justify-content-between">
-            <div>
-               <%= image_tag 'naganologo.png',class: "mainlogo" %>
+            <div class="d-flex justify-content-between border-head">
+            <div class="d-flex">
+              <div><%= image_tag 'naganologo.png',class: "mainlogo" %></div>
                <% if member_signed_in? %>
-                 <span class="name">ようこそ、<%= current_member.last_name %> <%= current_member.first_name %>さん</span>
+               <div>
+                 <div class= "welcome"><span class="name">Welcome!! Mx.<%= current_member.last_name %> <%= current_member.first_name %></span></div>
                <% end %>
+               <div><strong id="notice"><%= notice %></strong></div>
+               </div>
             </div>
               <div>
               <nav class="navbar  navbar-expand-lg navbar-light text-align-center gnav">
-               <ul class="navbar-nav justfy-content-center">
+               <ul class="navbar-nav justfy-content-center height-60px">
                 <% if member_signed_in? %>
-                  <li class="nav-item"><%= link_to 'マイページ', members_path(current_member), class: "btn btn-danger" %></li>
-                  <li class="nav-item"><%= link_to '商品一覧', products_path, class: "btn btn-danger" %></li>
-                  <li class="nav-item"><%= link_to "カート:#{current_member.cart_products.count}", cart_products_path, class: "btn btn-danger" %></li>
-                  <li class="nav-item"><p><%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "btn btn-danger" %></p></li>
+                  <li class="nav-item"><%= link_to 'My page', members_path(current_member), class: "btn btn-outline-danger" %></li>
+                  <li class="nav-item"><%= link_to 'Items', products_path, class: "btn btn-outline-danger" %></li>
+                  <li class="nav-item"><%= link_to "Cart｛#{current_member.cart_products.count}}", cart_products_path, class: "btn btn-outline-danger" %></li>
+                  <li class="nav-item"><p><%= link_to "Log out", destroy_member_session_path, method: :delete, class: "btn btn-outline-danger" %></p></li>
                 <% elsif admin_signed_in? %>
-                  <li class="nav-item"><%= link_to '商品一覧', admin_products_path , class: "btn btn-danger" %></li>
-                  <li class="nav-item"><%= link_to '会員一覧', admin_members_path, class: "btn btn-danger" %></li>
-                  <li class="nav-item"><%= link_to '注文履歴一覧', admin_orders_path, class: "btn btn-danger" %></li>
-                  <li class="nav-item"><%= link_to 'ジャンル一覧', admin_genres_path, class: "btn btn-danger" %></li>
-                  <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-danger" %></li>
+                  <li class="nav-item"><%= link_to 'Items', admin_products_path , class: "btn btn-outline-danger" %></li>
+                  <li class="nav-item"><%= link_to 'Users', admin_members_path, class: "btn btn-outline-danger" %></li>
+                  <li class="nav-item"><%= link_to 'Order Items', admin_orders_path, class: "btn btn-outline-danger" %></li>
+                  <li class="nav-item"><%= link_to 'Genres', admin_genres_path, class:"btn btn-outline-danger" %></li>
+                  <li class="nav-item"><%= link_to "Log out", destroy_admin_session_path, method: :delete, class: "btn btn-outline-danger" %></li>
                 <% else %>
-                  <li class="nav-item"><%= link_to 'About', about_path, class: "btn btn-danger" %></li>
-                  <li class="nav-item"><%= link_to '商品一覧', products_path, class: "btn btn-danger" %></li>
-                  <li class="nav-item"><%= link_to '新規登録', new_member_registration_path, class: "btn btn-danger" %></li>
-                  <li class="nav-item"><%= link_to 'ログイン', member_session_path, class: "btn btn-danger" %></li>
+                  <li class="nav-item"><%= link_to 'About', about_path, class: "btn btn-outline-danger" %></li>
+                  <li class="nav-item"><%= link_to 'Items', products_path, class: "btn btn-outline-danger" %></li>
+                  <li class="nav-item"><%= link_to 'Sign up', new_member_registration_path, class: "btn btn-outline-danger" %></li>
+                  <li class="nav-item"><%= link_to 'Log in', member_session_path, class: "btn btn-outline-danger" %></li>
                 <% end %>
                </ul>
              </nav>
-                <div class="search_container d-flex justify-content-end pr-4">
+                <div class="search_container d-flex justify-content-end pr-4 s-space">
                   <% if request.fullpath.include?("admin/member") %>
                     <%= form_with url: admin_members_path, method: :get, local: true do |f| %>
                       <%= f.text_field :word, :value => @word , placeholder: "  を入力して下さい(管理者)"  %>
@@ -65,19 +68,9 @@
               </div>
             </div>
             <%= yield %>
-          </div>
-<<<<<<< HEAD
-<%= yield %>
- </div>
-</div>
-</div>
-</div>
-</div>
-</body>
-=======
+　　　　　</div>
         </div>
       </div>
     </div>
   </body>
->>>>>>> 3a37d215980acbc3006dc040be67404d41a97291
 </html>
