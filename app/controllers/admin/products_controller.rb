@@ -8,7 +8,7 @@ class Admin::ProductsController < ApplicationController
 
   def index
     @products = Product.all
-    @products_pages = Product.page(params[:page]).per(8).reverse_order
+    @products = Product.page(params[:page]).per(14).reverse_order
   end
 
   def create

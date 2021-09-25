@@ -2,8 +2,12 @@ class Admin::MembersController < ApplicationController
    before_action :authenticate_admin!
 
   def index
-    @members= Member.all
-    @members = Member.page(params[:page]).reverse_order
+    if params[:word].present?
+      @word = params[:word]
+      @members= search(@word,Member).page(params[:page]).per(14)
+    else
+      @members = Member.page(params[:page]).per(14)
+    end
   end
 
   def show
@@ -22,6 +26,24 @@ class Admin::MembersController < ApplicationController
     else
       render "edit"
     end
+  end
+  
+  def search(word, item)
+    words = word.split(/[[:blank:]]+/).select(&:present?)
+    not_word, or_and_word = words.partition { |word| word.start_with?("-") }
+    or_word, and_word = or_and_word.partition { |word| word.start_with?("|") }
+    
+    items = item.all
+    and_word.each do |word|
+      items = items.where("last_name LIKE ?","%#{word}%")# if word.present?
+    end
+    or_word.each do |word|
+      items = items.or(item.where("last_name LIKE ?","%#{word.delete_prefix('|')}%"))
+    end
+    not_word.each do |word|
+      items.where!("last_name NOT LIKE ?", "%#{word.delete_prefix('-')}%")
+    end
+    return items
   end
   
   private
