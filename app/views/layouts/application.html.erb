@@ -11,23 +11,24 @@
   </head>
 
   <body>
-    <!--じゅんぺい　色変更↓-->
     <div class="back-ground">
       <div class="container-fuluid ">
         <div class="row">
           <div class="col-10 offset-1 color">
             <div class="d-flex justify-content-between">
             <div>
+               <%= image_tag 'naganologo.png',class: "mainlogo" %>
                <% if member_signed_in? %>
                  <span class="name">ようこそ、<%= current_member.last_name %> <%= current_member.first_name %>さん</span>
                <% end %>
             </div>
-            <nav class="navbar  navbar-expand-lg navbar-light text-align-center gnav ">
-              <ul class="navbar-nav justfy-content-center">
+              <div>
+              <nav class="navbar  navbar-expand-lg navbar-light text-align-center gnav">
+               <ul class="navbar-nav justfy-content-center">
                 <% if member_signed_in? %>
                   <li class="nav-item"><%= link_to 'マイページ', members_path(current_member), class: "btn btn-danger" %></li>
                   <li class="nav-item"><%= link_to '商品一覧', products_path, class: "btn btn-danger" %></li>
-                  <li class="nav-item"><%= link_to 'カート', cart_products_path, class: "btn btn-danger" %></li>
+                  <li class="nav-item"><%= link_to "カート:#{current_member.cart_products.count}", cart_products_path, class: "btn btn-danger" %></li>
                   <li class="nav-item"><p><%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "btn btn-danger" %></p></li>
                 <% elsif admin_signed_in? %>
                   <li class="nav-item"><%= link_to '商品一覧', admin_products_path , class: "btn btn-danger" %></li>
@@ -41,27 +42,31 @@
                   <li class="nav-item"><%= link_to '新規登録', new_member_registration_path, class: "btn btn-danger" %></li>
                   <li class="nav-item"><%= link_to 'ログイン', member_session_path, class: "btn btn-danger" %></li>
                 <% end %>
-                <% if request.fullpath.include?("admin/member") %>
-                  <%= form_with url: admin_members_path, method: :get, local: true do |f| %>
-                    <%= f.search_field :word, :value => @word , placeholder: "(管理者)会員名を入力して下さい。" %>
-                    <% f.submit "検索" %>
+               </ul>
+             </nav>
+                <div class="search_container d-flex justify-content-end pr-4">
+                  <% if request.fullpath.include?("admin/member") %>
+                    <%= form_with url: admin_members_path, method: :get, local: true do |f| %>
+                      <%= f.text_field :word, :value => @word , placeholder: "  を入力して下さい(管理者)"  %>
+                      <%= f.submit "" %>
+                    <% end %>
+                  <% elsif request.fullpath.include?("admin/products") %>
+                    <%= form_with url: admin_products_path, method: :get, local: true do |f| %>
+                      <%= f.text_field :word, :value => @word , placeholder: "  を入力して下さい(管理者)" %>
+                      <%= f.submit "" %>
+                    <% end %>
+                  <% else %>
+                    <%= form_with url: products_path, method: :get, local: true do |f| %>
+                      <%= f.text_field :word, placeholder: "  を入力して下さい"%>
+                      <%= f.submit "" %>
+                    <% end %>
                   <% end %>
-                <% elsif request.fullpath.include?("admin/products") %>
-                  <%= form_with url: admin_products_path, method: :get, local: true do |f| %>
-                    <%= f.search_field :word, :value => @word , placeholder: "(管理者)商品名を入力して下さい。" %>
-                    <% f.submit "検索" %>
-                  <% end %>
-                <% else %>
-                  <%= form_with url: products_path, method: :get, local: true do |f| %>
-                    <%= f.search_field :word, :value => @word , placeholder: "商品名を入力して下さい。" %>
-                    <% f.submit "検索" %>
-                  <% end %>
-                <% end %>
-              </ul>
-            </nav>
+                </div>
+              </div>
+            </div>
+            <%= yield %>
           </div>
-
-
+<<<<<<< HEAD
 <%= yield %>
  </div>
 </div>
@@ -69,4 +74,10 @@
 </div>
 </div>
 </body>
+=======
+        </div>
+      </div>
+    </div>
+  </body>
+>>>>>>> 3a37d215980acbc3006dc040be67404d41a97291
 </html>

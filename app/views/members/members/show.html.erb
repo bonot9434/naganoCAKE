@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-10 offset-1">
-      <p class="page-title">マイページ</p>
+      <p class="page-title">my page</p></br>
 
-          <h2>登録情報</h2>
-          <%= link_to "編集", members_myedit_path, class:"btn btn-success" %>
+          <!--<h2>登録情報</h2>-->
+          <%= link_to "登録情報を編集", members_myedit_path, class:"btn btn-success" %>
 
           <table class="table">
             <tr>
@@ -27,8 +27,8 @@
             </tr>
           </table>
 
-          <h2>配送先</h2><%= link_to "一覧を見る", destinations_path, class:"btn btn-primary" %>
-          <h2>注文履歴</h2><%= link_to "一覧を見る", orders_info_path, class:"btn btn-primary" %>
+          <!--<h2>配送先</h2>--><%= link_to "配送先一覧", destinations_path, class:"btn btn-primary" %></br>
+          <!--<h2>注文履歴</h2>--><%= link_to "注文履歴一覧", orders_info_path, class:"btn btn-primary" %>
 
     </div>
   </div>

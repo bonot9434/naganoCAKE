@@ -11,11 +11,12 @@
   </head>
    <body>
     <div class="video-wrap">
+       <p id= "notice"><strong><%= notice %></strong></p>
     <%= video_tag("/videos/top.mp4",autoplay: :true, muted: :true, class: 'top-video') %>
-       <nav class="navbar  navbar-expand-lg navbar-light ml-center gnav ">
+      <div class="d-flex justify-content-end">
+        <nav class="navbar  navbar-expand-lg navbar-light ml-center gnav-top ">
             <ul class="navbar-nav ml-center">
               <% if member_signed_in? %>
-                <li class="name"><p class="fadein txt01">ようこそ、<%= current_member.last_name %> <%= current_member.first_name %>さん</p></li>
                 <li class="nav-item"><p class="fadein txt01"><%= link_to 'マイページ', members_path(current_member), class: "btn btn-danger" %></p></li>
                 <li class="nav-item"><p class="fadein txt01"><%= link_to '商品一覧', products_path, class: "btn btn-danger" %></p></li>
                 <li class="nav-item"><p class="fadein txt01"><%= link_to 'カート', cart_products_path, class: "btn btn-danger" %></p></li>
@@ -34,24 +35,28 @@
               <% end %>
             </ul>
       </nav>
+    </div>
       <div class="space"></div>
-        <div class="container">
+        <div class="container-fuluid">
           <div class="row">
              <div class="col-md-12 flex-row pull-right d-inline">
-               <div class="yoko">
-               <h2 class="new-item-text fadein txt01">NEW↓</h2></br>
-               </div>
+               <!--<div class="yoko">-->
+               <div class="left-space">
+               <%= image_tag 'new.jpg',class:'new fadein txt01' %>
+               <!--</div>-->
+
                <div class="yoko">
                    <% @products.each do |product| %>
                       <%= link_to product_path(product.id) do %>
                        <h3 class="fadein txt01 p-name"><strong><%= product.name %></strong></h3>
-                       <p class="fadein txt01"><%= attachment_image_tag product, :image, size: "200x200",  fallback: "no_image.jpg", class:"fuwafuwa product-image" %></p>
+                       <p class="fadein txt01"><%= attachment_image_tag product, :image, fallback: "no_image.jpg", class:"fuwafuwa product-image" %></p>
                        <h4 class="fadein txt01"><strong>￥<%= product.price %></strong></h4>
                       <% end %>
                    <% end %>
                    <%= link_to  products_path do %>
-                   <p class="fadein txt01"><%= image_tag 'check.jpg', class:"finger" %></p>
+                  <%= image_tag 'check.jpg', class:"finger fadein txt01" %>
                    <% end %>
+                </div>
                 </div>
           </div>
         </div>
