@@ -17,12 +17,14 @@
           <div class="col-10 offset-1 color">
             <div class="d-flex justify-content-between">
             <div>
+
+
                <% if member_signed_in? %>
                  <span class="name">ようこそ、<%= current_member.last_name %> <%= current_member.first_name %>さん</span>
                <% end %>
             </div>
               <div>
-              <nav class="navbar  navbar-expand-lg navbar-light text-align-center gnav mt-3">
+              <nav class="navbar  navbar-expand-lg navbar-light text-align-center gnav">
                <ul class="navbar-nav justfy-content-center">
                 <% if member_signed_in? %>
                   <li class="nav-item"><%= link_to 'マイページ', members_path(current_member), class: "btn btn-danger" %></li>
@@ -65,8 +67,18 @@
             </div>
             <%= yield %>
           </div>
+<<<<<<< HEAD
+<%= yield %>
+ </div>
+</div>
+</div>
+</div>
+</div>
+</body>
+=======
         </div>
       </div>
     </div>
   </body>
+>>>>>>> 3a37d215980acbc3006dc040be67404d41a97291
 </html>
