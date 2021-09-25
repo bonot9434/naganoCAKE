@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :members, only: [:index,:show,:edit,:update]
     resources :products, only: [:index,:new,:create,:edit,:update,:show]
-    resources :genres,only: [:index,:create,:edit,:update]
+    resources :genres,only: [:index,:create,:edit,:update,:show]
     resources :orders, only: [:index, :show, :update]
     root to: 'orders#index'
     resources :order_products, only: [:update]

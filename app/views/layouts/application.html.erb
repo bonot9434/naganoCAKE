@@ -37,13 +37,22 @@
                 <li class="nav-item"><%= link_to '新規登録', new_member_registration_path, class: "btn btn-outline-info" %></li>
                 <li class="nav-item"><%= link_to 'ログイン', member_session_path, class: "btn btn-outline-info"%></li>
               <% end %>
-                <%= form_with url: search_search_path, method: :get, local: true do |f| %>
-                  <%= f.text_field 'search[value]', size: "26x4", placeholder: "商品名を入力して下さい。" %><br>
-                  <span class="search-button col-xs-12 text-right">
-                    <%= f.select 'search[how]', options_for_select({ "部分一致" => "partical", "前方一致" => "forward", "後方一致" => "backward", "完全一致" => "match" }) %>
-                    <% f.submit :"検索" %>
-                  </span>
+              <% if request.fullpath.include?("admin/member") %>
+                <%= form_with url: admin_members_path, method: :get, local: true do |f| %>
+                  <%= f.search_field :word, :value => @word , placeholder: "(管理者)会員名を入力して下さい。" %>
+                  <% f.submit "検索" %>
                 <% end %>
+              <% elsif request.fullpath.include?("admin/products") %>
+                <%= form_with url: admin_products_path, method: :get, local: true do |f| %>
+                  <%= f.search_field :word, :value => @word , placeholder: "(管理者)商品名を入力して下さい。" %>
+                  <% f.submit "検索" %>
+                <% end %>
+              <% else %>
+                <%= form_with url: products_path, method: :get, local: true do |f| %>
+                  <%= f.search_field :word, :value => @word , placeholder: "商品名を入力して下さい。" %>
+                  <% f.submit "検索" %>
+                <% end %>
+              <% end %>
             </ul>
       </nav>
   <%= yield %>
