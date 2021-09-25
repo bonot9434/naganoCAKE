@@ -2,9 +2,9 @@
   <div class="row">
     <div class="col-10 offset-1">
               <%= render "members/shared/error_messages", resource: @destination %>
-        <h1 class= "mt-3">配送登録/一覧</h1>
+        <p class="page-title">">配送登録/一覧</p>
         <%= form_with model: @destination,local: true do |f| %>
-        
+
             <div class="form-group">
               <%= f.label :郵便番号 %>
               <%= f.text_field :postal_code, :placeholder => "0000000" ,required: true, maxlength: 7, minlength: 7,class:"form-control" %>
@@ -17,10 +17,10 @@
               <%= f.label :宛名 %>
               <%= f.text_area :name, :placeholder => "令和道子" ,required: true ,class:"form-control" %>
             </div>
-        
+
             <%= f.submit "新規登録", class:"btn btn-success m-2" %>
         <% end %>
-        
+
         <table border="1" class="table table-sm" id= "table-borders">
           <thead>
             <tr class="table-skyblue">
@@ -39,7 +39,7 @@
               <td class="align-middle">
                 <%= link_to "編集する" , edit_destination_path(destination.id), class:"btn btn-success btn-sm my-0" %>
                 <%= link_to "削除する" ,destination_path(destination.id) ,method: :delete, class:"btn btn-danger btn-sm my-0" %>
-        
+
               </td>
             </tr>
           <% end %>

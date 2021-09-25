@@ -25,6 +25,28 @@
   margin-right:10px;
 }
 
+.finger{
+  width: 180px;
+  height: 250px;
+}
+
+.name{
+  position: relative;
+  font-size: 20px;
+  fontstyle: italic;
+  margin: 0px;
+  padding: 0px;
+  text-decoration: underline;
+  text-align: left;
+  list-style: none;
+}
+
+// .name{
+//   font-size: 30px;
+//   font-style: italic;
+//   text-decoration: underline;
+// }
+
 /*top画面のfadein
 /*以下フェードイン表示の指定*/
 .fadein {
@@ -36,7 +58,7 @@
 }
 
 /*以下遅延の指定*/
-.txt01 {animation-delay: 5s;}
+.txt01 {animation-delay: 3s;}
 /*終了*/
 
 .search-form{
@@ -85,7 +107,7 @@
 // }
 
 .color{
-  background-color: white;
+  background-color: #BCAE6D;
   height: 100%;
   min-height: 1000px;
 }
@@ -127,6 +149,9 @@
   // background-color: rgba(255,255,255,0.5);
 }
 
+.product-image{
+  border-radius: 50%;
+}
 
 
 // 純平編集えんど
@@ -178,6 +203,7 @@
   display: inline-block;
   color: white;
   background-color: blue;
+  font-size: 50px;
 }
 
 
@@ -227,7 +253,11 @@
 }
 
 .space{
-  height: 50%;
+  height: 45%;
+}
+
+.p-name{
+  color: orange;
 }
 
 /* footer-logo */
@@ -388,7 +418,7 @@
 }
 
 .btn {
-    margin-top: 2px;
+    margin: 10px;
     font-weight: 700;
     height: 36px;
     -moz-user-select: none;
