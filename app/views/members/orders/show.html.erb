@@ -32,15 +32,15 @@
             <thead class="table-skyblue" id= "table-borders">
               <tr>
                 <th width= "95px">商品合計</th>
-                <td>￥<%= @order.total_price - @order.potage %></td>
+                <td>￥<%= (@order.total_price - @order.potage).to_s(:delimited, delimiter: ',') %></td>
               </tr>
               <tr>
                 <th>配送料</th>
-                <td>￥<%= @order.potage %></td>
+                <td>￥<%= @order.potage.to_s(:delimited, delimiter: ',') %></td>
               </tr>
               <tr>
                 <th>請求金額</th>
-                <td>￥<%= @order.total_price %></td>
+                <td>￥<%= @order.total_price.to_s(:delimited, delimiter: ',') %></td>
               </tr>
             </thead>
           </table>
@@ -64,9 +64,9 @@
                   <%= attachment_image_tag order_product.product, :image, size:"50x50", format: 'jpeg', fallback:"no_image.jpg" %>
                   <span class= "ml-2"><%= order_product.product.name %></span>
                 <% end %></td>
-                <td class="align-middle">￥<%= order_product.subtotal_price / order_product.quantity %></td>
-                <td class="align-middle"><%= order_product.quantity %></td>
-                <td class="align-middle">￥<%= order_product.subtotal_price %></td>
+                <td class="align-middle">￥<%= (order_product.subtotal_price / order_product.quantity).to_s(:delimited, delimiter: ',') %></td>
+                <td class="align-middle"><%= order_product.quantity.to_s(:delimited, delimiter: ',') %></td>
+                <td class="align-middle">￥<%= order_product.subtotal_price.to_s(:delimited, delimiter: ',') %></td>
               </tr>
             <% end %>
           </tbody>

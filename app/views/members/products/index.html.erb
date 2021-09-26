@@ -2,9 +2,9 @@
   <p class="page-title">items</p>
   <div class="row">
     <div class="col-md-10 flex-row">
-        <% if @products != "no_search" %>
+       <% if @products != "no_search" %>
         <% if @product_name.present? || @gunre_name.present? %>
-          <h4>"<%= @product_name %><%= @gunre_name %>"で検索した結果<%= @products.count %>件あります</h4>
+          <h4>"<%= @product_name %><%= @gunre_name %>"で検索(全<%= @products.count %>件)</h4>
         <% end %>
         <div class="yoko">
           <% @products.each do |product| %>
@@ -19,7 +19,7 @@
                   <% end %>
                 </div>
                 <p><%= product.name %></p>
-                <p>￥ <%= product.price %></p>
+                <p>￥ <%= product.price.to_s(:delimited, delimiter: ',') %></p>
               <% end %>
             </div>
           <% end %>

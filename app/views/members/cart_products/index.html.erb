@@ -28,7 +28,7 @@
                 <span class= "ml-2"><%= cart_product.product.name %></span>
               </td><% end %>
               <!--税込価格は切捨て-->
-              <td class="align-middle">￥<%= (cart_product.product.price * $tax_rate).floor %></td>
+              <td class="align-middle">￥<%= (cart_product.product.price * $tax_rate).floor.to_s(:delimited, delimiter: ',') %></td>
               <!--数量の変更-->
               <td class="align-middle">
                 <%= form_with model: cart_product, method: :patch, local:true do |f| %>
@@ -39,7 +39,7 @@
                 </div>
               </td>
               <!--小計の表示:数量ｘ(価格ｘ税率)-->
-              <td class="align-middle">￥<%= cart_product.quantity * (cart_product.product.price * $tax_rate).floor %></td>
+              <td class="align-middle">￥<%= (cart_product.quantity * (cart_product.product.price * $tax_rate).floor).to_s(:delimited, delimiter: ',') %></td>
               <td class="text-center table-mini"><%= link_to "削除する",cart_product_path(cart_product.id), method: :delete, class:"btn btn-danger btn-sm" %></td>
               <!--@totalに数量ｘ(価格ｘ税率)を代入-->
             </tr>
@@ -52,7 +52,7 @@
           <table class= "table" id="total-table">
             <thead id= "table-borders">
               <th width= "95px" id="table-skyblue">合計金額</th>
-              <th>￥<%= @total %></th>
+              <th>￥<%= @total.to_s(:delimited, delimiter: ',') %></th>
             </thead>
           </table>
         </div>

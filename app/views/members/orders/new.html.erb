@@ -17,7 +17,7 @@
         <div class= "ml-4 mt-2">
           <%= f.radio_button :destination_kind ,0 ,checked: true %>
           <%= f.label :destination_kind,  "ご自身の住所" %>
-          <div class= "ml-4">〒<%= add_ress(@member.postal_code) %> <%= @member.address %><br><%= @member.last_name %> <%= @member.first_name %></div>
+          <div class= "ml-4">〒<%= add_ress(@member.postal_code) %><br><%= @member.address %><br><%= @member.last_name %> <%= @member.first_name %></div>
         </div>
         <% if @member.destinations.any? %>
           <div class= "ml-4">

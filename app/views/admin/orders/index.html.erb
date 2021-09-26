@@ -6,9 +6,19 @@
         <thead class="table-skyblue">
           <tr>
             <th width="200px"><%= sort_ordero "created_at","購入日時" %></th>
-            <th>購入者</th>
+            <th><%= sort_ordero "name","購入者" %></th>
             <th class="table-mini">注文個数</th>
-            <th class="table-mini"><%= sort_ordero "received_status","注文ステータス"%></th>
+            <th class="table-mini"><%#= sort_ordero "received_status","注文ステータス"%>
+            <%= form_with url: admin_orders_path, method: :get, local:true do |f| %>
+              <%= f.select :received, Order.received_statuses, prompt: "注文ステータス"%>
+              <% f.submit %>
+              <% end %>
+              <script>
+              $('#received').on('change', function(event) {
+                  $('form').submit();
+                });
+              </script>
+            </th>
           </tr>
         </thead>
         <tbody>
