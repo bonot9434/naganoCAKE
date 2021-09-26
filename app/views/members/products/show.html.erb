@@ -21,7 +21,7 @@
           </tr>
           <tr>
             <th>税込価格
-            <td><%= (@product.price*$tax_rate).floor %>円
+            <td><%= (@product.price*$tax_rate).floor.to_s(:delimited, delimiter: ',') %>円
           </tr>
           <tr>
             <td>

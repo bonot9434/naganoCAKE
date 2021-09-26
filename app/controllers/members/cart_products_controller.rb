@@ -8,7 +8,7 @@ class Members::CartProductsController < ApplicationController
     def update
         @cart_product = CartProduct.find(params[:id])
         if @cart_product.update(cart_product_params)
-            redirect_to cart_products_path
+            render :index
         else
             @member = Member.find(current_member.id)
             @cart_products = @member.cart_products.all
