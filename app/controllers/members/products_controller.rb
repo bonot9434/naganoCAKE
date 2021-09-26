@@ -16,7 +16,7 @@ class Members::ProductsController < ApplicationController
         @products = "no_search"
       end
     else
-      @products = Product.page(params[:page]).per(6)
+      @products = Product.page(params[:page]).per(1)
     end
     @genres = Genre.all
   end
