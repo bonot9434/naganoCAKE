@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-10 offset-1">
-      <p class="page-title">注文情報入力</p>
+      <p class="page-title">order-input</p>
       <%= render "members/shared/error_messages", resource: @destination %>
       <p><strong>支払方法</strong></p>
       <%= form_with url: orders_info_path, local: :true do |f| %>
@@ -45,7 +45,7 @@
               </div>
             <% end %>
           </div>
-        <%= f.submit "確認画面へ進む", class: "mt-2" %>
+        <%= f.submit "確認画面へ進む", class: "mt-2 btn btn-success" %>
         </div>
       <% end %>
     </div>
