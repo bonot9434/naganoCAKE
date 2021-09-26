@@ -30,7 +30,7 @@
                 <% end %>
               </td>
               <td>
-                  ￥<%= product.price %>
+                  ￥<%= product.price.to_s(:delimited, delimiter: ',') %>
               </td>
               <td>
                   <%= product.genre.name %>

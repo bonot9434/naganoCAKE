@@ -4,6 +4,9 @@ class Admin::OrdersController < ApplicationController
     if params[:name].present?
       member = Member.find(params[:name])
       @orders = member.orders.page(params[:page]).per(14)
+    elsif params[:received].present?
+      received = params[:received]
+      @orders = Order.where(received_status: received.to_i).page(params[:page]).per(14)
     else
       @orders = Order.page(params[:page]).per(14).order("#{sort_column} #{sort_direction}")
     end
@@ -26,7 +29,7 @@ class Admin::OrdersController < ApplicationController
   end
   
   def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+    %w[desc asc].include?(params[:direction]) ? params[:direction] : 'desc'
   end
 
   def sort_column

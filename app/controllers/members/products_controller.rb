@@ -16,7 +16,7 @@ class Members::ProductsController < ApplicationController
         @products = "no_search"
       end
     else
-      @products = Product.where(is_active: 'true')
+      @products = Product.all#where(is_active: 'true')
     end
     @genres = Genre.all
   end
