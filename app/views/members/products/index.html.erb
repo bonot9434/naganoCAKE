@@ -2,7 +2,7 @@
   <p class="page-title">items</p>
   <div class="row">
     <div class="col-md-10 flex-row">
-        <% if @products != "no_search" %>
+       <% if @products != "no_search" %>
         <% if @product_name.present? || @gunre_name.present? %>
           <h4>"<%= @product_name %><%= @gunre_name %>"で検索(全<%= @products.count %>件)</h4>
         <% end %>
