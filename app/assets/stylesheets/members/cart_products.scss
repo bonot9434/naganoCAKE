@@ -68,18 +68,18 @@ input[type="number"]:focus{
 }
 //かみなり
 
-.pagination>li>a {          
+.pagination>li>a {
   border: none;     /*枠線をなくす*/
   color: #007bff;   /*文字の色を変える*/
   background-color: #FFFFE0;
 }
-#page-active {     
+#page-active {
     color: #000;
     border-radius: 15px;     /*角を丸くする*/
     background-color: #FFFFE0;
 }
 /*ホバー時のデザイン*/
-.pagination>li>a:hover {        
+.pagination>li>a:hover {
   border-radius: 15px;    /*角を丸くする*/
   background-color: #FFFFE0;
   outline: none;
@@ -90,6 +90,9 @@ input[type="number"]:focus{
 }
 .pagination{
   justify-content: center;
+}
+#disabled{
+  background-color: #ffffe0;
 }
 .search_container> form{
   box-sizing: border-box;
