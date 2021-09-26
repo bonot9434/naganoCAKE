@@ -47,7 +47,7 @@
                   <% @products.each do |product| %>
                     <%= link_to product_path(product.id) do %>
                       <h4 class="fadein txt01"><strong class="p-name-back"><%= product.name %></strong></h4>
-                      <p class="fadein txt01"><%= attachment_image_tag product, :image, fallback: "no_image.jpg", class:"fuwafuwa product-image" %></p>
+                      <p class="fadein txt01"><%= attachment_image_tag product, :image, fallback: "no_image.jpg", class:"fuwafuwa product-image enn" %></p>
                     <% end %>
                   <% end %>
                   <%= link_to  products_path do %>

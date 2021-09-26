@@ -7,9 +7,44 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Admin.create!(
-  email: "nagano_CAKE@gmail.com",
-  password: "7gan0-CAKE"
-  )
-  
-  
+
+
+20.times do |n|
+Product.create!(
+  genre_id: 1,
+  name: "テスト#{n + 1}号",
+  introduction: "テスト用データだよ。",
+  price: "500+ #{100*n}_to.i",
+  is_active: true,
+ )
+  end
+
+10.times do |n|
+Product.create!(
+  genre_id: 2,
+  name: "テスト#{n + 1}号",
+  introduction: "テスト用データだよ。",
+  price: "500+ #{100*n}_to.i",
+  is_active: true,
+ )
+  end
+
+10.times do |n|
+Product.create!(
+  genre_id: 3,
+  name: "テスト#{n + 1}号",
+  introduction: "テスト用データだよ。",
+  price: "500"+ "#{100*n}_to.i",
+  is_active: false,
+ )
+  end
+
+10.times do |n|
+Product.create!(
+  genre_id: 4,
+  name: "テスト#{n + 1}号",
+  introduction: "テスト用データだよ。",
+  price: "500+ #{100*n}_to.i",
+  is_active: false,
+ )
+  end
