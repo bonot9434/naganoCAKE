@@ -23,7 +23,7 @@
                 <div>
                   <% if member_signed_in? %>
                     <div class= "welcome">
-                      <span class="name">Welcome!! Mx.<%= current_member.last_name %> <%= current_member.first_name %></span>
+                      <span class="name">Welcome to Mx.<%= current_member.last_name %> <%= current_member.first_name %></span>
                     </div>
                   <% end %>
                    <div>
@@ -35,21 +35,21 @@
                 <nav class="navbar  navbar-expand-lg navbar-light text-align-center gnav">
                   <ul class="navbar-nav justfy-content-center height-60px">
                     <% if member_signed_in? %>
-                      <li class="nav-item"><%= link_to 'My page', members_path(current_member), class: "btn btn-outline-danger" %></li>
-                      <li class="nav-item"><%= link_to 'Items', products_path, class: "btn btn-outline-danger" %></li>
-                      <li class="nav-item"><%= link_to "Cart｛#{current_member.cart_products.count}}", cart_products_path, class: "btn btn-outline-danger" %></li>
-                      <li class="nav-item"><p><%= link_to "Log out", destroy_member_session_path, method: :delete, class: "btn btn-outline-danger" %></p></li>
+                      <li class="nav-item"><%= link_to 'My page', members_path(current_member), class: "btn btn-warning" %></li>
+                      <li class="nav-item"><%= link_to 'Items', products_path, class: "btn btn-warning" %></li>
+                      <li class="nav-item"><%= link_to "Cart｛#{current_member.cart_products.count}｝", cart_products_path, class: "btn btn-warning" %></li>
+                      <li class="nav-item"><p><%= link_to "Log out", destroy_member_session_path, method: :delete, class: "btn btn-warning" %></p></li>
                     <% elsif admin_signed_in? %>
-                      <li class="nav-item"><%= link_to 'Items', admin_products_path , class: "btn btn-outline-danger" %></li>
-                      <li class="nav-item"><%= link_to 'Users', admin_members_path, class: "btn btn-outline-danger" %></li>
-                      <li class="nav-item"><%= link_to 'Order Items', admin_orders_path, class: "btn btn-outline-danger" %></li>
-                      <li class="nav-item"><%= link_to 'Genres', admin_genres_path, class:"btn btn-outline-danger" %></li>
-                      <li class="nav-item"><%= link_to "Log out", destroy_admin_session_path, method: :delete, class: "btn btn-outline-danger" %></li>
+                      <li class="nav-item"><%= link_to 'Items', admin_products_path , class: "btn btn-warning" %></li>
+                      <li class="nav-item"><%= link_to 'Users', admin_members_path, class: "btn btn-warning" %></li>
+                      <li class="nav-item"><%= link_to 'Order Items', admin_orders_path, class: "btn btn-warning" %></li>
+                      <li class="nav-item"><%= link_to 'Genres', admin_genres_path, class: "btn btn-warning" %></li>
+                      <li class="nav-item"><%= link_to "Log out", destroy_admin_session_path, method: :delete, class: "btn btn-warning" %></li>
                     <% else %>
-                      <li class="nav-item"><%= link_to 'About', about_path, class: "btn btn-outline-danger" %></li>
-                      <li class="nav-item"><%= link_to 'Items', products_path, class: "btn btn-outline-danger" %></li>
-                      <li class="nav-item"><%= link_to 'Sign up', new_member_registration_path, class: "btn btn-outline-danger" %></li>
-                      <li class="nav-item"><%= link_to 'Log in', member_session_path, class: "btn btn-outline-danger" %></li>
+                      <li class="nav-item"><%= link_to 'About', about_path, class: "btn btn-warning" %></li>
+                      <li class="nav-item"><%= link_to 'Items', products_path, class: "btn btn-warning" %></li>
+                      <li class="nav-item"><%= link_to 'Sign up', new_member_registration_path, class: "btn btn-warning" %></li>
+                      <li class="nav-item"><%= link_to 'Log in', member_session_path, class: "btn btn-warning" %></li>
                     <% end %>
                   </ul>
                 </nav>
