@@ -10,8 +10,8 @@
               <th width= "40%">配送先</th>
               <th>注文商品</th>
               <th>支払金額</th>
-              <th>ステータス</th>
-              <th>注文詳細</th>
+              <th class="table-mini">ステータス</th>
+              <th class="table-mini">注文詳細</th>
             </tr>
           </thead>
           <tbody>
@@ -19,7 +19,7 @@
               <tr>
                 <td><%= l order.created_at,format: :short %></td>
                 <td>〒<%= add_ress(order.postal_code) %><br><%= order.address %><br><%= order.name %></td>
-                <td>
+                <td class="table-mini">
                   <% order.order_products.each do |order_product| %>
                     <div><%= order_product.product.name %></div>
                   <% end %>
