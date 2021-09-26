@@ -1,59 +1,54 @@
- <div class="container">
-  <p class="page-title">item</p>
+<div class="container">
+  <p class="page-title">item details</p>
   <div class="row">
-    <div class="col-md-4" offset-md-2>
-       <%= attachment_image_tag @product, :image, size:"350x350", format: 'jpeg', fallback:"no_image.jpg" %>
-    </div>
-    <div class="col-md-6" offset-md-1>
-      <div class="product_name">
-        <h2><%= @product.name %></h2>
-      </div>
-      <p></p>
-      <p></p>
-      <p></p>
-      <div class="product_introduction">
-        <%= @product.introduction %>
-      </div>
-      <p></p>
-      <p></p>
-      <p></p>
-      <div class="product_price">
-        <h5><strong>￥<%= @product.price %>(税込)</strong></h5>
-      </div>
-      <p></p>
-      <p></p>
-      <p></p>
-        <% if @product.is_active? %>
-          <% if member_signed_in? %>
-            <%= form_with model: @cart_product, url:cart_products_path, method: :post do |f| %>
-            <%= f.hidden_field :product_id, value: @product.id %>
-            <%= f.number_field :quantity, min: 1,value: 1 ,required: true %>
-              <%= f.submit "カートに入れる" %>
-            <% end %>
-          <% else %>
-            <%= link_to "ログインする", member_session_path, class:"btn btn-primary" %>
-        <% end %>
-        <% else %>
-          売り切れです
-        <% end %>
-   </div>
-           <div class="col-md-2">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>ジャンル検索</th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @genres.each do |genre| %>
-        <tr>
-          <td>
-            <%= link_to genre.name, products_path(genre: genre.name) %>
-         </td>
-        </tr>
-      <% end %>
-      </tbody>
-     </table>
+    <div class="col-10 offset-2 ">
+      <table class="mt-5 table table-borderless">
+        <tbody>
+          <tr>
+            <th rowspan="6" width="250px" class="align-middle">
+              <%= attachment_image_tag @product, :image, size:"200x200", format: 'jpeg', fallback:"no_image.jpg" %>
+            </th>
+            <th>商品名</th>
+            <td><%= @product.name %></td>
+          </tr>
+          <tr>
+            <th>商品説明</th>
+            <td class= "text-break"><%= @product.introduction %></td>
+          </tr>
+          <tr>
+            <th>ジャンル</th>
+            <td><%= @product.genre.name %></td>
+          </tr>
+          <tr>
+            <th>税込価格
+            <td><%= (@product.price*$tax_rate).floor %>円
+          </tr>
+          <tr>
+            <td>
+            </td>
+            <td>
+              <% if @product.is_active? %>
+                <% if member_signed_in? %>
+                  <%= form_with model: @cart_product, url:cart_products_path, method: :post do |f| %>
+                    <%= f.hidden_field :product_id, value: @product.id %>
+                    <%= f.number_field :quantity, min: 1,value: 1 ,required: true %>
+                    <%= f.submit "\uf218", class: 'f-awesome-buttom cart-button' %>
+                  <% end %>
+                <% else %>
+                  <%= link_to "ログインする", member_session_path, class:"btn btn-primary" %>
+                <% end %>
+              <% else %>
+                <p class="sold-out-message">
+                  <strong>売り切れました。</strong>
+                </p>
+                  <p>
+                    次回生産予定は<strong><%= @product.id %>日後</strong>です。
+                  </p>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-  </div>
+</div>

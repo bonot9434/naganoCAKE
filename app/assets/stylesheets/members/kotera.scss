@@ -204,9 +204,8 @@ footer {
 	clear: both;
 	font-size: 0.75rem;	/*文字サイズ*/
 	text-align: center;
-	box-shadow: 0px 0px 50px #fff inset;	/*ボックスの影。insetは内側に向ける指定。*/
+	background-color: #ffffe0 ;
 	padding: 3%;	/*余白*/
-	background: url(1.jpg) no-repeat center center / cover;	/*背景画像の読み込み。*/
 	color: #666;	/*文字色*/
 }
 footer small {font-size: 100%;}
@@ -573,4 +572,10 @@ header #logo {
 .mainlogo{
 	height:100px;
 	width: 100px;
+}
+
+.fab{
+	font-size:25px;
+	margin-left:10px;
+	
 }
