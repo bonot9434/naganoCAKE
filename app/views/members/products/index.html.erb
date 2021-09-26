@@ -23,11 +23,11 @@
               <% end %>
             </div>
           <% end %>
+        </div>
+        <%= paginate @products %>
         <% else %>
           <h4>"<%= @product_name %><%= @gunre_name %>"で該当する商品はありません。</h4>
         <% end %>
-      </div>
-      <%= paginate @products %>
     </div>
     <div class="col-md-2">
     <table class="table">
