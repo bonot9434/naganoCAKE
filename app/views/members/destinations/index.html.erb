@@ -34,8 +34,8 @@
               <td><%= destination.address %></td>
               <td><%= destination.name %></td>
               <td class="align-middle">
-                <%= link_to "編集する" , edit_destination_path(destination.id), class:"btn btn-success btn-sm my-0" %>
-                <%= link_to "削除する" ,destination_path(destination.id) ,method: :delete, class:"btn btn-danger btn-sm my-0" %>
+                <%= link_to "編集する" , edit_destination_path(destination.id), class:"btn btn-success btn-sm my-0 mx-0" %>
+                <%= link_to "削除する" ,destination_path(destination.id) ,method: :delete, class:"btn btn-danger btn-sm my-0 mx-0" %>
               </td>
             </tr>
           <% end %>
