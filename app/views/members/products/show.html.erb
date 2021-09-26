@@ -1,7 +1,7 @@
 <div class="container">
+  <p class="page-title">item details</p>
   <div class="row">
-    <div class="col-8 offset-2">
-      <p class="page-title">item</p>
+    <div class="col-10 offset-2 ">
       <table class="mt-5 table table-borderless">
         <tbody>
           <tr>
@@ -38,7 +38,12 @@
                   <%= link_to "ログインする", member_session_path, class:"btn btn-primary" %>
                 <% end %>
               <% else %>
-                <%= image_tag 'sold_out.jpg' %>
+                <p class="sold-out-message">
+                  <strong>売り切れました。</strong>
+                </p>
+                  <p>
+                    次回生産予定は<strong><%= @product.id %>日後</strong>です。
+                  </p>
               <% end %>
             </td>
           </tr>
