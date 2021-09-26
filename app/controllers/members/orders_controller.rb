@@ -1,10 +1,10 @@
 class Members::OrdersController < ApplicationController
-  
+
   def new
     @member = Member.find(current_member.id)
     @destination = Destination.new
   end
-  
+
   def info
     @member = Member.find(current_member.id)
     @cart_products = @member.cart_products.all
@@ -24,14 +24,14 @@ class Members::OrdersController < ApplicationController
       if @destination.save
         @postal_code = @destination.postal_code
         @address = @destination.address
-        @name = @destination.name 
+        @name = @destination.name
       else
         render :new
       end
     end
     @order = Order.new
   end
-  
+
   def create
     order = current_member.orders.new(order_params)
     order.save
@@ -49,15 +49,15 @@ class Members::OrdersController < ApplicationController
     #order_product = current_member.order_product.new(order_product_params)
     redirect_to orders_thanks_path
   end
-  
+
   def thanks
   end
-  
+
   def index
     @member = Member.find(current_member.id)
     @orders = @member.orders.all
   end
-  
+
   def show
     if params[:id] == "info"
       redirect_to orders_path
@@ -66,7 +66,7 @@ class Members::OrdersController < ApplicationController
     @order = @member.orders.find(params[:id])
     end
   end
-  
+
 private
 
   def destination_params
@@ -76,9 +76,9 @@ private
   def order_params
     params.require(:order).permit(:postal_code, :address, :name, :potage, :total_price, :payment_method, :received_status)
   end
-  
+
   # def order_product_params
   #   params.require(:order_product).permit(:subtotal_price, :quantity, :production_status)
   # end
-  
+
 end

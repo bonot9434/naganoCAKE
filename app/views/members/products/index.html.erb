@@ -24,7 +24,7 @@
             </div>
           <% end %>
         <% else %>
-          <h4>"<%= @product_name %><%= @gunre_name %>"で該当する商品はありません</h4>
+          <h4>"<%= @product_name %><%= @gunre_name %>"で該当する商品はありません。</h4>
         <% end %>
       </div>
       <%= paginate @products %>
@@ -33,7 +33,7 @@
     <table class="table">
       <thead>
         <tr>
-          <th>ジャンル検索</th>
+          <th class="genre-s-font">genres <i class="fas fa-search"></i></th>
         </tr>
       </thead>
       <tbody>

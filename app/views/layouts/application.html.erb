@@ -18,7 +18,9 @@
             <div class="d-flex justify-content-between border-head">
               <div class="d-flex">
                 <div>
-                  <%= image_tag 'naganologo.png',class: "mainlogo" %>
+                  <%= link_to root_path do %>
+                    <%= image_tag 'naganologo.png',class: "mainlogo" %>
+                  <% end %>
                 </div>
                 <div>
                   <% if member_signed_in? %>
@@ -40,11 +42,11 @@
                       <li class="nav-item"><%= link_to "Cart｛#{current_member.cart_products.count}｝", cart_products_path, class: "btn btn-warning" %></li>
                       <li class="nav-item"><p><%= link_to "Log out", destroy_member_session_path, method: :delete, class: "btn btn-warning" %></p></li>
                     <% elsif admin_signed_in? %>
-                      <li class="nav-item"><%= link_to 'Items', admin_products_path , class: "btn btn-warning" %></li>
-                      <li class="nav-item"><%= link_to 'Users', admin_members_path, class: "btn btn-warning" %></li>
-                      <li class="nav-item"><%= link_to 'Order Items', admin_orders_path, class: "btn btn-warning" %></li>
-                      <li class="nav-item"><%= link_to 'Genres', admin_genres_path, class: "btn btn-warning" %></li>
-                      <li class="nav-item"><%= link_to "Log out", destroy_admin_session_path, method: :delete, class: "btn btn-warning" %></li>
+                      <li class="nav-item"><%= link_to '商品一覧', admin_products_path , class: "btn btn-warning" %></li>
+                      <li class="nav-item"><%= link_to '会員一覧', admin_members_path, class: "btn btn-warning" %></li>
+                      <li class="nav-item"><%= link_to '注文履歴一覧', admin_orders_path, class: "btn btn-warning" %></li>
+                      <li class="nav-item"><%= link_to 'ジャンル一覧', admin_genres_path, class: "btn btn-warning" %></li>
+                      <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-warning" %></li>
                     <% else %>
                       <li class="nav-item"><%= link_to 'About', about_path, class: "btn btn-warning" %></li>
                       <li class="nav-item"><%= link_to 'Items', products_path, class: "btn btn-warning" %></li>
@@ -77,9 +79,11 @@
           </div>
           <footer class="col-10 offset-1 ">
             <p>Copyright&copy; Sample Gallery</a> All Rights Reserved.</p>
-            <i class="fab fa-twitter"></i>
-            <i class="fab fa-facebook-square"></i>
-            <i class="fab fa-instagram-square"></i>
+            <%= link_to root_path do %>
+              <i class="fab fa-twitter"></i>
+              <i class="fab fa-facebook-square"></i>
+              <i class="fab fa-instagram-square"></i>
+            <% end %>
           </footer>
         </div>
       </div>
