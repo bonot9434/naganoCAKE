@@ -47,7 +47,7 @@ Product.create!(
     is_active: true
 )
 Product.create!(
-    genre_id: 1,
+    genre_id: 2,
     name: "チョコケーキ",
     introduction: "チョコレートケーキだよ",
     price: 398,
