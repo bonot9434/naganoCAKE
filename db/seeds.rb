@@ -7,54 +7,52 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-<<<<<<< HEAD
 
 
-20.times do |n|
-Product.create!(
-  genre_id: 1,
-  name: "テスト#{n + 1}号",
-  introduction: "テスト用データだよ。",
-  price: "500+ #{100*n}_to.i",
-  is_active: true,
- )
-  end
+# 20.times do |n|
+# Product.create!(
+#   genre_id: 1,
+#   name: "テスト#{n + 1}号",
+#   introduction: "テスト用データだよ。",
+#   price: "500+ #{100*n}_to.i",
+#   is_active: true,
+#  )
+#   end
 
-10.times do |n|
-Product.create!(
-  genre_id: 2,
-  name: "テスト#{n + 1}号",
-  introduction: "テスト用データだよ。",
-  price: "500+ #{100*n}_to.i",
-  is_active: true,
- )
-  end
+# 10.times do |n|
+# Product.create!(
+#   genre_id: 2,
+#   name: "テスト#{n + 1}号",
+#   introduction: "テスト用データだよ。",
+#   price: "500+ #{100*n}_to.i",
+#   is_active: true,
+#  )
+#   end
 
-10.times do |n|
-Product.create!(
-  genre_id: 3,
-  name: "テスト#{n + 1}号",
-  introduction: "テスト用データだよ。",
-  price: "500"+ "#{100*n}_to.i",
-  is_active: false,
- )
-  end
+# 10.times do |n|
+# Product.create!(
+#   genre_id: 3,
+#   name: "テスト#{n + 1}号",
+#   introduction: "テスト用データだよ。",
+#   price: "500"+ "#{100*n}_to.i",
+#   is_active: false,
+#  )
+#   end
 
-10.times do |n|
-Product.create!(
-  genre_id: 4,
-  name: "テスト#{n + 1}号",
-  introduction: "テスト用データだよ。",
-  price: "500+ #{100*n}_to.i",
-  is_active: false,
- )
-  end
-=======
+# 10.times do |n|
+# Product.create!(
+#   genre_id: 4,
+#   name: "テスト#{n + 1}号",
+#   introduction: "テスト用データだよ。",
+#   price: "500+ #{100*n}_to.i",
+#   is_active: false,
+#  )
+#   end
 # Admin.create!(
 #   email: "test_CAKE@gmail.com",
 #   password: "111111"
 #   )
-  
+
 # 25.times do |n|
 #   Member.create!(
 #     last_name: "テスト#{n + 1}号",
@@ -69,7 +67,22 @@ Product.create!(
 #     is_deleted: true
 #   )
 # end
-# 25.times do |n|
+#   25.times do |n|
+#    Member.create!(
+#     last_name: "テスト#{n + n}号",
+#     first_name: "太郎",
+#     last_name_kana: "テスト",
+#     first_name_kana: "タロウ",
+#     postal_code: "1234567",
+#     address: "長野県カフェ市#{n + n}区",
+#     telephone_number: "01234567890",
+#     email: "tester#{n + n}@test.com",
+#     password: "111111",
+#     is_deleted: false
+#   )
+# end
+
+#   25.times do |n|
 #   Member.create!(
 #     last_name: "テスト#{n + n}号",
 #     first_name: "太郎",
@@ -104,22 +117,26 @@ Product.create!(
 #     is_active: false
 #   )
 # end
-# 40.times do |n|
+#  20.times do |n|
 #   Order.create!(
 #     member_id: n+1,
 #     postal_code: "1234567",
 #     address: "長野県カフェ市#{n + 1}区",
 #     name: "テスト#{n + 1}号太郎",
 #     potage: 800,
-#     total_price: 6000,
+#     total_price: 2300,
 #   )
 # end
-# 40.times do |n|
-#   OrderProduct.create!(
-#     product_id: rand(1..49),
-#     order_id: n+1,
-#     subtotal_price: 5200,
-#     quantity: 1
-#   )
-# end
->>>>>>> bf77b8d325dba5cfa696d0623afe645aa5f12f85
+   OrderProduct.create!(
+    product_id: rand(1..40),
+    order_id: 21,
+    subtotal_price: 1500,
+    quantity: 1
+  )
+
+   OrderProduct.create!(
+    product_id: rand(1..40),
+    order_id: 22,
+    subtotal_price: 1500,
+    quantity: 1
+  )

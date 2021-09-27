@@ -3,10 +3,10 @@ class Admin::OrdersController < ApplicationController
   def index
     if params[:name].present?
       member = Member.find(params[:name])
-      @orders = member.orders.page(params[:page]).per(14)
+      @orders = member.orders.page(params[:page]).per(14).order("#{sort_column} #{sort_direction}")
     elsif params[:received].present?
       received = params[:received]
-      @orders = Order.where(received_status: received.to_i).page(params[:page]).per(14)
+      @orders = Order.where(received_status: received.to_i).page(params[:page]).per(14).order("#{sort_column} #{sort_direction}")
     else
       @orders = Order.page(params[:page]).per(14).order("#{sort_column} #{sort_direction}")
     end
@@ -27,7 +27,7 @@ class Admin::OrdersController < ApplicationController
 		   redirect_to request.referer
 
   end
-  
+
   def sort_direction
     %w[desc asc].include?(params[:direction]) ? params[:direction] : 'desc'
   end
@@ -35,7 +35,7 @@ class Admin::OrdersController < ApplicationController
   def sort_column
     Order.column_names.include?(params[:sort]) ? params[:sort] : 'created_at'
   end
-  
+
   private
 
     def order_params
