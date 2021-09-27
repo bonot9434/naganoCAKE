@@ -61,12 +61,12 @@
                       <%= f.text_field :word, :value => @word , placeholder: "  を入力して下さい(管理者)"  %>
                       <%= f.submit "" %>
                     <% end %>
-                  <% elsif request.fullpath.include?("admin/products") &&  admin_signed_in? %>
+                  <% elsif request.fullpath.include?("admin/products")  &&  admin_signed_in? %>
                     <%= form_with url: admin_products_path, method: :get, local: true do |f| %>
                       <%= f.text_field :word, :value => @word , placeholder: "  を入力して下さい(管理者)" %>
                       <%= f.submit "" %>
                     <% end %>
-                  <% else %>
+                  <% elsif request.fullpath.include?("admin") != true  %>
                     <%= form_with url: products_path, method: :get, local: true do |f| %>
                       <%= f.text_field :word, placeholder: "  を入力して下さい"%>
                       <%= f.submit "" %>
