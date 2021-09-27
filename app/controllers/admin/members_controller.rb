@@ -35,7 +35,7 @@ class Admin::MembersController < ApplicationController
     
     items = item.all
     and_word.each do |word|
-      items = items.where("last_name LIKE ? OR first_name LIKE ? OR email LIKE ?","%#{word}%","%#{word}%","%#{word}%")# if word.present?
+      items = items.where("last_name LIKE ? OR first_name LIKE ? OR email LIKE ?","%#{word}%","%#{word}%","#{word}")# if word.present?
     end
     or_word.each do |word|
       items = items.or(item.where("last_name LIKE ? OR first_name LIKE ?","%#{word.delete_prefix('|')}%","%#{word.delete_prefix('|')}%","%#{word.delete_prefix('|')}%"))
