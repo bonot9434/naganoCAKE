@@ -127,16 +127,3 @@
 #     total_price: 2300,
 #   )
 # end
-   OrderProduct.create!(
-    product_id: rand(1..40),
-    order_id: 21,
-    subtotal_price: 1500,
-    quantity: 1
-  )
-
-   OrderProduct.create!(
-    product_id: rand(1..40),
-    order_id: 22,
-    subtotal_price: 1500,
-    quantity: 1
-  )
